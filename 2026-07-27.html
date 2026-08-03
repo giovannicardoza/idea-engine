@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-27</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Monday, July 27, 2026</h1>
+<nav class="nav"><a href="./2026-07-26.html">&larr; Sun, Jul 26</a><a href="./2026-07-28.html">Tue, Jul 28 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>AI Tone-Matched Reply Drafting Skill</h2>
+<p></p>
+</div>
+<article id="idea-2026-07-27-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Reddit Native-Voice Cross-Post Rewriter</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit's 2026 algorithm update now punishes duplicate cross-posting and rewards native-to-community language, so identical posts across subreddits get suppressed. Source: <a href="https://postgun.ai/blog/reddit-algorithm-changed-in-2026-what-creators-are-seeing" rel="noopener">postgun.ai</a></p><p class="field"><strong>The idea</strong>A skill that takes one piece of content and rewrites it per subreddit, matching each community's tone, jargon, and post format, so cross-posting doesn't read as spam.</p><p class="field"><strong>Why you</strong>Direct extension of Gio's content/marketing lane, fast to prototype as a Claude Code skill, sellable to any creator or marketer who cross-posts.</p><p class="field"><strong>First step</strong>Pull 5 example posts from 3 different subreddits in the same niche and draft the per-subreddit style rules as a skill reference file.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-27-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI Tone-Matched Reply Drafting Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A Reddit thread compiling unbuilt startup ideas surfaced one with 56,000+ upvotes: a bot that drafts replies matching the user's own voice. Source: <a href="https://dev.to/dev_tips/10-startup-ideas-reddit-obsessed-over-that-no-ones-built-yet-10a7" rel="noopener">dev.to</a></p><p class="field"><strong>The idea</strong>A skill that ingests a sample of someone's past writing (emails, DMs, posts) and drafts new replies in that same voice for approval before sending.</p><p class="field"><strong>Why you</strong>Squarely in Gio's skill-shipping lane, near-zero build time with Claude Code, obvious Gumroad packaging for consultants, support teams, and creators.</p><p class="field"><strong>First step</strong>Build a minimal version for Gio's own inbox: feed it 20 past sent emails, draft a reply to a new one, compare tone.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-27-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Missed-Call Recovery Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Estera, an AI receptionist automating call and message handling, launched on Product Hunt today. Source: <a href="https://www.producthunt.com/products/estera" rel="noopener">producthunt.com</a></p><p class="field"><strong>The idea</strong>A narrow agent for local service businesses (salons, HVAC, auto shops) that catches every missed call, auto-texts the caller back within a minute with booking options, and logs the lead.</p><p class="field"><strong>Why you</strong>Classic $8K-$50K SMB niche play, one clear job to sell, pairs with Gio's fixed-price sprint model.</p><p class="field"><strong>First step</strong>Call 3 local service businesses, ask how many calls they miss per week and what it costs them, to size the pitch.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-27-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>AI-Powered Phishing Pattern Sentinel</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New data shows 85% of recent cyberattacks are now AI-generated, a jump most SMBs aren't equipped to detect. Source: <a href="https://www.business.com/articles/ai-usage-smb-workplace-study/" rel="noopener">business.com</a></p><p class="field"><strong>The idea</strong>An agent that scans an SMB's inbound email and DM traffic for linguistic and structural markers of AI-authored phishing or BEC attempts, distinct from human-written scam patterns, and flags high-risk messages before anyone clicks.</p><p class="field"><strong>Why you</strong>Extends the fraud-detection agent pattern already validated in the ledger into a new attack surface, sized for a solo build.</p><p class="field"><strong>First step</strong>Collect 10 known AI-generated phishing samples and 10 human-written ones, draft the marker checklist the agent would score against.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-27-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-app">App</span>
+
+<h3>No-Code Custom Billing Builder</h3>
+</div>
+<p class="field"><strong>Trigger</strong>SMBs keep hitting complexity walls setting up custom or usage-based pricing on Stripe Billing, despite Stripe's own expansions. Source: <a href="https://stripe.com/en-ch/blog/stripe-billing-updates" rel="noopener">stripe.com</a></p><p class="field"><strong>The idea</strong>A thin no-code layer on top of Stripe Billing letting a non-technical SMB owner define tiered or usage-based pricing rules without touching Stripe's API or dashboard.</p><p class="field"><strong>Why you</strong>Narrow, well-scoped app build, direct fit for Gio's custom-software SMB lane, recurring-revenue potential if packaged as a small SaaS.</p><p class="field"><strong>First step</strong>Map the 3 most common custom pricing structures SMBs ask for and sketch the rule-builder UI.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-27-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Google Play AI-SDK &amp; Anonymous Chat Compliance Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Google Play's July 2026 policy update now regulates third-party AI integrations under the User Data policy and bans anonymous chat apps from targeting children, enforced starting Aug 26. Source: <a href="https://ecorpit.com/google-play-july-2026-policy-update-ai-user-data-compliance/" rel="noopener">ecorpit.com</a></p><p class="field"><strong>The idea</strong>A fixed-price rush audit for indie Android developers checking whether embedded AI chat SDKs and anonymous-messaging features comply before Aug 26. This is a different rule than the target-API and general policy sprints already run this month: it targets AI data-sharing disclosure and child-safety in anonymous chat specifically.</p><p class="field"><strong>Why you</strong>Same playbook Gio has already proven twice this month for other Play deadlines, one-month runway creates urgency.</p><p class="field"><strong>First step</strong>Find 5 Android apps in the Play Store with embedded AI chat features and check whether their listing already discloses the new AI data-sharing terms.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-27-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>Legacy React-to-HTMX De-Bloat Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A live open-source project (Misago) is publicly documenting its move off React onto HTMX for UI interactivity, part of a broader backlash against JS framework complexity. Source: <a href="https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/" rel="noopener">misago-project.org</a></p><p class="field"><strong>The idea</strong>A fixed-price service auditing an SMB's over-engineered React SPA and proposing (or executing) a leaner HTMX/server-rendered replacement for the parts of the app that don't need a full SPA.</p><p class="field"><strong>Why you</strong>Plays to Gio's existing custom-software lane, rides a real technical backlash trend, produces a faster and cheaper site as the pitch.</p><p class="field"><strong>First step</strong>Pick one over-built client or side-project React app and time how long a Claude Code HTMX rewrite of its simplest page takes.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-27-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Vertical AI Research Lab-in-a-Box</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Anthropic released Claude Science, a research workbench with 60+ preconfigured tools, alongside Opus 5's general release. Source: <a href="https://thursdai.news/releases/2026-07" rel="noopener">thursdai.news</a></p><p class="field"><strong>The idea</strong>A venture studio building narrow, well-instrumented AI research labs for neglected-disease and materials-science domains that big pharma and materials companies ignore, using Claude Science as the core tooling layer.</p><p class="field"><strong>Scale</strong>Could compress years of neglected-disease drug discovery into months, but needs wet-lab partnerships, regulatory navigation, and real funding to matter.</p>
+
+</article><article id="idea-2026-07-27-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Border-Search Privacy Device &amp; Legal-Defense Bundle</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A US citizen was criminally charged after his GrapheneOS phone auto-wiped during a border search, spotlighting the collision between device security features and law enforcement device-search demands. Source: <a href="https://www.techspot.com/news/113236-us-prosecutors-charge-atlanta-man-after-grapheneos-phone.html" rel="noopener">techspot.com</a></p><p class="field"><strong>The idea</strong>A bundled hardware-plus-legal-retainer product for journalists, activists, and frequent international travelers: a pre-configured privacy-hardened phone plus on-call legal counsel for border device-search incidents.</p><p class="field"><strong>Scale</strong>Sits at the center of a growing privacy-versus-surveillance fight worth building real infrastructure and legal partnerships around, well beyond a solo build.</p>
+
+</article><article id="idea-2026-07-27-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Consumer Messaging Agent Layer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Comms, an app embedding AI agents directly inside iMessage, launched on Product Hunt today. Source: <a href="https://www.producthunt.com/products/comms-ai-agents-inside-imessage" rel="noopener">producthunt.com</a></p><p class="field"><strong>The idea</strong>A persistent personal AI agent that lives across every messaging surface a consumer uses (iMessage, WhatsApp, Telegram) instead of being locked to one platform, carrying context and preferences between them.</p><p class="field"><strong>Scale</strong>Requires deep platform partnerships or reverse-engineered integrations at a scale no solo builder could pull off, but the "agent as your portable identity across messaging" thesis is a genuinely big one.</p>
+
+</article>
+</div></body>
+</html>

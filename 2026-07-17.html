@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-17</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Friday, July 17, 2026</h1>
+<nav class="nav"><a href="./2026-07-16.html">&larr; Thu, Jul 16</a><a href="./2026-07-18.html">Sat, Jul 18 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Claude-in-Slack Rollout Playbook</h2>
+<p>Anthropic shipped "Claude Tag," an AI coworker teams can permanently embed in Slack, and every team that turns it on today will hit the same access-scoping and "wait, what did it just do" questions on day one. Gio runs Claude daily and can write that rollout SOP from lived experience in a way a generic dev can't, and it's a narrower, faster wedge into the same demand the Claude-for-SMB Concierge already validated.</p>
+</div>
+<article id="idea-2026-07-17-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-business">Business</span>
+
+<h3>Claude-in-Slack Rollout Playbook</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Anthropic launched Claude Tag, an AI coworker permanently embeddable in Slack workspaces. Source: <a href="https://www.aiapps.com/blog/july-ai-mega-update-major-breakthroughs-launches/" rel="noopener">AI news roundup</a></p><p class="field"><strong>The idea</strong>A fixed-price package that sets up Claude Tag for an SMB/agency's Slack: scoped channel access, a staff SOP for when/how to @-mention it, and a lightweight audit log of what it did and said.</p><p class="field"><strong>Why you</strong>Direct extension of the Claude-for-SMB Concierge lane already on the ledger, but narrower and faster since it's one integration surface; Gio's own daily Claude usage gives him rollout credibility a generic developer doesn't have.</p><p class="field"><strong>First step</strong>Sign up for Claude Tag today, run it in one real workspace/channel for a day, and log every access-scoping or "what did it just do" gap a client would hit.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-17-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>HIPAA MFA/Encryption Retrofit Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The HIPAA Security Rule update makes MFA and encryption mandatory, closing the old "addressable" loophole healthcare SMBs used to treat them as optional. Source: <a href="https://afocalsolutions.com/blog/2026-04-27-smb-compliance-checklist-2026-soc-2-hipaa-and-cmmc-requireme/" rel="noopener">Afocal Solutions</a></p><p class="field"><strong>The idea</strong>A small app that walks a healthcare SMB (dental, PT, small clinic) through their current systems, flags every place MFA/encryption is now mandatory instead of optional, and outputs a prioritized fix list with vendor-config steps.</p><p class="field"><strong>Why you</strong>Same shippable-in-days compliance-checklist shape that's converted repeatedly this week (Section 1071, e-invoicing, EU AI Act), applied to a fresh vertical nothing on the ledger has touched.</p><p class="field"><strong>First step</strong>Pull the updated HIPAA Security Rule text today, turn the newly-mandatory controls into a 10-item checklist, and test it against one real small clinic's stack.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-17-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>ACH Fraud Risk-Scoring Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A rule requiring all ACH originators to run risk-based fraud detection took effect June 20, 2026, and many SMB originators still have no system for it. Source: <a href="http://www.riskinbox.com/ach-fraud-detection-rule-deadline-approaches/" rel="noopener">RiskInBox</a></p><p class="field"><strong>The idea</strong>A lightweight agent that watches an SMB's ACH origination file for the risk factors the rule requires flagging (new payee, amount anomaly, velocity) and produces the audit trail a bank or processor will ask to see.</p><p class="field"><strong>Why you</strong>Agent-building lane, distinct mechanism from the Vendor Payment Fraud Watchdog (AP red flags) and Voice-Clone Fraud Screener (live call screening) already on the ledger. This one is ACH-specific and compliance-driven, not pattern-driven.</p><p class="field"><strong>First step</strong>Pull the rule's required risk factors today and build the scoring logic against one sample ACH batch file.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-17-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>CMMC Pre-Assessment Prep Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>CMMC Phase 2 assessments are booking out to November 2026, leaving defense contractors racing to be assessment-ready with no assessor slack for a failed first attempt. Source: <a href="https://afocalsolutions.com/blog/2026-04-27-smb-compliance-checklist-2026-soc-2-hipaa-and-cmmc-requireme/" rel="noopener">Afocal Solutions</a></p><p class="field"><strong>The idea</strong>A fixed-price sprint that runs a small defense contractor through the NIST SP 800-171 controls their assessor will check, flags gaps, and hands back a fix list before their booked slot arrives.</p><p class="field"><strong>Why you</strong>Same compliance-checklist lane proven this week (Section 1071, HIPAA), applied to a vertical with a scarcity-driven deadline and real contract-loss stakes if they fail.</p><p class="field"><strong>First step</strong>Pull the current CMMC Level 2 control list today and message 2 small defense-adjacent manufacturers to confirm they have a booked assessment date and no prep help yet.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-17-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Worker Classification &amp; Wage-Floor Risk Auditor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>DOL's updated worker-classification guidance reframes the test around "control," while cascading state exempt-salary minimums (CA $70.3k, WA $80.2k) just moved again. Source: <a href="https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026" rel="noopener">BBSI</a></p><p class="field"><strong>The idea</strong>An agent that reads an SMB's contractor agreements and payroll roster, flags which contractors now look misclassified under the new control test, and which exempt employees fall below their state's new salary floor.</p><p class="field"><strong>Why you</strong>Agent-building lane, boring-SMB niche, two independent regulatory triggers converging on a payroll-risk gap nothing on the ledger has touched.</p><p class="field"><strong>First step</strong>Turn the DOL's control-test factors into a 10-question red-flag checklist today and run it against one real contractor agreement.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-17-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-app">App</span>
+
+<h3>AI Search Visibility Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Marketing trade press is naming "search everywhere optimization" a top Q3 2026 strategy as brands scramble to be citable in ChatGPT/Perplexity/Claude answers, not just Google. Source: <a href="https://www.b2the7.com/news-blog/marketing-trends-july-2026-geo-agentic-ads-tiktok-shop" rel="noopener">b2the7</a></p><p class="field"><strong>The idea</strong>A small app/checklist that scans how, and whether, an SMB currently gets cited across major AI answer engines, then outputs the specific content and structured-data fixes to improve it.</p><p class="field"><strong>Why you</strong>Pure copywriting/marketing lane, and Gio already has the skill-scout GEO/AEO methodology on hand, so this productizes something he can already do for himself.</p><p class="field"><strong>First step</strong>Run the audit today against 3 real SMB sites/brands and confirm it surfaces real citation gaps.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-17-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>CI Flake-Fix Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Libretto's "PR agents," which automatically fix failing Playwright scripts, launched on Show HN today. Source: <a href="https://libretto.sh/debug-agents" rel="noopener">libretto.sh</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that watches a client project's CI failures, distinguishes real regressions from flaky/selector-drift test breaks, and proposes the fix diff automatically.</p><p class="field"><strong>Why you</strong>Protects your own delivery pipeline across every client build; distinct from the AI Regression Test Harness on the ledger, which generates new tests rather than repairing already-failing ones.</p><p class="field"><strong>First step</strong>Point it at one of your own repos' currently-flaky tests today and confirm it produces a correct fix diff.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-17-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Benchmark &amp; Competition Integrity Watchdog</h3>
+</div>
+<p class="field"><strong>Trigger</strong>An AI-generated ("slop") solution just won DeepMind's $25K Kaggle Grand Prize, raising real doubt about whether any leaderboard or competition result can still be trusted. Source: <a href="https://news.ycombinator.com/" rel="noopener">Kaggle, via Hacker News</a></p><p class="field"><strong>The idea</strong>An independent verification service that audits competition submissions and benchmark leaderboards for undisclosed AI generation or synthetic-data contamination, becoming the trusted arbiter as more of these get flooded with frontier-model output.</p><p class="field"><strong>Scale</strong>Every ML competition, benchmark, and probably academic peer review faces this integrity problem at once, a category-defining trust layer, but it needs deep credibility, legal weight, and cross-organization buy-in no solo tool can bootstrap.</p>
+
+</article><article id="idea-2026-07-17-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Anti-Scraping Content Cloak</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Decoy Font," a font built to poison AI scrapers while staying readable to humans, hit #4 on Hacker News today. Source: <a href="https://mixfont.com" rel="noopener">mixfont.com</a></p><p class="field"><strong>The idea</strong>An infrastructure company offering publishers and creators a drop-in content-cloaking layer (fonts, markup, watermarking) that defeats AI training scrapers site-wide without hurting human readability or SEO.</p><p class="field"><strong>Scale</strong>Every publisher facing uncompensated AI scraping needs this simultaneously, but surviving the scraper-countermeasure arms race without breaking real search indexing needs deep adversarial R&amp;D and legal backing, not a solo build.</p>
+
+</article><article id="idea-2026-07-17-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Long-Context Enterprise Intelligence Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Kimi K3, a 2.8T-parameter open model with 1M-token context, launched today as the newest entrant in the open-frontier-model race. Source: <a href="https://kimi.com" rel="noopener">Kimi K3</a></p><p class="field"><strong>The idea</strong>An enterprise platform built around whole-corpus reasoning at 1M+ tokens: ingest a company's entire contract archive, codebase, or case-file history and reason across all of it in one pass instead of chunked RAG.</p><p class="field"><strong>Scale</strong>Model capability just crossed a real threshold for whole-corpus reasoning, but productizing it reliably for legal, enterprise, or codebase-scale use needs deep infra, evaluation rigor, and enterprise trust, a funded team's play, not a solo one.</p>
+
+</article>
+</div></body>
+</html>

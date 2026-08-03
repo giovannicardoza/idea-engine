@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-25</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Saturday, July 25, 2026</h1>
+<nav class="nav"><a href="./2026-07-24.html">&larr; Fri, Jul 24</a><a href="./2026-07-26.html">Sun, Jul 26 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Real Estate Showing Follow-Up Agent</h2>
+<p>Product Hunt's own launch feed had zero real estate entries today, while AI coworker tools like Viktor.com pulled huge engagement in every other category. That's a whitespace signal worth acting on: a narrow agent that handles the one task every solo agent hates, timely post-showing follow-up, is a days-to-ship build with a clear, underserved buyer.</p>
+</div>
+<article id="idea-2026-07-25-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Real Estate Showing Follow-Up Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Today's Product Hunt launches skew almost entirely toward developer/agent tooling, real estate is conspicuously absent from the list, even as general "AI coworker" tools like Viktor.com post huge numbers. Source: <a href="https://www.producthunt.com/posts/viktor-com" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A narrow agent for solo real estate agents that auto-drafts and sends a personalized follow-up (recap, comps, next steps) within an hour of a showing ending, pulled from a calendar entry and a few voice notes.</p><p class="field"><strong>Why you</strong>Same shape as the Field Voice-Log and Interview Scheduling agents you've already scoped, narrow input, structured output, one integration. Sellable direct to individual agents at $30-50/mo.</p><p class="field"><strong>First step</strong>Call two real estate agents in your network today, ask what they currently do (if anything) within an hour of a showing.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-25-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Shadow AI Discovery Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>65% of enterprise AI usage now happens without IT oversight, and breaches involving that "shadow AI" cost $670K more on average; Colorado's SB 205 deployer rule adds a compliance deadline on top. Source: <a href="https://www.digitalapplied.com/blog/ai-compliance-small-business-2026-bias-audits-risk-guide" rel="noopener">DigitalApplied</a></p><p class="field"><strong>The idea</strong>An agent that scans an SMB's expense reports, browser extension lists, and SSO logs for unsanctioned AI tool usage, then produces a one-page risk-and-remediation memo.</p><p class="field"><strong>Why you</strong>Direct extension of your audit-sprint lane, same pattern as prior compliance kits but pointed at a discovery problem instead of a checklist, higher perceived urgency because of the breach-cost stat.</p><p class="field"><strong>First step</strong>Draft the scan checklist (expense line items, common shadow-AI tool names, browser extension signatures) as a first pass today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-25-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-app">App</span>
+
+<h3>1099-K Threshold Whiplash Checker</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The 1099 reporting threshold has flip-flopped between $600 and $2,000 across recent tax years, leaving gig platforms and freelancers unsure which rule applies to them right now. Source: <a href="https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026" rel="noopener">BBSI</a></p><p class="field"><strong>The idea</strong>A tiny app: enter your platform and tax year, get the correct current threshold and what it means for your 1099 exposure, in plain English.</p><p class="field"><strong>Why you</strong>Small, fast, evergreen utility, the kind of narrow lookup tool that ranks well and converts to a paid "full tax prep checklist" upsell.</p><p class="field"><strong>First step</strong>Pull the current, verified threshold rule for tax year 2026 from an authoritative IRS source before building anything.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-25-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Pre-Purchase IoT Credential Leak Checker</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A security camera shipped with a GitHub token embedded in its login page source, another entry in a steady drumbeat of IoT credential leaks; PyPI just started rejecting files after 14 days to curb supply-chain risk the same way. Source: <a href="https://news.ycombinator.com/" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>An app an SMB owner runs before buying a security camera, POS terminal, or smart lock: paste the model number, get a plain-English report of known credential leaks, CVEs, and firmware red flags.</p><p class="field"><strong>Why you</strong>Research-and-summarize task Claude Code is well suited for, no hardware needed on your end, sits next to your other pre-purchase and audit tools.</p><p class="field"><strong>First step</strong>Build the CVE/leak lookup for five common SMB security camera models as a proof of concept.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-25-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Food Jutsu Trend-Jack Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The "Food Jutsu" TikTok trend (Jujutsu Kaisen-style food reveals on a beat drop) has passed 36 million posts this week. Source: <a href="https://www.tiktok.com/discover/viral-tiktok-trends-july-2026-update" rel="noopener">TikTok Trends</a></p><p class="field"><strong>The idea</strong>A same-day service producing 3-5 Food Jutsu-format clips for a local restaurant or bar's actual menu items, timed to catch the trend before it fades.</p><p class="field"><strong>Why you</strong>Reuses your existing video-editing skill and same-day-sprint playbook, just pointed at a hot, short-lived format instead of a generic offer.</p><p class="field"><strong>First step</strong>Storyboard one Food Jutsu-style clip using a real menu item from a restaurant you already know, today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-25-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Search Consolidation Migration Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Firecrawl's new /search endpoint and DigitalOcean's serverless multi-model inference both launched this week, part of a broader move toward consolidated, single-call agent infrastructure replacing DIY scraping-plus-multiple-API stacks. Source: <a href="https://www.producthunt.com/posts/firecrawl-search" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that audits a workflow's current scraping/search/multi-API glue code and proposes (and drafts) a migration to a consolidated agent-search API, cutting cost and maintenance surface.</p><p class="field"><strong>Why you</strong>Direct leverage on your own agent builds first, then packageable as a paid skill for other solo Claude Code developers, same shape as the Claude Cost Router skill you already shipped.</p><p class="field"><strong>First step</strong>Audit one of your own existing subagent workflows for scraping/search calls that could collapse into a single API.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-25-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>AI CRM Data Migration &amp; Cutover Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Saleoid, a full AI CRM, launched at $5/month this week, undercutting legacy CRMs by an order of magnitude and putting real pressure on SMBs still paying $50-150/month for tools they barely use. Source: <a href="https://blog.mean.ceo/ai-product-launches-news-july-2026/" rel="noopener">Mean CEO</a></p><p class="field"><strong>The idea</strong>A fixed-price kit that migrates a small business's contacts, pipeline stages, and automations out of a legacy CRM and into a cheap AI-native replacement, cleanly, in a day.</p><p class="field"><strong>Why you</strong>Pure data-mapping and scripting work Claude Code handles well, distinct from building a bespoke CRM from scratch, rides the price-disruption moment instead of fighting it.</p><p class="field"><strong>First step</strong>Pick one legacy CRM (start with the one you know best) and map its export schema against Saleoid's import format.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-25-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Job-Specific AI Capability Benchmark-as-a-Service</h3>
+</div>
+<p class="field"><strong>Trigger</strong>ARC-AGI-style reasoning benchmarks are gaining prominence as the real measure of agent capability just as Claude Opus 5 takes the #1 leaderboard spot, while separately 65% of enterprise AI runs without any IT oversight, meaning most companies have no idea whether the AI they've deployed can actually do the job. Source: <a href="https://arcprize.org" rel="noopener">ARC Prize</a></p><p class="field"><strong>The idea</strong>A company that builds custom, job-specific capability benchmarks (not generic leaderboards) so an enterprise can test whether a given AI agent can actually do a specific role before hiring, replacing staff, or granting it access.</p><p class="field"><strong>Scale</strong>Could become the standard due-diligence layer every enterprise runs before deploying any AI agent into a real role, a category-defining trust and evaluation business.</p>
+
+</article><article id="idea-2026-07-25-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Legacy Hardware Disruption Studio</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A Show HN post this week detailed replacing a $120,000 commercial bowling center control system with $1,600 of ESP32 microcontrollers, a stark example of how much overpriced legacy enterprise hardware is quietly ripe for cheap, software-driven retrofits. Source: <a href="https://news.ycombinator.com/show" rel="noopener">Hacker News Show HN</a></p><p class="field"><strong>The idea</strong>A venture studio that systematically finds other boring industries running expensive, aging proprietary hardware (car washes, laundromats, gyms, parking systems) and builds cheap microcontroller-plus-AI retrofit kits to sell or license.</p><p class="field"><strong>Scale</strong>A repeatable playbook across dozens of overpriced legacy-hardware industries, compounding into a hardware-software conglomerate rather than a single product.</p>
+
+</article><article id="idea-2026-07-25-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Global Heritage Digital Twin Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A full public 3D scan of the Great Pyramid's interior was released this week, part of a growing wave of high-fidelity heritage-site digitization. Source: <a href="https://giza.mused.org" rel="noopener">Giza Mused</a></p><p class="field"><strong>The idea</strong>A platform that crowdsources and AI-reconstructs openly-licensed 3D digital twins of the world's heritage sites, for education, VR tourism, and preservation ahead of climate or conflict damage.</p><p class="field"><strong>Scale</strong>A global preservation and education platform positioned to partner with UNESCO-level institutions and the VR/tourism industry, an internet-scale content moat with no realistic solo-builder path.</p>
+
+</article>
+</div></body>
+</html>

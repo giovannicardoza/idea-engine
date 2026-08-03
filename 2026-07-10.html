@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-10</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Friday, July 10, 2026</h1>
+<nav class="nav"><a href="./2026-07-11.html">Sat, Jul 11 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>API Sunset Migration Sprint</h2>
+<p>Three major APIs sunset within weeks of each other (OpenAI Assistants Aug 26, Google Shopping Aug 18, Sora Sept 24), and every app built on them breaks on a hard deadline. That's a rare thing: real urgency with a real budget attached, and Claude Code is exactly the tool that can do the actual migration work fast enough to make a fixed-price sprint profitable.</p>
+</div>
+<article id="idea-2026-07-10-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-business">Business</span>
+
+<h3>API Sunset Migration Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>OpenAI Assistants API shuts down Aug 26, Google Shopping API Aug 18, Sora API Sept 24 — <a href="https://clonepartner.com/blog/openai-assistants-api-shutdown-the-2026-migration-guide/" rel="noopener">TechCrunch/ClonePartner migration guide</a></p><p class="field"><strong>The idea</strong>A fixed-price "Migration Sprint" package for agencies/SMBs stuck on a deprecated API — audit the integration, rebuild it on the current equivalent, ship before the deadline.</p><p class="field"><strong>Why you</strong>Squarely custom-software lane; Claude Code does the actual code migration in days, not weeks, which is what makes the fixed price work.</p><p class="field"><strong>First step</strong>Draft a one-page "API Sunset Migration Sprint" offer today and send it to 5 agencies you know are on Assistants API or Shopping API.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-10-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>Subscription Dark-Pattern Auditor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>NYC bans deceptive subscription practices (cancel-flow dark patterns) — <a href="https://www.theguardian.com/us-news/2026/jul/10/new-york-city-deceptive-subscriptions-ban" rel="noopener">The Guardian</a></p><p class="field"><strong>The idea</strong>A small tool that scans a SaaS/e-commerce signup-to-cancel flow against NYC's + FTC's click-to-cancel rules and outputs a compliance checklist plus rewritten cancellation copy.</p><p class="field"><strong>Why you</strong>Combines the copywriting lane (rewriting the flow) with a shippable-in-days mini-app; regulation just made this urgent for anyone running recurring billing.</p><p class="field"><strong>First step</strong>Build the rule checklist today from the NYC + FTC text, run it against 3 real SaaS cancellation flows to validate it catches real violations.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-10-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Claude Cost Router (packaged skill)</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Frugon, an HN launch that finds which LLM calls a cheaper model could handle, plus GPT-5.6's Sol variant landing 54% cheaper for coding — <a href="https://github.com/Rodiun/frugon" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>Repackage your existing model-router skill into a standalone, sellable Claude Code skill for other solo builders who want automatic Haiku/Sonnet/Opus routing without hand-tuning it themselves.</p><p class="field"><strong>Why you</strong>Near-zero build cost since it's a fork of a skill you already validated on yourself; sells to the exact audience — solo Claude Code builders — that a competing launch just proved wants this.</p><p class="field"><strong>First step</strong>Fork model-router into a standalone package outline today; strip the Gio-specific parts, keep the ladder logic.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-10-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Vibe-Coded Mini-Game Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Meta quietly launched Pocket, an AI-generated games platform, proving demand for no-code game creation — <a href="https://techcrunch.com/2026/07/02/meta-quietly-launches-vibe-coded-gaming-app-pocket/" rel="noopener">TechCrunch</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack — "50 prompts to build a hit mini-game on Pocket" — teaching the prompt patterns that produce a good playable game on day one of a brand-new platform.</p><p class="field"><strong>Why you</strong>Direct fit for the Gumroad prompt-pack lane, riding a launch before the category gets crowded.</p><p class="field"><strong>First step</strong>Sign up for Meta Pocket today and generate 5 test games to find which prompt patterns actually produce something fun.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-10-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Immigrant-Founder Financing Matcher</h3>
+</div>
+<p class="field"><strong>Trigger</strong>SBA's new rule requires 100% US citizenship for loan eligibility as of March 1, cutting off immigrant-owned SMBs — <a href="https://www.bigtalkaboutsmallbusiness.com/mastering-the-2026-small-business-regulatory-landscape-from-deregulation-to-strict-loan-eligibility/" rel="noopener">Big Talk About Small Business</a></p><p class="field"><strong>The idea</strong>An agent that continuously scans and maintains a directory of non-SBA lenders (community banks, fintech, CDFIs) serving immigrant-owned businesses, matching founders to the right one.</p><p class="field"><strong>Why you</strong>Boring-SMB-niche pain point created directly by regulation, exactly the kind of underserved gap the custom-software lane targets; monetizes via lead-gen or a paid directory.</p><p class="field"><strong>First step</strong>Compile a list of 15 real alternative lenders today and publish it as a lead-magnet page to test demand before building the matching agent.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-10-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Fibermaxxing Meal-Plan Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Fibermaxxing" is up 115% on Google Trends, a fresh dietary-trend spike — <a href="https://blog.google/products-and-platforms/products/search/summergeist-google-trends/" rel="noopener">Google Trends / Summergeist report</a></p><p class="field"><strong>The idea</strong>A Gumroad pack of AI prompts and templates for building a personal "fibermaxxing" meal-planning coach — fast to build, rides a trend that isn't saturated yet.</p><p class="field"><strong>Why you</strong>Direct fit for the digital-product/Gumroad lane; low build cost, fast to ship while the trend is hot.</p><p class="field"><strong>First step</strong>Run the prompt-niche-finder skill against "fibermaxxing" today to confirm real demand before investing in the full pack.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-10-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Multi-Agent Progress Dashboard</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Abralo, an HN-launched free tool for running several Claude Code agents in one window, is gaining real traction — <a href="https://abralo.com/" rel="noopener">Abralo</a></p><p class="field"><strong>The idea</strong>A lightweight Claude Code skill that gives a simple "spawn N agents, watch them all" dashboard tailored to solo builders, positioned as a leaner alternative to Abralo.</p><p class="field"><strong>Why you</strong>Extends your own leverage lane directly — you already orchestrate multi-agent work daily — and Abralo's traction is a live signal the market wants this.</p><p class="field"><strong>First step</strong>Sketch the skill's core loop today, reusing the patterns from how you already track parallel subagents in this session.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-10-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>RF Wall-Sensing Security Company</h3>
+</div>
+<p class="field"><strong>Trigger</strong>QuadRF, a hobbyist RF sensor that can spot drones and see WiFi signals through walls, just went from lab curiosity to reproducible on a hobbyist budget — <a href="https://www.jeffgeerling.com/blog/2026/quadrf-can-spot-drones-and-see-wifi-through-my-wall/" rel="noopener">Jeff Geerling</a></p><p class="field"><strong>The idea</strong>A consumer/prosumer home-security or industrial-inspection company built around accessible RF wall-sensing hardware.</p><p class="field"><strong>Scale</strong>Real hardware + signal-processing moat with a shot at defining a new consumer security category — needs a hardware team and capital, not a solo build.</p>
+
+</article><article id="idea-2026-07-10-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Formal-Proof Research Lab</h3>
+</div>
+<p class="field"><strong>Trigger</strong>GPT-5.6 Sol Ultra produced a genuine proof of the Cycle Double Cover Conjecture — <a href="https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_proof.pdf" rel="noopener">OpenAI</a></p><p class="field"><strong>The idea</strong>A research-automation outfit pairing frontier LLM agents with formal verification systems to attack open math/CS conjectures at scale, monetized via academic partnerships and grant-funded infrastructure.</p><p class="field"><strong>Scale</strong>Could genuinely change how mathematical research gets done — but needs deep formal-methods talent and long-horizon funding to matter.</p>
+
+</article><article id="idea-2026-07-10-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Corporate Energy-Resilience Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Strait of Hormuz disruption has cut ~20% of global oil supply, pushing prices to $111/bbl — <a href="https://www.jpmorgan.com/content/dam/jpmorgan/documents/wealth-management/mid-year-outlook-2026.pdf" rel="noopener">JPMorgan Mid-Year Outlook</a></p><p class="field"><strong>The idea</strong>A software-plus-hardware platform helping mid-market physical-goods businesses model, hedge, and reduce exposure to energy price shocks.</p><p class="field"><strong>Scale</strong>Taps a durable macro shock, not a one-week news cycle — big enough to justify a funded startup in corporate energy-risk management.</p>
+
+</article>
+</div></body>
+</html>

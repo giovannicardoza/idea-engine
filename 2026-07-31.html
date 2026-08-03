@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-31</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Friday, July 31, 2026</h1>
+<nav class="nav"><a href="./2026-07-30.html">&larr; Thu, Jul 30</a><a href="./2026-08-01.html">Sat, Aug 1 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Brittle-Automation Escape Hatch</h2>
+<p>Today's clearest signal is developers openly venting that n8n, Zapier, and Make crumble the moment a workflow needs real conditional logic, exactly the gap Claude Code is built to fill. It ships as a skill in hours, doubles as a fixed-price automation-rescue offer for clients, and can be validated on your own workflows first with zero new infrastructure.</p>
+</div>
+<article id="idea-2026-07-31-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-app">App</span>
+
+<h3>Freelancer Variable-Income Budgeting Copilot</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit r/personalfinance threads say YNAB and Mint can't handle freelance/gig income, "impossible to budget when I don't know what I'll earn." Source: <a href="https://bigideasdb.com/problem-solving-app-ideas-2026" rel="noopener">Micro-SaaS Ideas Validated on Reddit</a></p><p class="field"><strong>The idea</strong>A budgeting app built for irregular income: reads recent deposits, forecasts a conservative monthly floor, and auto-splits every incoming payment into taxes, bills, buffer, and spend the moment it lands.</p><p class="field"><strong>Why you</strong>Fits the digital-products/app lane, a narrow Claude Code build sellable as a cheap micro-SaaS or one-time Gumroad tool for freelancers.</p><p class="field"><strong>First step</strong>Sketch the allocation algorithm and wireframe the money-in screen today, validate the split logic against your own irregular income pattern.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-31-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Carrier Portal Shipment Status Aggregator</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit ops threads say small ecommerce/logistics teams log into 8-10 separate carrier portals daily just to copy-paste shipment statuses. Source: <a href="https://launchsaas.org/blog/micro-saas-ideas-validated-reddit-2026" rel="noopener">Validated Micro-SaaS Ideas</a></p><p class="field"><strong>The idea</strong>A narrow agent that pulls a merchant's carrier tracking data, normalizes statuses across carriers, and pushes one daily "what's late, what's stuck" digest.</p><p class="field"><strong>Why you</strong>Classic boring-SMB niche, a fixed-price build for one client with a handful of carriers, productizable as a subscription once proven.</p><p class="field"><strong>First step</strong>Pick one prospect (a small multi-carrier seller or 3PL) and map their exact carrier list and login flow.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-31-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-business">Business</span>
+
+<h3>Construction Subcontractor AIA Billing &amp; Bid-Bond Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit construction-business threads say generic tools like QuickBooks don't fit subcontractor workflows: no AIA billing format, no prevailing-wage calc, no bid-bond tracking. Source: <a href="https://www.greensighter.com/blog/micro-saas-ideas" rel="noopener">Construction Micro-SaaS Ideas</a></p><p class="field"><strong>The idea</strong>A fixed-price sprint building a subcontractor a proper AIA-format billing workflow plus a bid-bond tracker, so pay apps stop bouncing and bonds stop lapsing.</p><p class="field"><strong>Why you</strong>Textbook boring-SMB build in your $8K-$50K range, construction is underserved by generic SaaS and pays well for compliance-shaped tools.</p><p class="field"><strong>First step</strong>Message 3 local subcontractors this week asking how they currently generate AIA pay applications.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-31-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Brittle-Automation Escape Hatch</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit developers say n8n, Zapier, and Make break down once workflows need real conditional logic, leaving them hand-patching brittle no-code flows. Source: <a href="https://dev.to/jay_all_day/why-ai-workflow-automation-tools-2026-matter-now-1df0" rel="noopener">Why AI Workflow Automation Tools Matter Now</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that ingests a client's existing no-code automation, finds exactly where the logic is straining, and rebuilds just that piece as a small, testable script the client keeps owning.</p><p class="field"><strong>Why you</strong>Plays directly to Claude Code's edge over no-code tools, sellable as a fixed-price automation-rescue sprint and reusable as your own skill on future engagements.</p><p class="field"><strong>First step</strong>Write the audit checklist for common no-code failure patterns (nested conditionals, rate limits, silent failures) and test it against one of your own automations.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-31-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-app">App</span>
+
+<h3>Extreme Heat SMB Compliance &amp; Ops Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>This week's heat wave has July 2026 on track to be the warmest on record across the US, triggering fire-weather and outdoor-worker-safety warnings. Source: <a href="https://www.washingtonpost.com/weather/2026/07/31/scorching-july-may-end-up-warmest-month-record-across-us/" rel="noopener">Washington Post: Scorching July</a></p><p class="field"><strong>The idea</strong>A checklist app for restaurants, retail, and outdoor-crew SMBs covering state heat-safety compliance (break schedules, water/shade rules) plus patio and HVAC-cost triage.</p><p class="field"><strong>Why you</strong>Same checklist-app pattern you've shipped repeatedly, this time the angle is heat safety instead of regulation, fast to build and timely enough to sell this week.</p><p class="field"><strong>First step</strong>Pull the current state-level heat-safety worker rules into a single reference table.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-31-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Stacked-PR Workflow Retrofit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>GitHub just shipped Stacked Pull Requests into public preview, letting teams manage a chain of dependent PRs as one unit. Source: <a href="https://github.blog/changelog/2026-07-30-stacked-pull-requests-are-now-in-public-preview/" rel="noopener">GitHub Changelog</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that takes a client's sprawling feature branch and auto-splits it into a clean, reviewable PR stack using the new GitHub feature, with descriptions and dependency order generated automatically.</p><p class="field"><strong>Why you</strong>Narrow, high-leverage skill for your own dev work, sellable to any team drowning in giant PRs, ships in hours per your own skill-shipping speed.</p><p class="field"><strong>First step</strong>Try it today on one of your own multi-file changesets and see how cleanly Claude Code can propose a stack split.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-31-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Academic AI-Slop Peer-Review Screener</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A researcher flagged two papers with fake authors, and both were still accepted as orals, exposing how AI-generated slop is getting through peer review. Source: <a href="https://geospatialml.com/posts/reviewing-ai-slop/" rel="noopener">Reviewing AI Slop</a></p><p class="field"><strong>The idea</strong>An agent that screens conference and journal submissions for fake-author patterns, AI-generated boilerplate, and citation inconsistencies before they reach human reviewers.</p><p class="field"><strong>Why you</strong>A narrow B2B audit agent licensable per conference or journal, the same audit-tool playbook you've used for compliance kits, applied to a fresh underserved buyer.</p><p class="field"><strong>First step</strong>Build a small test set of known AI-slop versus legitimate papers and see how reliably a first-pass prompt flags the fakes.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-31-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Whole-Body Robotics-as-a-Service</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Google DeepMind shipped Gemini Robotics 2, bringing "whole body intelligence" (full-body coordinated control, not just arm manipulation) to robots. Source: <a href="https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" rel="noopener">DeepMind Blog</a></p><p class="field"><strong>The idea</strong>A managed service layer letting SMBs (warehouses, retail, hospitality) rent whole-body-capable robots on subscription instead of buying hardware, with Gemini Robotics 2 handling general-purpose control.</p><p class="field"><strong>Scale</strong>Rides the shift from narrow robotic arms to general-purpose embodied AI, a category-defining infrastructure play needing hardware partnerships and real capital, not a weekend build.</p>
+
+</article><article id="idea-2026-07-31-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Deep-Tech SBIC Capital Bridge</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New SBA SBIC rules just removed regulatory barriers to critical-tech and mineral-extraction investments, opening a financing pathway that didn't exist before. Source: <a href="https://www.federalregister.gov/documents/2026/01/02/2025-24232/small-business-investment-company-sbic-regulatory-amendments" rel="noopener">Federal Register: SBIC Regulatory Amendments</a></p><p class="field"><strong>The idea</strong>A specialty financing brokerage matching deep-tech and critical-minerals startups to newly-eligible SBIC funds, essentially a broker's desk for a market that just opened.</p><p class="field"><strong>Scale</strong>Requires deep finance and regulatory relationships plus licensed fund partners, a real institution-building play; the door just opened and first movers will own the relationships.</p>
+
+</article><article id="idea-2026-07-31-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Cultural-Moment Synthetic Ad Cloud</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Today alone: Spider-Man: Brand New Day opens theatrically, Nolan's The Odyssey and Ariana Grande's "petal" both drop, and World Cup engagement is still peaking, a rare same-day convergence of cultural moments. Source: <a href="https://flixpatrol.com/top10/streaming/united-states/2026-07-31/" rel="noopener">FlixPatrol Top 10</a></p><p class="field"><strong>The idea</strong>A platform that auto-generates localized, on-brand marketing content for any business the instant a cultural blockbuster breaks, at the scale of thousands of businesses simultaneously instead of one campaign at a time.</p><p class="field"><strong>Scale</strong>Needs real-time trend detection plus a content pipeline serving thousands of businesses concurrently, an infrastructure and go-to-market build well past solo scope.</p>
+
+</article>
+</div></body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-08-01</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Saturday, August 1, 2026</h1>
+<nav class="nav"><a href="./2026-07-31.html">&larr; Fri, Jul 31</a><a href="./2026-08-02.html">Sun, Aug 2 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Section 179 Expensing Advisory Kit</h2>
+<p>Section 179's equipment-expensing cap was permanently doubled to $2.5M this year, effective immediately, and it is the kind of dollar-denominated law change that makes its own cold-outreach pitch. The build is a same-day calculator app in Gio's most-proven pattern, and the buyer pool, any SMB with equipment purchases on the calendar plus every accountant who serves them, is bigger and less niche than most of this month's compliance-kit ideas.</p>
+</div>
+<article id="idea-2026-08-01-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-app">App</span>
+
+<h3>Section 179 Expensing Advisory Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Section 179's equipment expensing limit was permanently doubled to $2.5M this year, effective immediately, letting SMBs take a full same-year deduction on qualifying purchases instead of a multi-year depreciation schedule. Source: <a href="https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026" rel="noopener">BBSI 2026 SMB law roundup</a></p><p class="field"><strong>The idea</strong>A small app that takes a business's planned equipment purchases and instantly shows the exact same-year deduction under the new $2.5M cap, plus a purchase-timing recommendation before year-end.</p><p class="field"><strong>Why you</strong>Same checklist/calculator-app pattern that has converted repeatedly this month, but the pitch here is savings instead of compliance risk, an easier cold-outreach angle to accountants and equipment-heavy SMBs like construction, restaurants, and medical practices.</p><p class="field"><strong>First step</strong>Pull the finalized Section 179 rules and build the deduction calculator against 3 sample purchase scenarios today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-08-01-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-business">Business</span>
+
+<h3>Hugo Spritz Bar/Restaurant Trend-Jack Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The Hugo Spritz has overtaken Aperol Spritz in UK search interest, with "how to make" queries up 2,200 percent, cementing it as the unofficial drink of summer 2026. Source: <a href="https://www.axios.com/2026/06/29/hugo-spritz-popular-what-is-it" rel="noopener">Axios</a></p><p class="field"><strong>The idea</strong>A same-day service producing a Hugo Spritz menu insert, table tent, and 2-3 social clips for a local bar or restaurant, timed to catch the trend before the summer window closes.</p><p class="field"><strong>Why you</strong>Reuses the same-day trend-jack playbook and video-editing skill already proven on the Food Jutsu and World Cup sprints, pointed at a fresh, still-rising trend instead of a fading one.</p><p class="field"><strong>First step</strong>Storyboard one Hugo Spritz clip using a bar you already know today and pitch it as a free pilot.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-08-01-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Client Staging Snapshot Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Kedge launched a full-stack cloud built on forkable VM snapshots and global SQLite, treating instant, shareable environment forks as a first-class infra primitive instead of a one-off ops trick. Source: <a href="https://kedge.dev/" rel="noopener">Kedge</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that wraps this snapshot-forking pattern so every client demo gets its own disposable, shareable staging URL in seconds, instead of a full redeploy or a screen-share.</p><p class="field"><strong>Why you</strong>Cuts the demo-to-feedback loop on every SMB software engagement Gio runs, and it is packageable as a standalone skill the way Claude Cost Router was.</p><p class="field"><strong>First step</strong>Spin up one real client project's current staging environment through Kedge today and time how long a full fork-and-share cycle takes.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-08-01-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>SMB Vendor Price-Increase Renegotiation Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>75 percent of small businesses now report rising supplier and vendor prices are squeezing their margins, with cost-of-goods inflation outpacing their own pricing power. Source: <a href="https://www.thezebra.com/resources/research/small-business-statistics/" rel="noopener">The Zebra small business statistics</a></p><p class="field"><strong>The idea</strong>A narrow agent that scans a business's recent vendor invoices for price increases, flags which ones are out of line with market rate, and drafts the renegotiation email or a cheaper-alternative shortlist.</p><p class="field"><strong>Why you</strong>Distinct from the subscription-cancellation and price-hike-watchdog agents already on the ledger, which track AI tools and unused subscriptions specifically. This one targets core physical and service vendor spend, a bigger line item for most SMBs.</p><p class="field"><strong>First step</strong>Pull one real client's last 6 months of vendor invoices today and flag which line items jumped the most.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-08-01-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Gimme Gummy Aesthetic Content Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Pinterest Predicts flagged a tactile, jelly-textured aesthetic breaking out for August, with jelly blush searches up 130 percent and rubberized nail art rising fast. Source: <a href="https://business.pinterest.com/pinterest-predicts/2026/gimme-gummy/" rel="noopener">Pinterest Predicts</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack teaching the exact prompt patterns that produce the gummy, tactile, ASMR-adjacent visual style for beauty and lifestyle brand content.</p><p class="field"><strong>Why you</strong>Same low-cost digital-product playbook as the Fibermaxxing and QR-embedded prompt packs already shipped, aimed at a trend with real, freshly published search data behind it.</p><p class="field"><strong>First step</strong>Generate 5 test images against the jelly-aesthetic cues today and confirm which prompt patterns reproduce it reliably.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-08-01-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>FTC Content-Moderation Exposure Scanner</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The FTC under its new chair has shifted enforcement priorities away from structural antitrust and toward content moderation and child-safety issues, catching platforms off guard with enforcement actions they weren't expecting. Source: <a href="https://www.ainvest.com/news/ftc-crackdown-tech-platforms-creates-sector-rotation-play-2605/" rel="noopener">AInvest</a></p><p class="field"><strong>The idea</strong>An agent that reviews a client's UGC or community-facing product against the FTC's new content-moderation and child-safety enforcement priorities, flagging exposure gaps before an enforcement action does.</p><p class="field"><strong>Why you</strong>A fresh regulatory angle nothing on the ledger has targeted yet, content moderation policy risk specifically, not privacy or AI-disclosure rules, and it fits the compliance-audit-agent shape that already sells.</p><p class="field"><strong>First step</strong>Pull the FTC's stated new enforcement priorities today and draft the first 10-point exposure checklist.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-08-01-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-app">App</span>
+
+<h3>SBA Ownership-Rule M&amp;A Deal Screener</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A new SBA rule requiring 100 percent US citizen ownership for 7(a) and 504 loans took effect this year, threatening to unwind financing on small-business acquisition deals already in motion. Source: <a href="https://sbliftoff.com/blog/beginning-january-2026-new-sba-regulations-will-shake-up-small-business-m-a/" rel="noopener">SBLiftoff</a></p><p class="field"><strong>The idea</strong>An app where a business broker or buyer enters a deal's ownership structure and gets an immediate flag on whether it still qualifies for SBA financing under the new rule, before spending months in diligence.</p><p class="field"><strong>Why you</strong>A narrow, dated regulatory screening tool aimed at business brokers and M&amp;A advisors, a buyer segment adjacent to but distinct from the SMB owners most compliance kits on the ledger target.</p><p class="field"><strong>First step</strong>Pull the exact ownership-percentage and citizenship documentation requirements today and draft the screening questionnaire.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-08-01-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Mega-IPO Lockup Overhang Trading Fund</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Nearly 1 billion SpaceX shares unlock on August 6, following the largest IPO ever at $75B raised in June, with the stock already down 30 percent from its debut price. Source: <a href="https://www.fool.com/investing/2026/07/29/billion-spacex-shares-unlock-aug-6-investor/" rel="noopener">The Motley Fool</a></p><p class="field"><strong>The idea</strong>A specialist trading fund built around the mechanics of mega-cap private-to-public share-unlock events, a pattern too large and structurally different from traditional lockup-expiry trades for existing quant strategies to handle well.</p><p class="field"><strong>Scale</strong>The current SpaceX unlock is the first of a wave of similarly outsized IPOs expected to follow, and a fund that masters the mechanics of the first one becomes the default player for every one after it.</p>
+
+</article><article id="idea-2026-08-01-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Agent Fleet Interaction OS</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A 122-upvote Hacker News thread asking what the GUI for AI agents should look like surfaced with no consensus answer, the same day a new multiplayer agent-harness tool for coordinating work across agent teams launched. Source: <a href="https://marbleos.com/demo" rel="noopener">Marble</a></p><p class="field"><strong>The idea</strong>A category-defining interface standard and runtime for how humans see, steer, and hand off work across a fleet of simultaneously running AI agents, instead of every tool inventing its own dashboard.</p><p class="field"><strong>Scale</strong>Every company running more than a handful of agents will eventually need this layer, and the category has no incumbent yet, a genuine platform-level land grab.</p>
+
+</article><article id="idea-2026-08-01-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Autonomous End-to-End Software Factory</h3>
+</div>
+<p class="field"><strong>Trigger</strong>OpenAI's new agentic coding model shipped 25 percent faster than its predecessor the same week a new multiplayer agent-harness tool launched for coordinating agent teams on real work, signaling the coding-agent orchestration layer is maturing fast. Source: <a href="https://www.teamblind.com/post/openai-finalizes-o3-mini-reasoning-ai-model-version-to-launch-it-soon-syrfkngt" rel="noopener">Blind</a></p><p class="field"><strong>The idea</strong>A company that takes a plain-English product spec straight to a shipped, monitored, continuously maintained SaaS product using an orchestrated agent swarm, with no human engineers in the loop after the initial brief.</p><p class="field"><strong>Scale</strong>If coding-agent reliability keeps compounding at this rate, this becomes the default way small SaaS products get built within a few years, a category bet on the trajectory rather than today's capability.</p>
+
+</article>
+</div></body>
+</html>

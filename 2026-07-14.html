@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-14</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Tuesday, July 14, 2026</h1>
+<nav class="nav"><a href="./2026-07-13.html">&larr; Mon, Jul 13</a><a href="./2026-07-15.html">Wed, Jul 15 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>World Cup Final Weekend Marketing Sprint</h2>
+<p>The FIFA World Cup 2026 Final is five days out (July 19) and already the top trending search globally, with the official anthem "Dai Dai" (Shakira &amp; Burna Boy) driving its own spike. Local bars, restaurants, and retailers want to cash in on Final-weekend foot traffic but have no time to produce content — a hard, dated window with real ad-spend behind it, and Claude Code can turn a same-day content pack around before the weekend hits.</p>
+</div>
+<article id="idea-2026-07-14-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-business">Business</span>
+
+<h3>World Cup Final Weekend Marketing Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>FIFA World Cup 2026 Final is July 19; tournament searches and the official anthem "Dai Dai" are trending across 8+ languages — <a href="https://trends.google.com/trending" rel="noopener">Google Trends</a></p><p class="field"><strong>The idea</strong>A same-day "World Cup Final Weekend" marketing pack (social posts, signage copy, email blast) for local bars/restaurants/retailers, built and delivered with Claude Code before the weekend.</p><p class="field"><strong>Why you</strong>Copywriting lane plus fast Claude Code turnaround; the deadline is five days away, which is exactly the urgency-plus-budget shape that's worked all week.</p><p class="field"><strong>First step</strong>Draft one sample content pack today for a local bar/restaurant and pitch it to 3 nearby venues.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-14-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Cash-Flow Gap Sentinel</h3>
+</div>
+<p class="field"><strong>Trigger</strong>82% of small businesses face cash-flow gaps between supplier payments and customer receipts — <a href="https://www.networksolutions.com/blog/small-business-challenges/" rel="noopener">Network Solutions</a></p><p class="field"><strong>The idea</strong>A lightweight agent that ingests an SMB's AP/AR export and flags cash crunches 2-3 weeks out, with concrete timing fixes (delay this payment, chase that invoice).</p><p class="field"><strong>Why you</strong>Agent-building lane, boring-SMB niche, clean narrow scope; distinct from the Vendor Payment Fraud Watchdog on the ledger, which catches fraud red flags, not cash-timing risk.</p><p class="field"><strong>First step</strong>Build the gap-detection math today against a sample AP/AR CSV.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-14-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-app">App</span>
+
+<h3>Onboarding Autopilot</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Broken onboarding is the #2 ranked small-business pain point (32.6% of 148K+ analyzed complaints) — <a href="https://bigideasdb.com/business-pain-points-2026" rel="noopener">bigideasdb.com</a></p><p class="field"><strong>The idea</strong>A small app that turns any service business's intake form into an automated onboarding sequence — welcome email, document-collection checklist, kickoff scheduler.</p><p class="field"><strong>Why you</strong>Combines the software and copywriting lanes, shippable in days, and the pain point just surfaced fresh in today's scan rather than being one you've already validated.</p><p class="field"><strong>First step</strong>Map one of your own past client onboarding flows into the template today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-14-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Sub-Agent Secret Leak Auditor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>OpenAI's Codex started encrypting sub-agent prompts, signaling prompt/secret leakage across agent boundaries is now a first-class concern — <a href="https://github.com/openai/codex/issues/28058" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scans your own multi-agent workflows and subagent prompts/outputs for accidental secret or PII leakage before it's logged or handed to a less-trusted model.</p><p class="field"><strong>Why you</strong>Protects your own delivery pipeline directly — client data flows through subagents constantly in this exact system — and is packageable for other solo Claude Code builders.</p><p class="field"><strong>First step</strong>Audit today's own 4 scan-agent prompts and outputs for anything sensitive as a dry run.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-14-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Meta Muse Computer-Use Task Runner</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Meta Muse Spark 1.1 launched Meta's first paid developer API with an agentic model plus real multi-platform computer control — <a href="https://thursdai.news/releases/2026-07" rel="noopener">ThursdAI</a></p><p class="field"><strong>The idea</strong>A narrow agent built on Meta Muse's new computer-use API to automate one repetitive browser task for an SMB client (portal data entry, inventory sync) — real computer control, not scripted extensions.</p><p class="field"><strong>Why you</strong>Agent-building lane with a first-mover wedge on a capability that just went live; distinct from the Bespoke Browser Extension Shop on the ledger, which uses extension scripting, not computer-use.</p><p class="field"><strong>First step</strong>Sign up for the Meta Muse Spark API today and run one test automation against a public webpage.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-14-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Trend Arbitrage Storefront Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Padel gear and blue-light therapy devices are both sharply up on Google Trends in 2026 while still underserved retail categories — <a href="https://www.shopify.com/blog/how-to-use-google-trends-to-start-and-run-a-retail-business" rel="noopener">Shopify</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack teaching the workflow for spotting a Google-Trends breakout product and launching a store around it fast, using padel and blue-light therapy as the two worked case studies.</p><p class="field"><strong>Why you</strong>Direct fit for the digital-product/Gumroad lane; packages a repeatable playbook rather than a one-off build.</p><p class="field"><strong>First step</strong>Run the prompt-niche-finder skill against "padel gear" today to confirm real demand before building the pack.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-14-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI Tool Survivor Filter</h3>
+</div>
+<p class="field"><strong>Trigger</strong>r/contentcreators tested 40+ AI tools in 2026 and only 7 survived real-world use — <a href="https://mymarky.com/blog/ai-tools-content-creators-reddit-2025" rel="noopener">mymarky.com</a></p><p class="field"><strong>The idea</strong>A skill that evaluates AI tools in a given category against real task criteria and outputs a "what actually works" shortlist with reasoning, packaged as a recurring report.</p><p class="field"><strong>Why you</strong>Protects your own client recommendations — you're the one telling SMBs which AI tools to adopt — and is sellable as evaluation-as-a-service on its own.</p><p class="field"><strong>First step</strong>Run it today against one category (e.g., AI scheduling tools) to produce a sample shortlist.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-14-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Marginal-Cost Model Fine-Tuning Exchange</h3>
+</div>
+<p class="field"><strong>Trigger</strong>An HN launch showed an agent RL-trained to train other models for roughly $1,300, collapsing the training-loop abstraction into a commodity — <a href="https://github.com/Danau5tin/ai-trains-ai" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>A marketplace/platform letting any business RL-fine-tune a custom model on its own workflow for a few thousand dollars, handling data prep, training orchestration, and evaluation.</p><p class="field"><strong>Scale</strong>The cost floor for owning a custom model just dropped by an order of magnitude — a real structural shift, but making cheap fine-tuning reliable and safe at scale needs ML research and infra talent, not a solo build.</p>
+
+</article><article id="idea-2026-07-14-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Retail-Grade SEC Filing Intelligence Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>EdgarKit launched a real-time JSON API for SEC EDGAR filings, making structured corporate-filing data API-first — <a href="https://edgarkit.com/" rel="noopener">EdgarKit</a></p><p class="field"><strong>The idea</strong>A consumer app turning real-time EDGAR data into plain-English "what just changed" alerts and signal feeds for retail investors, undercutting institutional filing-analysis tools.</p><p class="field"><strong>Scale</strong>Structured filing data going API-first is a genuine infrastructure unlock, but competing with entrenched players and the compliance/data-licensing burden needs a funded team, not a solo build.</p>
+
+</article><article id="idea-2026-07-14-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>EV Battery Circular-Materials Company</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Japanese researchers developed a method to recover up to 90% of lithium from used EV batteries — <a href="https://tech.supercarblondie.com/japan-recovers-up-to-lithium-from-used-ev-batteries/" rel="noopener">SuperCarBlondie</a></p><p class="field"><strong>The idea</strong>A circular-supply-chain company recovering critical minerals from end-of-life EV batteries at commercial scale and selling the recovered material back into battery manufacturing.</p><p class="field"><strong>Scale</strong>Critical-mineral circularity is becoming a real competitive moat as EV adoption scales, but it needs chemical-engineering talent, recycling-plant capital, and offtake agreements — a hardware/materials company, not a solo build.</p>
+
+</article>
+</div></body>
+</html>

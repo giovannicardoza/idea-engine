@@ -1,0 +1,2205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>All ideas · Idea Engine</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap wide"><header>
+<p class="kicker">Idea Engine</p>
+<h1>All ideas</h1>
+<p style="color:var(--muted);font-size:14px;margin-top:10px;line-height:1.6">
+250 ideas across 25 days. Click a column to sort.
+🚀 Big Swing ideas trade a feasibility gate for upside, so they're never rated for Effort/Money (shown as n/a) — sort by Type or Verdict to compare those instead.
+</p>
+<nav class="nav"><a href="./index.html">Latest &rarr;</a><a href="./archive.html">All days</a></nav>
+</header>
+<p class="scroll-hint">&larr; Swipe to see all columns &rarr;</p>
+<div class="table-scroll">
+<table id="ideas-table">
+<thead><tr>
+<th data-type="str">Date</th>
+<th data-type="str">Idea</th>
+<th data-type="str">Type</th>
+<th data-type="num">Swing</th>
+<th data-type="num">Effort</th>
+<th data-type="num">Money</th>
+<th data-type="num">Verdict</th>
+</tr></thead>
+<tbody><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Personal AI Agent Trust &amp;amp; Liability Rails"><a href="./2026-08-03.html#idea-2026-08-03-10">Personal AI Agent Trust &amp; Liability Rails</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Universal AI Governance Enforcement Layer"><a href="./2026-08-03.html#idea-2026-08-03-9">Universal AI Governance Enforcement Layer</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Cognitive-Contribution AI Interface Standard"><a href="./2026-08-03.html#idea-2026-08-03-8">Cognitive-Contribution AI Interface Standard</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Creator Audience-Quality Proof Kit"><a href="./2026-08-03.html#idea-2026-08-03-7">Creator Audience-Quality Proof Kit</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="YouTube Thumbnail Performance Predictor"><a href="./2026-08-03.html#idea-2026-08-03-6">YouTube Thumbnail Performance Predictor</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="ADA/WCAG Accessibility Compliance Scanner"><a href="./2026-08-03.html#idea-2026-08-03-5">ADA/WCAG Accessibility Compliance Scanner</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Salesforce Plain-English Report Builder"><a href="./2026-08-03.html#idea-2026-08-03-4">Salesforce Plain-English Report Builder</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Cognitive-Debt Code Comprehension Gate"><a href="./2026-08-03.html#idea-2026-08-03-3">Cognitive-Debt Code Comprehension Gate</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Bookkeeping Auto-Categorizer Agent"><a href="./2026-08-03.html#idea-2026-08-03-2">Bookkeeping Auto-Categorizer Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-03">2026-08-03</td>
+<td class="name" data-value="Private On-Device AI Intake Assistant"><a href="./2026-08-03.html#idea-2026-08-03-1">Private On-Device AI Intake Assistant</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="AI-Native Digital Fashion Design-to-Manufacture Platform"><a href="./2026-08-02.html#idea-2026-08-02-10">AI-Native Digital Fashion Design-to-Manufacture Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="AI-Native Legal Ops Platform for Small Firms"><a href="./2026-08-02.html#idea-2026-08-02-9">AI-Native Legal Ops Platform for Small Firms</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="Universal Local-First Sync Protocol"><a href="./2026-08-02.html#idea-2026-08-02-8">Universal Local-First Sync Protocol</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="Async Standup Digest Agent"><a href="./2026-08-02.html#idea-2026-08-02-7">Async Standup Digest Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="Creator Repost Theft Claims Filing Assistant"><a href="./2026-08-02.html#idea-2026-08-02-6">Creator Repost Theft Claims Filing Assistant</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="Sub-Threshold Creator Monetization Bridge"><a href="./2026-08-02.html#idea-2026-08-02-5">Sub-Threshold Creator Monetization Bridge</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="Usage-Based SaaS Pricing Migration Forecaster"><a href="./2026-08-02.html#idea-2026-08-02-4">Usage-Based SaaS Pricing Migration Forecaster</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="Billable-Hours Leak Reconciliation Skill"><a href="./2026-08-02.html#idea-2026-08-02-3">Billable-Hours Leak Reconciliation Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="AI Chatbot Failure-Detection Escalation Agent"><a href="./2026-08-02.html#idea-2026-08-02-2">AI Chatbot Failure-Detection Escalation Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-02">2026-08-02</td>
+<td class="name" data-value="Multi-Jurisdiction AI Impact Assessment Kit"><a href="./2026-08-02.html#idea-2026-08-02-1">Multi-Jurisdiction AI Impact Assessment Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="Autonomous End-to-End Software Factory"><a href="./2026-08-01.html#idea-2026-08-01-10">Autonomous End-to-End Software Factory</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="Agent Fleet Interaction OS"><a href="./2026-08-01.html#idea-2026-08-01-9">Agent Fleet Interaction OS</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="Mega-IPO Lockup Overhang Trading Fund"><a href="./2026-08-01.html#idea-2026-08-01-8">Mega-IPO Lockup Overhang Trading Fund</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="SBA Ownership-Rule M&amp;amp;A Deal Screener"><a href="./2026-08-01.html#idea-2026-08-01-7">SBA Ownership-Rule M&amp;A Deal Screener</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="FTC Content-Moderation Exposure Scanner"><a href="./2026-08-01.html#idea-2026-08-01-6">FTC Content-Moderation Exposure Scanner</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="Gimme Gummy Aesthetic Content Prompt Pack"><a href="./2026-08-01.html#idea-2026-08-01-5">Gimme Gummy Aesthetic Content Prompt Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="SMB Vendor Price-Increase Renegotiation Agent"><a href="./2026-08-01.html#idea-2026-08-01-4">SMB Vendor Price-Increase Renegotiation Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="Client Staging Snapshot Skill"><a href="./2026-08-01.html#idea-2026-08-01-3">Client Staging Snapshot Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="Hugo Spritz Bar/Restaurant Trend-Jack Sprint"><a href="./2026-08-01.html#idea-2026-08-01-2">Hugo Spritz Bar/Restaurant Trend-Jack Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-08-01">2026-08-01</td>
+<td class="name" data-value="Section 179 Expensing Advisory Kit"><a href="./2026-08-01.html#idea-2026-08-01-1">Section 179 Expensing Advisory Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Cultural-Moment Synthetic Ad Cloud"><a href="./2026-07-31.html#idea-2026-07-31-10">Cultural-Moment Synthetic Ad Cloud</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Deep-Tech SBIC Capital Bridge"><a href="./2026-07-31.html#idea-2026-07-31-9">Deep-Tech SBIC Capital Bridge</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Whole-Body Robotics-as-a-Service"><a href="./2026-07-31.html#idea-2026-07-31-8">Whole-Body Robotics-as-a-Service</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Academic AI-Slop Peer-Review Screener"><a href="./2026-07-31.html#idea-2026-07-31-7">Academic AI-Slop Peer-Review Screener</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Stacked-PR Workflow Retrofit"><a href="./2026-07-31.html#idea-2026-07-31-6">Stacked-PR Workflow Retrofit</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Extreme Heat SMB Compliance &amp;amp; Ops Kit"><a href="./2026-07-31.html#idea-2026-07-31-5">Extreme Heat SMB Compliance &amp; Ops Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Brittle-Automation Escape Hatch"><a href="./2026-07-31.html#idea-2026-07-31-4">Brittle-Automation Escape Hatch</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Construction Subcontractor AIA Billing &amp;amp; Bid-Bond Kit"><a href="./2026-07-31.html#idea-2026-07-31-3">Construction Subcontractor AIA Billing &amp; Bid-Bond Kit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Carrier Portal Shipment Status Aggregator"><a href="./2026-07-31.html#idea-2026-07-31-2">Carrier Portal Shipment Status Aggregator</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-31">2026-07-31</td>
+<td class="name" data-value="Freelancer Variable-Income Budgeting Copilot"><a href="./2026-07-31.html#idea-2026-07-31-1">Freelancer Variable-Income Budgeting Copilot</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="AI Code-Provenance Governance Standard Body"><a href="./2026-07-30.html#idea-2026-07-30-10">AI Code-Provenance Governance Standard Body</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="WASM Agent Sandbox Infrastructure Standard"><a href="./2026-07-30.html#idea-2026-07-30-9">WASM Agent Sandbox Infrastructure Standard</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="Universal 2GB-RAM Frontier Inference Layer"><a href="./2026-07-30.html#idea-2026-07-30-8">Universal 2GB-RAM Frontier Inference Layer</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="2026 Payroll Limit Compliance Checker"><a href="./2026-07-30.html#idea-2026-07-30-7">2026 Payroll Limit Compliance Checker</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="Final-10%-Polish Sprint"><a href="./2026-07-30.html#idea-2026-07-30-6">Final-10%-Polish Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="AI Commit Provenance Tracker"><a href="./2026-07-30.html#idea-2026-07-30-5">AI Commit Provenance Tracker</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="Beneficial Ownership Registry Lite"><a href="./2026-07-30.html#idea-2026-07-30-4">Beneficial Ownership Registry Lite</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="Voice-to-Spec Intake Skill"><a href="./2026-07-30.html#idea-2026-07-30-3">Voice-to-Spec Intake Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="SMB Subscription Audit &amp;amp; Cancellation Agent"><a href="./2026-07-30.html#idea-2026-07-30-2">SMB Subscription Audit &amp; Cancellation Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-30">2026-07-30</td>
+<td class="name" data-value="Payment Processor ToS Watchdog"><a href="./2026-07-30.html#idea-2026-07-30-1">Payment Processor ToS Watchdog</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="Universal Prototype-to-Product Hardening Platform"><a href="./2026-07-29.html#idea-2026-07-29-10">Universal Prototype-to-Product Hardening Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="AI Worm Defense Infrastructure"><a href="./2026-07-29.html#idea-2026-07-29-9">AI Worm Defense Infrastructure</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="Post-Crash AI Consolidation Fund"><a href="./2026-07-29.html#idea-2026-07-29-8">Post-Crash AI Consolidation Fund</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="Agent Performance Drift Monitor"><a href="./2026-07-29.html#idea-2026-07-29-7">Agent Performance Drift Monitor</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="Multi-Agent Mission Template Pack"><a href="./2026-07-29.html#idea-2026-07-29-6">Multi-Agent Mission Template Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="AI Training Data Disclosure Kit"><a href="./2026-07-29.html#idea-2026-07-29-5">AI Training Data Disclosure Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="Compliance Rollback Savings Audit"><a href="./2026-07-29.html#idea-2026-07-29-4">Compliance Rollback Savings Audit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="AI Vendor Failure Rescue Kit"><a href="./2026-07-29.html#idea-2026-07-29-3">AI Vendor Failure Rescue Kit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="AI Document Injection Scanner"><a href="./2026-07-29.html#idea-2026-07-29-2">AI Document Injection Scanner</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-29">2026-07-29</td>
+<td class="name" data-value="Agent Instruction Compliance Tester"><a href="./2026-07-29.html#idea-2026-07-29-1">Agent Instruction Compliance Tester</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="National SMB Connectivity Resilience Network"><a href="./2026-07-28.html#idea-2026-07-28-10">National SMB Connectivity Resilience Network</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="AI Financial-Advice Oversight Platform"><a href="./2026-07-28.html#idea-2026-07-28-9">AI Financial-Advice Oversight Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="Frontier AI Safety Audit Practice"><a href="./2026-07-28.html#idea-2026-07-28-8">Frontier AI Safety Audit Practice</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="DMARC Enforcement Fix Sprint"><a href="./2026-07-28.html#idea-2026-07-28-7">DMARC Enforcement Fix Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="Support Handoff Bridge"><a href="./2026-07-28.html#idea-2026-07-28-6">Support Handoff Bridge</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="Creator Content-Gap Finder"><a href="./2026-07-28.html#idea-2026-07-28-5">Creator Content-Gap Finder</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="Technical Debt Scorecard"><a href="./2026-07-28.html#idea-2026-07-28-4">Technical Debt Scorecard</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="Breaking-Change API Sentinel"><a href="./2026-07-28.html#idea-2026-07-28-3">Breaking-Change API Sentinel</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="Near-Miss AI Code Debug Assistant"><a href="./2026-07-28.html#idea-2026-07-28-2">Near-Miss AI Code Debug Assistant</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-28">2026-07-28</td>
+<td class="name" data-value="T-Mobile Outage Connectivity Failover Sprint"><a href="./2026-07-28.html#idea-2026-07-28-1">T-Mobile Outage Connectivity Failover Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="Universal Consumer Messaging Agent Layer"><a href="./2026-07-27.html#idea-2026-07-27-10">Universal Consumer Messaging Agent Layer</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="Border-Search Privacy Device &amp;amp; Legal-Defense Bundle"><a href="./2026-07-27.html#idea-2026-07-27-9">Border-Search Privacy Device &amp; Legal-Defense Bundle</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="Vertical AI Research Lab-in-a-Box"><a href="./2026-07-27.html#idea-2026-07-27-8">Vertical AI Research Lab-in-a-Box</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="Legacy React-to-HTMX De-Bloat Sprint"><a href="./2026-07-27.html#idea-2026-07-27-7">Legacy React-to-HTMX De-Bloat Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="Google Play AI-SDK &amp;amp; Anonymous Chat Compliance Audit"><a href="./2026-07-27.html#idea-2026-07-27-6">Google Play AI-SDK &amp; Anonymous Chat Compliance Audit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="No-Code Custom Billing Builder"><a href="./2026-07-27.html#idea-2026-07-27-5">No-Code Custom Billing Builder</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="AI-Powered Phishing Pattern Sentinel"><a href="./2026-07-27.html#idea-2026-07-27-4">AI-Powered Phishing Pattern Sentinel</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="Missed-Call Recovery Agent"><a href="./2026-07-27.html#idea-2026-07-27-3">Missed-Call Recovery Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="AI Tone-Matched Reply Drafting Skill"><a href="./2026-07-27.html#idea-2026-07-27-2">AI Tone-Matched Reply Drafting Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-27">2026-07-27</td>
+<td class="name" data-value="Reddit Native-Voice Cross-Post Rewriter"><a href="./2026-07-27.html#idea-2026-07-27-1">Reddit Native-Voice Cross-Post Rewriter</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="Trusted AI Childhood Platform"><a href="./2026-07-26.html#idea-2026-07-26-10">Trusted AI Childhood Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="Ambient Micro-Agent Fabric"><a href="./2026-07-26.html#idea-2026-07-26-9">Ambient Micro-Agent Fabric</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="Frontier AI Compute-Reality Intelligence Service"><a href="./2026-07-26.html#idea-2026-07-26-8">Frontier AI Compute-Reality Intelligence Service</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="UGC AI-Origin Disclosure Auditor"><a href="./2026-07-26.html#idea-2026-07-26-7">UGC AI-Origin Disclosure Auditor</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="Client Call Voice Cleanup Skill"><a href="./2026-07-26.html#idea-2026-07-26-6">Client Call Voice Cleanup Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="Cloudflare AI-Traffic Control Sprint"><a href="./2026-07-26.html#idea-2026-07-26-5">Cloudflare AI-Traffic Control Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="No-Code DB Schema Rescue Kit"><a href="./2026-07-26.html#idea-2026-07-26-4">No-Code DB Schema Rescue Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="Lead Data Quality Gatekeeper"><a href="./2026-07-26.html#idea-2026-07-26-3">Lead Data Quality Gatekeeper</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="Consensus Code Reviewer"><a href="./2026-07-26.html#idea-2026-07-26-2">Consensus Code Reviewer</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-26">2026-07-26</td>
+<td class="name" data-value="EU AI Act Content-ID Rush Sprint"><a href="./2026-07-26.html#idea-2026-07-26-1">EU AI Act Content-ID Rush Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Global Heritage Digital Twin Platform"><a href="./2026-07-25.html#idea-2026-07-25-10">Global Heritage Digital Twin Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Legacy Hardware Disruption Studio"><a href="./2026-07-25.html#idea-2026-07-25-9">Legacy Hardware Disruption Studio</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Job-Specific AI Capability Benchmark-as-a-Service"><a href="./2026-07-25.html#idea-2026-07-25-8">Job-Specific AI Capability Benchmark-as-a-Service</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="AI CRM Data Migration &amp;amp; Cutover Kit"><a href="./2026-07-25.html#idea-2026-07-25-7">AI CRM Data Migration &amp; Cutover Kit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Search Consolidation Migration Skill"><a href="./2026-07-25.html#idea-2026-07-25-6">Search Consolidation Migration Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Food Jutsu Trend-Jack Sprint"><a href="./2026-07-25.html#idea-2026-07-25-5">Food Jutsu Trend-Jack Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Pre-Purchase IoT Credential Leak Checker"><a href="./2026-07-25.html#idea-2026-07-25-4">Pre-Purchase IoT Credential Leak Checker</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="1099-K Threshold Whiplash Checker"><a href="./2026-07-25.html#idea-2026-07-25-3">1099-K Threshold Whiplash Checker</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Shadow AI Discovery Audit"><a href="./2026-07-25.html#idea-2026-07-25-2">Shadow AI Discovery Audit</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-25">2026-07-25</td>
+<td class="name" data-value="Real Estate Showing Follow-Up Agent"><a href="./2026-07-25.html#idea-2026-07-25-1">Real Estate Showing Follow-Up Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="National AI-Fluency Upskilling Infrastructure"><a href="./2026-07-24.html#idea-2026-07-24-10">National AI-Fluency Upskilling Infrastructure</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="Democratized Small-Sat Launch Brokerage"><a href="./2026-07-24.html#idea-2026-07-24-9">Democratized Small-Sat Launch Brokerage</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="AI-Native Video Production Studio"><a href="./2026-07-24.html#idea-2026-07-24-8">AI-Native Video Production Studio</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="SMB AI Skills-Gap Coach"><a href="./2026-07-24.html#idea-2026-07-24-7">SMB AI Skills-Gap Coach</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="Fake Review Defense Kit"><a href="./2026-07-24.html#idea-2026-07-24-6">Fake Review Defense Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="2016 Nostalgia Content Prompt Pack"><a href="./2026-07-24.html#idea-2026-07-24-5">2016 Nostalgia Content Prompt Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="Creator Platform-Risk Watchdog"><a href="./2026-07-24.html#idea-2026-07-24-4">Creator Platform-Risk Watchdog</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="Influencer FTC Disclosure Auditor"><a href="./2026-07-24.html#idea-2026-07-24-3">Influencer FTC Disclosure Auditor</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="Claude Session Keep-Warm &amp;amp; Recovery Kit"><a href="./2026-07-24.html#idea-2026-07-24-2">Claude Session Keep-Warm &amp; Recovery Kit</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-24">2026-07-24</td>
+<td class="name" data-value="MCP Traffic Leak Monitor"><a href="./2026-07-24.html#idea-2026-07-24-1">MCP Traffic Leak Monitor</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="Municipal Red-Tape API Utility"><a href="./2026-07-23.html#idea-2026-07-23-10">Municipal Red-Tape API Utility</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="Trust-Calibrated AI Platform"><a href="./2026-07-23.html#idea-2026-07-23-9">Trust-Calibrated AI Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="Efficient-Inference Challenger Cloud"><a href="./2026-07-23.html#idea-2026-07-23-8">Efficient-Inference Challenger Cloud</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="Enterprise AI Workspace Fit Advisor"><a href="./2026-07-23.html#idea-2026-07-23-7">Enterprise AI Workspace Fit Advisor</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="AI Agent Vision Consent Auditor"><a href="./2026-07-23.html#idea-2026-07-23-6">AI Agent Vision Consent Auditor</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="Explain-to-AI Learning Prompt Pack"><a href="./2026-07-23.html#idea-2026-07-23-5">Explain-to-AI Learning Prompt Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="Authorized Agent Red-Team Audit Sprint"><a href="./2026-07-23.html#idea-2026-07-23-4">Authorized Agent Red-Team Audit Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="EU Mid-Market AI Sandbox Enrollment Kit"><a href="./2026-07-23.html#idea-2026-07-23-3">EU Mid-Market AI Sandbox Enrollment Kit</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="NYC Red-Tape Reform Compliance Sprint"><a href="./2026-07-23.html#idea-2026-07-23-2">NYC Red-Tape Reform Compliance Sprint</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-23">2026-07-23</td>
+<td class="name" data-value="AI Confidence Flagging Skill"><a href="./2026-07-23.html#idea-2026-07-23-1">AI Confidence Flagging Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="Foldable-Native AI Agent OS"><a href="./2026-07-22.html#idea-2026-07-22-10">Foldable-Native AI Agent OS</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="Non-AI Startup Rescue Studio"><a href="./2026-07-22.html#idea-2026-07-22-9">Non-AI Startup Rescue Studio</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="AI Training-Data Provenance Clearinghouse"><a href="./2026-07-22.html#idea-2026-07-22-8">AI Training-Data Provenance Clearinghouse</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="H-1B Sponsorship Readiness Checklist"><a href="./2026-07-22.html#idea-2026-07-22-7">H-1B Sponsorship Readiness Checklist</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="Extend-the-Runway Ops Audit Sprint"><a href="./2026-07-22.html#idea-2026-07-22-6">Extend-the-Runway Ops Audit Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="GPU Spend Right-Sizing Agent"><a href="./2026-07-22.html#idea-2026-07-22-5">GPU Spend Right-Sizing Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="Cross-Border AI Agent Compliance Checklist"><a href="./2026-07-22.html#idea-2026-07-22-4">Cross-Border AI Agent Compliance Checklist</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="AI-Slop Redesign Rescue Sprint"><a href="./2026-07-22.html#idea-2026-07-22-3">AI-Slop Redesign Rescue Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="Client Codebase Onboarding Wiki Skill"><a href="./2026-07-22.html#idea-2026-07-22-2">Client Codebase Onboarding Wiki Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-22">2026-07-22</td>
+<td class="name" data-value="Model Price War Arbitrage Skill"><a href="./2026-07-22.html#idea-2026-07-22-1">Model Price War Arbitrage Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Solopreneur Economy Financial Infrastructure"><a href="./2026-07-21.html#idea-2026-07-21-10">Solopreneur Economy Financial Infrastructure</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Post-Quantum Crypto Migration Agent Swarm"><a href="./2026-07-21.html#idea-2026-07-21-9">Post-Quantum Crypto Migration Agent Swarm</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Sovereign-Model Trust Authority"><a href="./2026-07-21.html#idea-2026-07-21-8">Sovereign-Model Trust Authority</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Community Moderation Burnout Copilot"><a href="./2026-07-21.html#idea-2026-07-21-7">Community Moderation Burnout Copilot</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Ecommerce Inventory Sync Sentinel"><a href="./2026-07-21.html#idea-2026-07-21-6">Ecommerce Inventory Sync Sentinel</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Video Editing Time-Drain Sprint"><a href="./2026-07-21.html#idea-2026-07-21-5">Video Editing Time-Drain Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="NYDFS Cyber Compliance Kit"><a href="./2026-07-21.html#idea-2026-07-21-4">NYDFS Cyber Compliance Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Launch Channel Fit Advisor"><a href="./2026-07-21.html#idea-2026-07-21-3">Launch Channel Fit Advisor</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Android Target API Level Rush Audit"><a href="./2026-07-21.html#idea-2026-07-21-2">Android Target API Level Rush Audit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-21">2026-07-21</td>
+<td class="name" data-value="Offline-First App Scaffolding Skill"><a href="./2026-07-21.html#idea-2026-07-21-1">Offline-First App Scaffolding Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="Sandwich-Generation Caregiving Coordination Platform"><a href="./2026-07-20.html#idea-2026-07-20-10">Sandwich-Generation Caregiving Coordination Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="AI Regulatory Volatility Insurance"><a href="./2026-07-20.html#idea-2026-07-20-9">AI Regulatory Volatility Insurance</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="Independent AI Agent Reliability Certification Body"><a href="./2026-07-20.html#idea-2026-07-20-8">Independent AI Agent Reliability Certification Body</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="Launch Video Sprint"><a href="./2026-07-20.html#idea-2026-07-20-7">Launch Video Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="Micro-Niche Miner"><a href="./2026-07-20.html#idea-2026-07-20-6">Micro-Niche Miner</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="Gig Worker Quarterly Tax Estimator"><a href="./2026-07-20.html#idea-2026-07-20-5">Gig Worker Quarterly Tax Estimator</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="Business Context Pack Generator"><a href="./2026-07-20.html#idea-2026-07-20-4">Business Context Pack Generator</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="California ADMT Disclosure Kit"><a href="./2026-07-20.html#idea-2026-07-20-3">California ADMT Disclosure Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="Client Portfolio Daily Briefing Skill"><a href="./2026-07-20.html#idea-2026-07-20-2">Client Portfolio Daily Briefing Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-20">2026-07-20</td>
+<td class="name" data-value="WordPress AI Vulnerability Pre-Scan Service"><a href="./2026-07-20.html#idea-2026-07-20-1">WordPress AI Vulnerability Pre-Scan Service</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="Modular Open-Source Hardware Manufacturing Platform"><a href="./2026-07-19.html#idea-2026-07-19-10">Modular Open-Source Hardware Manufacturing Platform</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="Decentralized Social Infrastructure Company"><a href="./2026-07-19.html#idea-2026-07-19-9">Decentralized Social Infrastructure Company</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="Universal Live-Translation Communication Platform"><a href="./2026-07-19.html#idea-2026-07-19-8">Universal Live-Translation Communication Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="AI Subscription Price-Hike Watchdog"><a href="./2026-07-19.html#idea-2026-07-19-7">AI Subscription Price-Hike Watchdog</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="QR-Embedded AI Image Marketing Prompt Pack"><a href="./2026-07-19.html#idea-2026-07-19-6">QR-Embedded AI Image Marketing Prompt Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="Instagram Raw-Content Strategy Rewrite"><a href="./2026-07-19.html#idea-2026-07-19-5">Instagram Raw-Content Strategy Rewrite</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="Multi-State Consumer Privacy Law Compliance Kit"><a href="./2026-07-19.html#idea-2026-07-19-4">Multi-State Consumer Privacy Law Compliance Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="Freelancer Payment Collection Auto-Nudger"><a href="./2026-07-19.html#idea-2026-07-19-3">Freelancer Payment Collection Auto-Nudger</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="NYC AI Real Estate Image Disclosure Kit"><a href="./2026-07-19.html#idea-2026-07-19-2">NYC AI Real Estate Image Disclosure Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-19">2026-07-19</td>
+<td class="name" data-value="Claude Rate-Limit Budget Tracker"><a href="./2026-07-19.html#idea-2026-07-19-1">Claude Rate-Limit Budget Tracker</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Universal Hardware Update Transparency Authority"><a href="./2026-07-18.html#idea-2026-07-18-10">Universal Hardware Update Transparency Authority</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Cross-Platform NCII Takedown Infrastructure"><a href="./2026-07-18.html#idea-2026-07-18-9">Cross-Platform NCII Takedown Infrastructure</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="AWS Billing Forensic Audit Network"><a href="./2026-07-18.html#idea-2026-07-18-8">AWS Billing Forensic Audit Network</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Creator Draft Autosave &amp;amp; Recovery Skill"><a href="./2026-07-18.html#idea-2026-07-18-7">Creator Draft Autosave &amp; Recovery Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Pet Travel Doc Concierge"><a href="./2026-07-18.html#idea-2026-07-18-6">Pet Travel Doc Concierge</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Reg S-P Compliance Kit for Small RIAs"><a href="./2026-07-18.html#idea-2026-07-18-5">Reg S-P Compliance Kit for Small RIAs</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Snapchat Supplement Ad Compliance Rewrite"><a href="./2026-07-18.html#idea-2026-07-18-4">Snapchat Supplement Ad Compliance Rewrite</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="DV360 Migration Readiness Audit"><a href="./2026-07-18.html#idea-2026-07-18-3">DV360 Migration Readiness Audit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Small Landlord Ops SaaS"><a href="./2026-07-18.html#idea-2026-07-18-2">Small Landlord Ops SaaS</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-18">2026-07-18</td>
+<td class="name" data-value="Freelancer Client Portal Starter Kit"><a href="./2026-07-18.html#idea-2026-07-18-1">Freelancer Client Portal Starter Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="Long-Context Enterprise Intelligence Platform"><a href="./2026-07-17.html#idea-2026-07-17-10">Long-Context Enterprise Intelligence Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="Universal Anti-Scraping Content Cloak"><a href="./2026-07-17.html#idea-2026-07-17-9">Universal Anti-Scraping Content Cloak</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="AI Benchmark &amp;amp; Competition Integrity Watchdog"><a href="./2026-07-17.html#idea-2026-07-17-8">AI Benchmark &amp; Competition Integrity Watchdog</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="CI Flake-Fix Skill"><a href="./2026-07-17.html#idea-2026-07-17-7">CI Flake-Fix Skill</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="AI Search Visibility Audit"><a href="./2026-07-17.html#idea-2026-07-17-6">AI Search Visibility Audit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="Worker Classification &amp;amp; Wage-Floor Risk Auditor"><a href="./2026-07-17.html#idea-2026-07-17-5">Worker Classification &amp; Wage-Floor Risk Auditor</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="CMMC Pre-Assessment Prep Sprint"><a href="./2026-07-17.html#idea-2026-07-17-4">CMMC Pre-Assessment Prep Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="5"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="ACH Fraud Risk-Scoring Agent"><a href="./2026-07-17.html#idea-2026-07-17-3">ACH Fraud Risk-Scoring Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="HIPAA MFA/Encryption Retrofit Kit"><a href="./2026-07-17.html#idea-2026-07-17-2">HIPAA MFA/Encryption Retrofit Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-17">2026-07-17</td>
+<td class="name" data-value="Claude-in-Slack Rollout Playbook"><a href="./2026-07-17.html#idea-2026-07-17-1">Claude-in-Slack Rollout Playbook</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Global AI &amp;amp; Platform Compliance Command Center"><a href="./2026-07-16.html#idea-2026-07-16-10">Global AI &amp; Platform Compliance Command Center</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Day-Zero Open-Model Distribution Network"><a href="./2026-07-16.html#idea-2026-07-16-9">Day-Zero Open-Model Distribution Network</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Digital Ownership Rights Escrow"><a href="./2026-07-16.html#idea-2026-07-16-8">Digital Ownership Rights Escrow</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Meeting Action-Item Closer"><a href="./2026-07-16.html#idea-2026-07-16-7">Meeting Action-Item Closer</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Interview Scheduling Autopilot"><a href="./2026-07-16.html#idea-2026-07-16-6">Interview Scheduling Autopilot</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="AI Ads Cost-Efficiency Auditor"><a href="./2026-07-16.html#idea-2026-07-16-5">AI Ads Cost-Efficiency Auditor</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Cloud Migration Cost &amp;amp; Risk Calculator"><a href="./2026-07-16.html#idea-2026-07-16-4">Cloud Migration Cost &amp; Risk Calculator</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Vibe-Coded CRM Alternative Sprint"><a href="./2026-07-16.html#idea-2026-07-16-3">Vibe-Coded CRM Alternative Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Claude Cowork Template Pack"><a href="./2026-07-16.html#idea-2026-07-16-2">Claude Cowork Template Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-16">2026-07-16</td>
+<td class="name" data-value="Google Play Compliance Sprint"><a href="./2026-07-16.html#idea-2026-07-16-1">Google Play Compliance Sprint</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Predictive Longevity Health Platform"><a href="./2026-07-15.html#idea-2026-07-15-10">Predictive Longevity Health Platform</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Autonomous Enterprise Audit Swarm"><a href="./2026-07-15.html#idea-2026-07-15-9">Autonomous Enterprise Audit Swarm</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Agentic Commerce Spend-Trust Network"><a href="./2026-07-15.html#idea-2026-07-15-8">Agentic Commerce Spend-Trust Network</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Client Work Paper-Trail Search"><a href="./2026-07-15.html#idea-2026-07-15-7">Client Work Paper-Trail Search</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Field Voice-Log Agent"><a href="./2026-07-15.html#idea-2026-07-15-6">Field Voice-Log Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Agent Guardrail Wrapper"><a href="./2026-07-15.html#idea-2026-07-15-5">Agent Guardrail Wrapper</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="AI Rollout Change-Comms Kit"><a href="./2026-07-15.html#idea-2026-07-15-4">AI Rollout Change-Comms Kit</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="AI-Readiness Data Audit Sprint"><a href="./2026-07-15.html#idea-2026-07-15-3">AI-Readiness Data Audit Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Voice-Clone Fraud Screener"><a href="./2026-07-15.html#idea-2026-07-15-2">Voice-Clone Fraud Screener</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-15">2026-07-15</td>
+<td class="name" data-value="Section 1071 Small-Lender Compliance Kit"><a href="./2026-07-15.html#idea-2026-07-15-1">Section 1071 Small-Lender Compliance Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="EV Battery Circular-Materials Company"><a href="./2026-07-14.html#idea-2026-07-14-10">EV Battery Circular-Materials Company</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="Retail-Grade SEC Filing Intelligence Platform"><a href="./2026-07-14.html#idea-2026-07-14-9">Retail-Grade SEC Filing Intelligence Platform</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="Marginal-Cost Model Fine-Tuning Exchange"><a href="./2026-07-14.html#idea-2026-07-14-8">Marginal-Cost Model Fine-Tuning Exchange</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="AI Tool Survivor Filter"><a href="./2026-07-14.html#idea-2026-07-14-7">AI Tool Survivor Filter</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="Trend Arbitrage Storefront Prompt Pack"><a href="./2026-07-14.html#idea-2026-07-14-6">Trend Arbitrage Storefront Prompt Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="Meta Muse Computer-Use Task Runner"><a href="./2026-07-14.html#idea-2026-07-14-5">Meta Muse Computer-Use Task Runner</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="Sub-Agent Secret Leak Auditor"><a href="./2026-07-14.html#idea-2026-07-14-4">Sub-Agent Secret Leak Auditor</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="Onboarding Autopilot"><a href="./2026-07-14.html#idea-2026-07-14-3">Onboarding Autopilot</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="Cash-Flow Gap Sentinel"><a href="./2026-07-14.html#idea-2026-07-14-2">Cash-Flow Gap Sentinel</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-14">2026-07-14</td>
+<td class="name" data-value="World Cup Final Weekend Marketing Sprint"><a href="./2026-07-14.html#idea-2026-07-14-1">World Cup Final Weekend Marketing Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="Global Payroll Compliance Infrastructure"><a href="./2026-07-13.html#idea-2026-07-13-10">Global Payroll Compliance Infrastructure</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="AI Agent Security &amp;amp; Bug-Bounty Exchange"><a href="./2026-07-13.html#idea-2026-07-13-9">AI Agent Security &amp; Bug-Bounty Exchange</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="Universal AI Model Router Exchange"><a href="./2026-07-13.html#idea-2026-07-13-8">Universal AI Model Router Exchange</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="Vendor Payment Fraud Watchdog"><a href="./2026-07-13.html#idea-2026-07-13-7">Vendor Payment Fraud Watchdog</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="Client Report Auto-Generator"><a href="./2026-07-13.html#idea-2026-07-13-6">Client Report Auto-Generator</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="AI Regression Test Harness for Vibe-Coded Apps"><a href="./2026-07-13.html#idea-2026-07-13-5">AI Regression Test Harness for Vibe-Coded Apps</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="Legacy Trades Ops Starter Kit"><a href="./2026-07-13.html#idea-2026-07-13-4">Legacy Trades Ops Starter Kit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="MCP Monetization Wrapper"><a href="./2026-07-13.html#idea-2026-07-13-3">MCP Monetization Wrapper</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="Copilot Cost-Cutter Migration Audit"><a href="./2026-07-13.html#idea-2026-07-13-2">Copilot Cost-Cutter Migration Audit</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-13">2026-07-13</td>
+<td class="name" data-value="EU E-Invoicing Compliance Kit"><a href="./2026-07-13.html#idea-2026-07-13-1">EU E-Invoicing Compliance Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="IoT Router Vulnerability Response Company"><a href="./2026-07-12.html#idea-2026-07-12-10">IoT Router Vulnerability Response Company</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="AI Talent-War Trade-Secret Defense Agent"><a href="./2026-07-12.html#idea-2026-07-12-9">AI Talent-War Trade-Secret Defense Agent</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="UK Under-16 Social Media Age-Verification Infrastructure"><a href="./2026-07-12.html#idea-2026-07-12-8">UK Under-16 Social Media Age-Verification Infrastructure</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="Solopreneur Ops Copilot Kit"><a href="./2026-07-12.html#idea-2026-07-12-7">Solopreneur Ops Copilot Kit</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="Meta Ads Trust-Messaging Rewrite"><a href="./2026-07-12.html#idea-2026-07-12-6">Meta Ads Trust-Messaging Rewrite</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="SBA Set-Aside Preservation Advisor"><a href="./2026-07-12.html#idea-2026-07-12-5">SBA Set-Aside Preservation Advisor</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="Tariff Exposure Calculator + Price-Increase Copy Kit"><a href="./2026-07-12.html#idea-2026-07-12-4">Tariff Exposure Calculator + Price-Increase Copy Kit</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="TikTok Shop Account Health Dashboard"><a href="./2026-07-12.html#idea-2026-07-12-3">TikTok Shop Account Health Dashboard</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="Claude-for-SMB Concierge Setup"><a href="./2026-07-12.html#idea-2026-07-12-2">Claude-for-SMB Concierge Setup</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-12">2026-07-12</td>
+<td class="name" data-value="MCP Spec Compliance Auditor"><a href="./2026-07-12.html#idea-2026-07-12-1">MCP Spec Compliance Auditor</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="Distributed Local-Inference Network"><a href="./2026-07-11.html#idea-2026-07-11-10">Distributed Local-Inference Network</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="GPU Circular-Financing Arbitrage Brokerage"><a href="./2026-07-11.html#idea-2026-07-11-9">GPU Circular-Financing Arbitrage Brokerage</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="AI Agent Workforce Platform"><a href="./2026-07-11.html#idea-2026-07-11-8">AI Agent Workforce Platform</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="Colorado AI Adverse-Outcome Logger"><a href="./2026-07-11.html#idea-2026-07-11-7">Colorado AI Adverse-Outcome Logger</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="Bespoke Browser Extension Shop"><a href="./2026-07-11.html#idea-2026-07-11-6">Bespoke Browser Extension Shop</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="Instant Client Site Sprint"><a href="./2026-07-11.html#idea-2026-07-11-5">Instant Client Site Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="4"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="Weak-Hardware LLM Playbook"><a href="./2026-07-11.html#idea-2026-07-11-4">Weak-Hardware LLM Playbook</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="AI-SQL Safety Checker"><a href="./2026-07-11.html#idea-2026-07-11-3">AI-SQL Safety Checker</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="EU AI Act SMB Compliance Pack"><a href="./2026-07-11.html#idea-2026-07-11-2">EU AI Act SMB Compliance Pack</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-11">2026-07-11</td>
+<td class="name" data-value="Sonnet 5 Price-Window Sprint"><a href="./2026-07-11.html#idea-2026-07-11-1">Sonnet 5 Price-Window Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="5"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="Corporate Energy-Resilience Platform"><a href="./2026-07-10.html#idea-2026-07-10-10">Corporate Energy-Resilience Platform</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="AI Formal-Proof Research Lab"><a href="./2026-07-10.html#idea-2026-07-10-9">AI Formal-Proof Research Lab</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="RF Wall-Sensing Security Company"><a href="./2026-07-10.html#idea-2026-07-10-8">RF Wall-Sensing Security Company</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="1">🚀</td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td class="num-cell" data-value=""><span class="na" title="Big swings aren't rated for effort/money">n/a</span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="Multi-Agent Progress Dashboard"><a href="./2026-07-10.html#idea-2026-07-10-7">Multi-Agent Progress Dashboard</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="Fibermaxxing Meal-Plan Prompt Pack"><a href="./2026-07-10.html#idea-2026-07-10-6">Fibermaxxing Meal-Plan Prompt Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="1"><span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="Immigrant-Founder Financing Matcher"><a href="./2026-07-10.html#idea-2026-07-10-5">Immigrant-Founder Financing Matcher</a></td>
+<td data-value="Agent"><span class="badge type-agent">Agent</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="Vibe-Coded Mini-Game Prompt Pack"><a href="./2026-07-10.html#idea-2026-07-10-4">Vibe-Coded Mini-Game Prompt Pack</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="Claude Cost Router (packaged skill)"><a href="./2026-07-10.html#idea-2026-07-10-3">Claude Cost Router (packaged skill)</a></td>
+<td data-value="Skill"><span class="badge type-skill">Skill</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="Subscription Dark-Pattern Auditor"><a href="./2026-07-10.html#idea-2026-07-10-2">Subscription Dark-Pattern Auditor</a></td>
+<td data-value="App"><span class="badge type-app">App</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="2"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr><tr>
+<td data-value="2026-07-10">2026-07-10</td>
+<td class="name" data-value="API Sunset Migration Sprint"><a href="./2026-07-10.html#idea-2026-07-10-1">API Sunset Migration Sprint</a></td>
+<td data-value="Business"><span class="badge type-business">Business</span></td>
+<td data-value="0"></td>
+<td class="num-cell" data-value="3"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></td>
+<td class="num-cell" data-value="5"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></td>
+<td data-value="1"><span class="verdict verdict-unmarked">Unrated</span></td>
+</tr></tbody>
+</table>
+</div>
+<script>
+const table = document.getElementById('ideas-table');
+const state = { col: null, dir: 'asc' };
+table.querySelectorAll('thead th').forEach((th, i) => {
+  th.addEventListener('click', () => {
+    const numeric = th.dataset.type === 'num';
+    const dir = state.col === i && state.dir === 'asc' ? 'desc' : 'asc';
+    const rows = Array.from(table.tBodies[0].rows);
+    rows.sort((a, b) => {
+      let av = a.cells[i].dataset.value, bv = b.cells[i].dataset.value;
+      if (numeric) {
+        av = av === '' ? null : parseFloat(av);
+        bv = bv === '' ? null : parseFloat(bv);
+        if (av === null) av = dir === 'asc' ? Infinity : -Infinity;
+        if (bv === null) bv = dir === 'asc' ? Infinity : -Infinity;
+        return dir === 'asc' ? av - bv : bv - av;
+      }
+      return dir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+    });
+    rows.forEach((r) => table.tBodies[0].appendChild(r));
+    table.querySelectorAll('thead th').forEach((h) => h.removeAttribute('aria-sort'));
+    th.setAttribute('aria-sort', dir === 'asc' ? 'ascending' : 'descending');
+    state.col = i; state.dir = dir;
+  });
+});
+</script></div></body>
+</html>

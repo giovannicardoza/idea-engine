@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-28</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Tuesday, July 28, 2026</h1>
+<nav class="nav"><a href="./2026-07-27.html">&larr; Mon, Jul 27</a><a href="./2026-07-29.html">Wed, Jul 29 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>T-Mobile Outage Connectivity Failover Sprint</h2>
+<p></p>
+</div>
+<article id="idea-2026-07-28-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-business">Business</span>
+
+<h3>T-Mobile Outage Connectivity Failover Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>T-Mobile suffered a major multi-state outage on July 27-28, 2026, cutting calls, texts, and data for a large share of its customer base and exposing how many SMBs have no backup when their primary carrier fails. Source: <a href="https://www.tomsguide.com/news/live/t-mobile-outage-july-27-2026" rel="noopener">Tom's Guide</a></p><p class="field"><strong>The idea</strong>A fixed-price same-day sprint auditing an SMB's phone/internet dependency (POS, booking line, customer calls) and setting up a concrete failover: a backup eSIM line, a spare hotspot, or auto-forwarding rules, so one carrier outage cannot silently kill a day of business.</p><p class="field"><strong>Why you</strong>Pure configuration and light scripting, no infrastructure to build, and today's outage supplies the entire cold-outreach hook for free.</p><p class="field"><strong>First step</strong>Call 3 local businesses (salon, restaurant, retail) that likely got hit yesterday and ask what broke for them and what it cost.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-28-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Near-Miss AI Code Debug Assistant</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A widely discussed developer-pain analysis found 66% of developers are frustrated by "near-correct" AI-generated code, and 45% now spend more time debugging AI output than they would writing it from scratch. Source: <a href="https://earezki.com/ai-news/2026-04-21-what-1000-developer-posts-told-me-about-the-biggest-pain-points-right-now/" rel="noopener">earezki.com</a> via <a href="https://news.ycombinator.com/item?id=46345827" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that, when a bug shows up in AI-generated code, checks the diff against a library of known "near-correct" failure shapes (off-by-one after refactor, silently swallowed exceptions, stale state assumptions) before falling back to a generic full-file re-read.</p><p class="field"><strong>Why you</strong>Sharpens every Claude Code build session Gio runs, including his own, ships as a skill in a day, and sells easily to other solo AI-assisted builders hitting the same wall.</p><p class="field"><strong>First step</strong>Pull 5 real bugs from past client or personal projects that traced back to AI-generated code and write pattern-match rules for the 2 most common failure shapes.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-28-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Breaking-Change API Sentinel</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The same developer-pain research found 52% of developers hit production crashes from unannounced breaking changes in third-party APIs, as more integrations lean on real-time data with near-zero tolerance for a silent break. Source: <a href="https://earezki.com/ai-news/2026-04-21-what-1000-developer-posts-told-me-about-the-biggest-pain-points-right-now/" rel="noopener">earezki.com</a></p><p class="field"><strong>The idea</strong>A narrow agent that watches a project's declared API and package dependencies, diffs their changelogs and docs on a schedule, and flags anything that looks breaking before it reaches production.</p><p class="field"><strong>Why you</strong>Protects every client build Gio ships, a tight single-purpose agent buildable in about a week, and sellable standalone to other solo devs and small agencies.</p><p class="field"><strong>First step</strong>Point it at one of Gio's own live client integrations today and see what the first scan flags.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-28-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Technical Debt Scorecard</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New industry data pegs unmanaged technical debt at $2.4 trillion a year, with high-debt teams paying 40% more to maintain code and shipping features 25-50% slower. Source: <a href="https://www.sonarsource.com/solutions/reduce-technical-debt/" rel="noopener">SonarSource</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scans a prospective client's codebase on day one of a sales conversation and returns a plain-English debt scorecard: top 5 risk areas and the estimated drag on ship speed, used to open and price the engagement.</p><p class="field"><strong>Why you</strong>Turns a vague "your codebase is messy" pitch into a number Gio can quote against, reusable on every new SMB software lead in his custom-software lane.</p><p class="field"><strong>First step</strong>Run it against one past client repo (or a public open-source repo) and check whether the scorecard would have changed how that engagement got scoped.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-28-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Creator Content-Gap Finder</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Creator-economy coverage this month points to a 50M-plus active creator base competing for attention, with demand for data-backed "what to make next" tools outpacing the supply of ones that actually answer it. Source: <a href="https://www.producthunt.com/leaderboard/monthly/2026/7" rel="noopener">Product Hunt July leaderboard</a></p><p class="field"><strong>The idea</strong>A skill that scans a creator's niche across YouTube comments, Reddit, and search-suggest for "I wish someone covered X" and unanswered-question signals, then returns a ranked list of next-video ideas backed by real demand.</p><p class="field"><strong>Why you</strong>Small, sellable Gumroad tool for the creator-economy audience Gio's marketing and copy lane already touches, buildable in days with search tooling he already knows.</p><p class="field"><strong>First step</strong>Run it against one real creator channel Gio has access to and compare the output against what that creator was already planning to post.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-28-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Support Handoff Bridge</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Support research shows 45% of customers abandon after three failed escalations, driven by SMBs running separate chatbot and helpdesk tools per channel that share no context with each other. Source: <a href="https://thelevel.ai/blog/best-chatbots-for-customer-service" rel="noopener">thelevel.ai</a></p><p class="field"><strong>The idea</strong>A narrow agent sitting between an SMB's channel-specific support tools (site chat, email, DMs) that carries a customer's context forward on handoff, so an escalation never forces them to re-explain from scratch.</p><p class="field"><strong>Why you</strong>Tight single-purpose agent, same shape as the fraud and lead-quality agents already proven in the ledger, sells direct to any SMB running more than one support channel.</p><p class="field"><strong>First step</strong>Map one client's actual support-channel stack and find the exact point where context currently drops.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-28-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>DMARC Enforcement Fix Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New research finds 68.4% of domains still don't enforce DMARC, leaving them wide open to email spoofing even though the fix is a DNS record change. Source: <a href="https://ciphercue.com/blog/dmarc-enforcement-gap-rua-fragmentation-2026" rel="noopener">ciphercue.com</a></p><p class="field"><strong>The idea</strong>A fixed-price same-day sprint auditing an SMB's DMARC/SPF/DKIM setup and moving it from none or monitor-only to real enforcement, closing the spoofing gap in an afternoon.</p><p class="field"><strong>Why you</strong>Pure audit-and-config work with no build required, fast to close, and the stat itself is the entire cold-outreach hook.</p><p class="field"><strong>First step</strong>Run a free DMARC lookup against 10 local business domains and see how many are actually unenforced, to size the pitch list.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-28-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Frontier AI Safety Audit Practice</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Illinois just enacted the first US state law requiring annual independent safety audits for frontier AI model developers with over $500M in revenue, opening a brand-new regulated audit category. Source: <a href="https://aigovernance.com/news/ai-governance-weekly-july-16-2026" rel="noopener">aigovernance.com</a></p><p class="field"><strong>The idea</strong>An independent audit practice built to perform, and eventually help standardize, the safety audits Illinois and likely-following states will require of frontier labs, positioning early in a category that barely exists yet.</p><p class="field"><strong>Scale</strong>If more states follow Illinois, this becomes the mandatory audit layer every frontier lab needs, but it requires deep AI-safety expertise, accreditation, and credibility well beyond a solo build.</p>
+
+</article><article id="idea-2026-07-28-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Financial-Advice Oversight Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The UK FCA's Mills Review flagged that general-purpose AI tools now dispensing retail financial advice may sit entirely outside the FCA's regulatory regime, a live oversight gap. Source: <a href="https://aigovernance.com/news/ai-governance-weekly-july-16-2026" rel="noopener">aigovernance.com</a></p><p class="field"><strong>The idea</strong>An enterprise platform that monitors and logs general-purpose AI tool usage inside financial-advice workflows, producing the audit trail and guardrails regulators will eventually require, sold to compliance-conscious fintechs ahead of enforcement.</p><p class="field"><strong>Scale</strong>Could become the standard compliance layer every UK and EU fintech routes AI-assisted advice through, but it needs real regulatory relationships and financial-services credibility to land enterprise deals.</p>
+
+</article><article id="idea-2026-07-28-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>National SMB Connectivity Resilience Network</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The same T-Mobile outage that broke calls, texts, and data across multiple states on July 27-28 showed how a single carrier failure can take huge numbers of small businesses offline at once with no fallback layer beneath them. Source: <a href="https://www.tomsguide.com/news/live/t-mobile-outage-july-27-2026" rel="noopener">Tom's Guide</a></p><p class="field"><strong>The idea</strong>A carrier-agnostic failover network, mesh plus satellite backup, purpose-built for small businesses, so that when any one carrier goes down nationally, member businesses stay online automatically instead of finding out the hard way.</p><p class="field"><strong>Scale</strong>Could become baseline infrastructure the way backup power already is for critical operations, but it needs telecom partnerships, hardware distribution, and real capital, well past a solo build.</p>
+
+</article>
+</div></body>
+</html>

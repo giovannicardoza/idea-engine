@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-23</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Thursday, July 23, 2026</h1>
+<nav class="nav"><a href="./2026-07-22.html">&larr; Wed, Jul 22</a><a href="./2026-07-24.html">Fri, Jul 24 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>AI Confidence Flagging Skill</h2>
+<p></p>
+</div>
+<article id="idea-2026-07-23-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI Confidence Flagging Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Cactus Hybrid taught Gemma 4 to flag its own uncertain answers, the same week a survey found 75% of small businesses still don't trust AI for basic tasks. Sources: <a href="https://github.com/cactus-compute/cactus-hybrid" rel="noopener">Cactus Hybrid</a>, <a href="https://kesq.com/stacker-small-business/2026/07/15/3-4-of-small-businesses-dont-trust-ai-for-basic-tasks/" rel="noopener">SMB AI trust survey</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that wraps any output with a confidence score and a short "why," so a client can see at a glance which parts of a deliverable to double check.</p><p class="field"><strong>Why you</strong>Slots directly into every audit, checklist, and skill Gio already ships; makes the trust problem visible and solvable instead of just asserted.</p><p class="field"><strong>First step</strong>Prototype the scoring logic against one existing skill's output today and see how the confidence flags land.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-23-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>NYC Red-Tape Reform Compliance Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>NYC's "OPEN for Small Business" package rewrote 50+ rules for restaurants, bodegas, drivers, and childcare, effective July 20. Source: <a href="https://www.brownstoner.com/brooklyn-life/nyc-small-business-regulation-reform-2026/" rel="noopener">Brownstoner</a></p><p class="field"><strong>The idea</strong>A checklist app that takes a business type and address, then outputs exactly which of the 50+ rule changes apply and what to fix first.</p><p class="field"><strong>Why you</strong>Classic fixed-price compliance-checklist pattern Gio already runs, aimed at a huge, geographically concentrated buyer pool with a hard reform date behind it.</p><p class="field"><strong>First step</strong>Pull the full "OPEN for Small Business" rule list and sort it by which verticals it hits hardest.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-23-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>EU Mid-Market AI Sandbox Enrollment Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The EU raised its AI Act regulatory sandbox threshold to 750 employees and 150M euro revenue, opening reduced-fine status to a much bigger band of mid-market firms. Source: <a href="https://www.morganlewis.com/pubs/2026/06/eu-approves-delays-and-other-amendments-to-certain-eu-ai-act-obligations-what-businesses-should-know" rel="noopener">Morgan Lewis</a></p><p class="field"><strong>The idea</strong>A narrow agent that checks whether a client now qualifies for the expanded sandbox, then drafts the enrollment paperwork.</p><p class="field"><strong>Why you</strong>A concrete, dated regulatory change with a clear yes/no eligibility test, exactly the shape of compliance work Gio already prices well.</p><p class="field"><strong>First step</strong>Map the exact eligibility criteria and enrollment steps from the source guidance into a short decision tree.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-23-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Authorized Agent Red-Team Audit Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>T3MP3ST, an open-source authorized red-team harness for AI systems, launched this month, arriving right as more SMBs ship their own client-facing agents. Source: <a href="https://blog.mean.ceo/ai-product-launches-news-july-2026/" rel="noopener">AI product launches roundup</a></p><p class="field"><strong>The idea</strong>A fixed-price service that runs an authorized red-team pass against a client's AI agent or chatbot before launch and delivers a plain-English vulnerability report.</p><p class="field"><strong>Why you</strong>Security audits command premium prices, and running an open-source harness against a scoped, permissioned target is exactly the kind of authorized engagement Gio can package and repeat.</p><p class="field"><strong>First step</strong>Run T3MP3ST against a throwaway test agent to see what the report output looks like and how long a pass takes.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-23-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Explain-to-AI Learning Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>ReExplain launched on Product Hunt this week, built around a simple loop: explain a topic to the AI, and it shows you what you don't actually understand. Source: <a href="https://www.producthunt.com/products/reexplain" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack that turns the same explain-to-learn loop into ready-made prompts for mastering a new skill, tool, or codebase fast.</p><p class="field"><strong>Why you</strong>Cheap to produce, fits the existing digital-products lane, and rides a proven, freshly validated mechanic instead of an unproven one.</p><p class="field"><strong>First step</strong>Draft 10 explain-to-learn prompts around a skill Gio is currently learning and test them himself first.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-23-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>AI Agent Vision Consent Auditor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>AI Eyes launched on Product Hunt this week, giving AI agents permission-first real-time vision, part of a broader push toward privacy-aware AI sensing. Source: <a href="https://www.producthunt.com/products/ai-eyes-2" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A narrow agent that scans an SMB's camera- or vision-enabled AI tools for missing consent notices and privacy-disclosure gaps before deployment.</p><p class="field"><strong>Why you</strong>A small, well-scoped audit that plugs directly into the compliance-checklist pattern Gio already runs, on a genuinely new category of exposure.</p><p class="field"><strong>First step</strong>List which vision-enabled AI tools (security cameras, retail analytics, in-store kiosks) a typical SMB client already runs.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-23-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Enterprise AI Workspace Fit Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>ChatGPT Work and Claude Cowork both launched enterprise AI-workspace products this month, leaving SMBs to pick between two competing platforms with no side-by-side guidance. Source: <a href="https://www.aiapps.com/blog/july-ai-mega-update-major-breakthroughs-launches/" rel="noopener">AI mega-update roundup</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scores a client's actual workflows against both platforms and outputs a recommendation plus a rollout SOP.</p><p class="field"><strong>Why you</strong>Sits one layer above the existing Claude Cowork template pack and Claude-in-Slack playbook: it answers the "which one, and why" question before either product gets set up.</p><p class="field"><strong>First step</strong>Build the comparison rubric (integrations, cost, data handling) from each product's own documentation.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-23-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Efficient-Inference Challenger Cloud</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Alphabet's AI cash burn is alarming investors the same week a 1000x-faster open-source tokenizer shipped on GitHub. Sources: <a href="https://www.reuters.com/business/retail-consumer/alphabets-cash-burn-raises-alarm-big-tech-ai-spending-climbs-2026-07-23/" rel="noopener">Reuters</a>, <a href="https://github.com/marcelroed/gigatoken/" rel="noopener">GigaToken</a></p><p class="field"><strong>The idea</strong>A lean inference cloud built around radically cheaper tokenization, undercutting Big Tech providers who are choking on their own capex.</p><p class="field"><strong>Scale</strong>Needs real capital and a serving-infra team, but a genuine cost-structure edge against unsustainable incumbent spending is a rare wedge.</p>
+
+</article><article id="idea-2026-07-23-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Trust-Calibrated AI Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Gemma just learned to flag its own uncertainty, the same week a mathematician's ChatGPT conversation surfaced a real research-grade counterexample, proof that raw capability now outpaces calibrated trust. Sources: <a href="https://github.com/cactus-compute/cactus-hybrid" rel="noopener">Cactus Hybrid</a>, <a href="https://chatgpt.com/share/6a5fdc7a-d6f8-83e8-bbea-8deb42cfed56" rel="noopener">Terence Tao's ChatGPT thread</a></p><p class="field"><strong>The idea</strong>An enterprise platform where every output ships with a rigorously calibrated confidence interval, built for high-stakes verticals like medicine, law, and finance.</p><p class="field"><strong>Scale</strong>A category-defining trust layer for regulated industries, well beyond a solo build, but the underlying signal (capability racing ahead of calibration) is only getting stronger.</p>
+
+</article><article id="idea-2026-07-23-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Municipal Red-Tape API Utility</h3>
+</div>
+<p class="field"><strong>Trigger</strong>NYC just rewrote 50+ small-business rules in one package, a reminder that no one owns a structured, real-time feed of local regulatory change. Source: <a href="https://www.brownstoner.com/brooklyn-life/nyc-small-business-regulation-reform-2026/" rel="noopener">Brownstoner</a></p><p class="field"><strong>The idea</strong>An infrastructure business that sells a single structured feed of municipal regulation changes to every POS, scheduling, and payroll vendor that needs to keep their SMB customers compliant.</p><p class="field"><strong>Scale</strong>A data-infrastructure play sold B2B2B across thousands of cities and every vertical software vendor, not a single-client service.</p>
+
+</article>
+</div></body>
+</html>

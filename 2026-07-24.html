@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-24</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Friday, July 24, 2026</h1>
+<nav class="nav"><a href="./2026-07-23.html">&larr; Thu, Jul 23</a><a href="./2026-07-25.html">Sat, Jul 25 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>MCP Traffic Leak Monitor</h2>
+<p></p>
+</div>
+<article id="idea-2026-07-24-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>MCP Traffic Leak Monitor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Two Show HN launches today attacking the same gap: AgentWatch (local MCP proxy catching agents leaking data) and OneCLI (credential gateway keeping secrets out of AI agents). Source: <a href="https://github.com/dhanraj176/agentwatch" rel="noopener">AgentWatch</a></p><p class="field"><strong>The idea</strong>A Claude Code skill/companion process that sits between Claude and its MCP servers, logging every tool call's payload in real time and flagging PII or secrets before they leave the machine. Different mechanism from static prompt scanning: this watches live traffic, not source text.</p><p class="field"><strong>Why you</strong>Direct extension of the model-router/skill-packaging pattern that already worked with Claude Cost Router; sells to the same audience of solo Claude Code builders running MCP-heavy setups.</p><p class="field"><strong>First step</strong>Clone AgentWatch today, run it against one of your own MCP servers for an hour, and note what it catches versus what a Claude Code skill wrapper could add (session logging, Claude-native alerts).</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Claude Session Keep-Warm &amp; Recovery Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Show HN launch of claude-thermos, a tool that keeps Claude sessions warm, signaling agentic continuity/session persistence is an emerging infra pattern. Source: <a href="https://github.com/izeigerman/claude-thermos" rel="noopener">claude-thermos</a></p><p class="field"><strong>The idea</strong>A packaged skill for solo builders running scheduled/headless Claude jobs (Gio's own Idea Engine is one) that detects a stalled or cold session, retries with backoff, and logs failures to a durable file instead of silently dropping the run.</p><p class="field"><strong>Why you</strong>This is the exact failure mode this project's own scheduled run is exposed to; building it fixes Gio's own infra before packaging it for other solo automators.</p><p class="field"><strong>First step</strong>Read claude-thermos's source today and map its retry/warm-keep logic against Idea Engine's own <code>tools/run_idea_engine.cmd</code> wrapper for gaps.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-app">App</span>
+
+<h3>Influencer FTC Disclosure Auditor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>FTC enforcement against influencers is up 300% since 2024, with new mandatory #ad/#sponsored/#partner disclosure rules now in force. Source: <a href="https://www.socialpilot.co/blog/social-media-updates" rel="noopener">SocialPilot</a></p><p class="field"><strong>The idea</strong>An app that scans a creator or small brand's recent posts across platforms, flags any missing or non-compliant disclosure language, and auto-generates the compliant caption text to paste back in.</p><p class="field"><strong>Why you</strong>Fits the copywriting/marketing services lane directly; sellable as a one-time audit or recurring retainer to small brand/creator clients.</p><p class="field"><strong>First step</strong>Pull the FTC's current disclosure wording requirements today and draft the flagging ruleset the app would check posts against.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Creator Platform-Risk Watchdog</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Patreon cut 20% of staff this week while Meta simultaneously ended third-party fact-checking and started punishing reposted content, two live signals of platform instability creators are absorbing right now. Source: <a href="https://www.patreon.com/jackconte/posts/painful-update-164628951" rel="noopener">Patreon</a></p><p class="field"><strong>The idea</strong>A standing agent that tracks a creator or small media brand's revenue/audience concentration across platforms and flags when a single platform's policy shift (fact-check removal, content-repost crackdown, layoffs at a paid-membership host) puts their income at risk, with a diversification move suggested.</p><p class="field"><strong>Why you</strong>Natural extension of the marketing/copywriting client work Gio already does for creator-adjacent clients, positioned as an ongoing monitoring retainer instead of a one-off.</p><p class="field"><strong>First step</strong>List the 3-4 policy-risk signals worth tracking (fact-check status, repost enforcement, platform layoffs, TOS changes) and sketch the alert logic today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>2016 Nostalgia Content Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"2026 is the new 2016" is breaking out as a social trend, with users sharing 2016-era fashion, music, and online culture comparisons. Source: <a href="https://en.wikipedia.org/wiki/2026_is_the_new_2016" rel="noopener">Wikipedia trend page</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack of prompts for generating 2016-throwback aesthetic content (captions, meme formats, "Y2K-to-2016" visual transitions) for creators who want to ride the nostalgia wave without researching the era themselves.</p><p class="field"><strong>Why you</strong>Same playbook as the Fibermaxxing and Trend Arbitrage prompt packs already in the ledger: spot a breakout trend early, ship a narrow prompt pack same week.</p><p class="field"><strong>First step</strong>Search today for the 10 most-shared "2016 vs 2026" comparison posts to extract the specific visual/language cues the prompt pack needs to reproduce.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-app">App</span>
+
+<h3>Fake Review Defense Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit pain-point research surfaced sustained frustration (30,000+ upvotes on the underlying thread) with fraudulent reviews across Amazon, Google, and Yelp deceiving both consumers and the businesses being targeted. Source: <a href="https://venturemagazine.net/blog/7-startup-ideas-reddit-is-begging-someone-to-build-in-2026-2027-100k-upvotes" rel="noopener">Venture Magazine roundup</a></p><p class="field"><strong>The idea</strong>An app that scans a small business's own Google/Yelp listings for suspicious review patterns (burst timing, templated language, competitor sockpuppets) and drafts the platform dispute/report language needed to get fake reviews removed.</p><p class="field"><strong>Why you</strong>Productized, sellable one-time audit or monthly monitoring service for local SMB clients, same shape as other audit-and-fix offers already working in this lane.</p><p class="field"><strong>First step</strong>Pull one real client's (or your own test business's) Google review history today and manually flag which reviews look synthetic, to define the detection ruleset.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>SMB AI Skills-Gap Coach</h3>
+</div>
+<p class="field"><strong>Trigger</strong>63% of employers now cite AI skills as their top adoption barrier, yet only 12% of SMEs invest in AI training and confidence in AI adoption sits at just 27% for small businesses versus 82% for mid-market. Source: <a href="https://www.ibm.com/think/insights/ai-adoption-challenges" rel="noopener">IBM</a></p><p class="field"><strong>The idea</strong>A narrow agent that assesses an SMB team's actual AI-tool usage gaps from a short interview or usage log, then generates a personalized 2-week training plan targeted at their specific tools and workflows.</p><p class="field"><strong>Why you</strong>Fits directly into the fixed-price SMB software/audit lane; the training-plan deliverable is a natural upsell after any AI-readiness or rollout-comms engagement already in the ledger.</p><p class="field"><strong>First step</strong>Draft the 10-question intake script the agent would use to diagnose a team's AI skill gaps today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI-Native Video Production Studio</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Flux 3 launched today, marking what looks like an inflection point in multimodal/video generation model maturity. Source: <a href="https://bfl.ai/blog/flux-3" rel="noopener">BFL blog</a></p><p class="field"><strong>The idea</strong>A full end-to-end video production studio built around AI-native generation rather than bolted onto a traditional NLE, aiming to replace the whole production pipeline (script to shot to grade) for mid-size creative teams.</p><p class="field"><strong>Scale</strong>Displacing incumbent video production software/workflows industry-wide is a category bet, not a weekend build; needs a real team and capital to compete on quality and distribution.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Democratized Small-Sat Launch Brokerage</h3>
+</div>
+<p class="field"><strong>Trigger</strong>India's first privately-developed rocket reached orbit on its debut launch this week, signaling low-cost private launch capacity is globalizing beyond the US incumbents. Source: <a href="https://arstechnica.com/space/2026/07/indias-first-privately-developed-rocket-reaches-orbit-on-dramatic-debut-launch/" rel="noopener">Ars Technica</a></p><p class="field"><strong>The idea</strong>A brokerage matching small satellite companies to the newest wave of low-cost private launch providers emerging globally, arbitraging price and slot availability across a fragmenting launch market.</p><p class="field"><strong>Scale</strong>Requires aerospace-industry relationships, regulatory navigation across multiple countries, and serious capital; a genuine moonshot, literally.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-24-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>National AI-Fluency Upskilling Infrastructure</h3>
+</div>
+<p class="field"><strong>Trigger</strong>63% of employers cite AI skills as the top adoption barrier and only 27% of small businesses feel confident adopting AI, versus 82% of mid-market firms, a gap wide enough to be a systemic problem. Source: <a href="https://www.ibm.com/think/insights/ai-adoption-challenges" rel="noopener">IBM</a></p><p class="field"><strong>The idea</strong>Standing infrastructure, credentialing plus delivery, that closes the SMB AI-fluency gap at national scale, positioned as the training layer every AI-adoption push upstream of it currently lacks.</p><p class="field"><strong>Scale</strong>A category-defining institution (think a de facto national AI-literacy standard), well beyond solo scope; needs policy relationships, distribution partners, and long-horizon funding.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>

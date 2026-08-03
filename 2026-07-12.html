@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-12</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Sunday, July 12, 2026</h1>
+<nav class="nav"><a href="./2026-07-11.html">&larr; Sat, Jul 11</a><a href="./2026-07-13.html">Mon, Jul 13 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>MCP Spec Compliance Auditor</h2>
+<p>Only 1 of 4,356 reachable MCP servers is ready for the spec revision landing 2026-07-28 — a hard, dated deadline hitting thousands of tool builders in 16 days. That's the exact shape that's already worked twice this week (API Sunset, Sonnet 5 pricing window): real urgency plus a real budget, and a Claude Code skill is the fastest possible way to build the scanner that tells someone whether they're compliant.</p>
+</div>
+<article id="idea-2026-07-12-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>MCP Spec Compliance Auditor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Only 1 of 4,356 reachable MCP servers pass the 2026-07-28 spec revision — <a href="https://github.com/Roee-Tsur/mcp-spec-check" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scans an MCP server's implementation against the incoming spec, flags what's missing, and generates the fix list — sold to MCP server maintainers racing the deadline.</p><p class="field"><strong>Why you</strong>Direct extension of your own skill-building lane; the spec-check repo already did the hard diffing work, you're packaging it into something a non-Claude-Code builder can run.</p><p class="field"><strong>First step</strong>Clone the mcp-spec-check repo today, run it against 2 public MCP servers, and confirm it produces an actionable fix list before building the wrapper skill.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-12-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-business">Business</span>
+
+<h3>Claude-for-SMB Concierge Setup</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Anthropic launched Claude for Small Business with official QuickBooks/HubSpot/Canva/Docusign connectors, and solopreneur Reddit/blog chatter shows 40% of owner time still lost to admin — <a href="https://www.anthropic.com/news/claude-for-small-business" rel="noopener">Anthropic</a></p><p class="field"><strong>The idea</strong>A fixed-price "get Claude for Small Business running in a week" package — connector setup, SOP writing, cold-email and content workflows configured, handed over ready to use.</p><p class="field"><strong>Why you</strong>Squarely custom-software plus copywriting; Anthropic is doing the demand-gen for you by shipping the product SMBs now need help installing.</p><p class="field"><strong>First step</strong>Sign up for Claude for Small Business today, wire up one connector end-to-end, and time how long full setup takes to price the package.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-12-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-app">App</span>
+
+<h3>TikTok Shop Account Health Dashboard</h3>
+</div>
+<p class="field"><strong>Trigger</strong>TikTok Shop replaced its Violation Points system with a new Account Health Rating this month — <a href="https://seller-vn.tiktok.com/university/essay?knowledge_id=8831988245645057&amp;lang=en" rel="noopener">TikTok Shop Seller University</a></p><p class="field"><strong>The idea</strong>A small app that ingests a seller's TikTok Shop metrics/policy alerts and translates the new rating system into a plain-English checklist of what to fix before the rating drops.</p><p class="field"><strong>Why you</strong>Shippable in days, subscription-monetizable to a boring-SMB niche (DTC/dropship sellers) that's confused by a brand-new scoring system with real revenue at stake.</p><p class="field"><strong>First step</strong>Read the full Account Health Rating documentation today and map its scoring factors into a checklist v1 before writing any code.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-12-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Tariff Exposure Calculator + Price-Increase Copy Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>61% of SMBs report negative tariff impact; average monthly customs duties tripled from $8.4K to $27.2K — <a href="https://libertystreeteconomics.newyorkfed.org/2026/07/effect-of-tariffs-on-u-s-small-businesses/" rel="noopener">NY Fed</a></p><p class="field"><strong>The idea</strong>A mini-app that models an SMB's landed-cost tariff exposure and generates the customer-facing price-increase notice/email that explains it without losing the customer.</p><p class="field"><strong>Why you</strong>Pairs a fast Claude Code build with your copywriting lane; the pain point is dated, huge ($85B/year across SMBs), and the ask ("help me raise prices without losing customers") has obvious willingness to pay.</p><p class="field"><strong>First step</strong>Build the landed-cost calculator's math today using the NY Fed's published duty figures as your test case.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-12-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>SBA Set-Aside Preservation Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New SBA recertification rule (in effect since Jan 17, 2026) means a large business acquiring a small business now strips its small-business set-aside eligibility — <a href="https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026" rel="noopener">BBSI</a></p><p class="field"><strong>The idea</strong>A lightweight agent that reviews a small-business owner's acquisition or partnership term sheet and flags deal terms that would trigger loss of SBA set-aside status — distinct from a lender-matching tool, this is a deal-term red-flag checker for owners already fielding offers.</p><p class="field"><strong>Why you</strong>Same regulation-creates-SMB-gap shape that's already validated on this list, just a different SBA provision (M&amp;A eligibility, not loan citizenship rules) with a different mechanism (deal review, not directory matching).</p><p class="field"><strong>First step</strong>Pull the recertification rule's exact trigger conditions today and turn them into a 10-question red-flag checklist before building the agent.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-12-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Meta Ads Trust-Messaging Rewrite</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Meta removed the off-platform data opt-out in its July 2026 rollout, so brands running Meta ads can no longer offer customers that control — <a href="https://commonthreadco.com/blogs/coachs-corner/meta-off-platform-data-change-july-2026-ecommerce" rel="noopener">Common Thread Co</a></p><p class="field"><strong>The idea</strong>A conversion-focused audit-and-rewrite service for e-commerce brands' checkout/trust-badge/privacy copy, addressing the customer-facing anxiety this change creates — a CRO problem, not a compliance one, so it's distinct from the NYC cancel-flow auditor already on the ledger.</p><p class="field"><strong>Why you</strong>Pure copywriting lane; the trigger is dated and narrow (this month's rollout), and every brand running Meta ads now has the same fresh objection to handle at checkout.</p><p class="field"><strong>First step</strong>Audit 3 real e-commerce checkout flows today for how they currently message data use, and draft one rewritten trust block as a portfolio sample.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-12-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Solopreneur Ops Copilot Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Solopreneur pain-point chatter converges on the same bottleneck — 40% of owner time on admin, "self as constraint," support and content bottlenecks after $10K revenue — <a href="https://www.trellus.ai/post/small-business-automation-tools" rel="noopener">Trellus</a>, <a href="https://www.fastcompany.com/91517055/dont-be-a-bottleneck-in-your-solo-business" rel="noopener">Fast Company</a></p><p class="field"><strong>The idea</strong>A packaged bundle of Claude Code skills (email triage, invoice follow-up, SOP writing, cold-email drafting) sold as a self-serve "Solopreneur Ops Copilot" kit — the DIY complement to the Claude-for-SMB Concierge service above.</p><p class="field"><strong>Why you</strong>Direct fit for the digital-product/Gumroad lane, and you already run these exact workflows for yourself daily, so packaging is mostly extraction, not invention.</p><p class="field"><strong>First step</strong>List the 5 admin skills you personally already lean on today and outline which are cleanly generalizable to a stranger's business.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-12-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>UK Under-16 Social Media Age-Verification Infrastructure</h3>
+</div>
+<p class="field"><strong>Trigger</strong>UK government formally announced a blanket under-16 social media ban (Instagram, TikTok, Snapchat, X) effective Spring 2027 — <a href="https://www.finnpartners.com/news-insights/boom-scroll-july-2026-social-media-updates/" rel="noopener">Finn Partners</a></p><p class="field"><strong>The idea</strong>An age-verification and compliance infrastructure company serving every platform and app that now has to prove a UK user is 16+ before the deadline hits.</p><p class="field"><strong>Scale</strong>Every major social platform needs this simultaneously on a hard national deadline — a category-defining infra play, but it needs regulatory/legal depth and enterprise sales, not a solo build.</p>
+
+</article><article id="idea-2026-07-12-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Talent-War Trade-Secret Defense Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Apple sued OpenAI on July 11 alleging a coordinated campaign to recruit 400+ Apple silicon and on-device AI staff — <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-12-2026" rel="noopener">via AI news roundup</a></p><p class="field"><strong>The idea</strong>A continuous monitoring/logging agent that gives frontier labs and hardware companies a litigation-grade audit trail of recruiting contact, code access, and data movement around departing employees, built specifically for trade-secret disputes.</p><p class="field"><strong>Scale</strong>The AI talent war is only escalating and litigation like this will multiply — but it needs deep legal-tech credibility and enterprise trust to sell, not a solo shipped tool.</p>
+
+</article><article id="idea-2026-07-12-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>IoT Router Vulnerability Response Company</h3>
+</div>
+<p class="field"><strong>Trigger</strong>An unauthenticated RCE was disclosed in Motorola's MR2600 router, the top HN story of the day — <a href="https://mrbruh.com/motorola/" rel="noopener">mrbruh.com</a></p><p class="field"><strong>The idea</strong>A coordinated-disclosure and rapid-patch distribution company for the flood of critical CVEs hitting cheap consumer/SMB routers, selling directly to ISPs and device makers who can't staff this themselves.</p><p class="field"><strong>Scale</strong>Cheap IoT hardware at scale is a structurally under-resourced security category, not a one-week news cycle — but it needs hardware/security research talent and vendor relationships a solo operator doesn't have.</p>
+
+</article>
+</div></body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-22</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Wednesday, July 22, 2026</h1>
+<nav class="nav"><a href="./2026-07-21.html">&larr; Tue, Jul 21</a><a href="./2026-07-23.html">Thu, Jul 23 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>AI-Slop Redesign Rescue Sprint</h2>
+<p>An HN thread cataloguing businesses with ugly AI-generated menu and website redesigns is trending today, proof that the backlash to careless AI-driven UX has gone mainstream. It is a same-day, fixed-price fix service that turns a live public complaint into your sales pitch, and Claude Code can ship the actual redesign fast enough to close the loop before the screenshot stops being funny.</p>
+</div>
+<article id="idea-2026-07-22-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Model Price War Arbitrage Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>GPT-5.6, Grok 4.5, and Muse Spark all launched within 24 hours of each other, and Gemini 3.6 Flash landed July 21, pushing output token costs down to the $4-6 range. Source: <a href="https://llm-stats.com/llm-updates" rel="noopener">LLM Stats</a></p><p class="field"><strong>The idea</strong>a Claude Code skill that pulls live per-token pricing across Anthropic, OpenAI, Google, and xAI, then recommends which vendor/model to call for a given task type as the price war keeps resetting the cheapest option week to week.</p><p class="field"><strong>Why you</strong>extends model-router beyond Claude-only into cross-vendor territory, sellable to the same solo-builder audience as Claude Cost Router, and keeps your own API bill down while the market resets.</p><p class="field"><strong>First step</strong>pull today's list prices for the 4 vendors into a single reference table and sketch the recommendation logic.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-22-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Client Codebase Onboarding Wiki Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Show HN "CodeAlmanac" turns a Claude conversation exploring an unfamiliar codebase into a Karpathy-style wiki. Source: <a href="https://github.com/AlmanacCode/codealmanac/" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>a Claude Code skill that runs on day one of any new client engagement, walking a legacy codebase and producing a client-facing onboarding wiki (architecture, danger zones, glossary) that doubles as a scoping document.</p><p class="field"><strong>Why you</strong>every $8K-50K SMB build starts with reading someone else's mess; this turns that dead time into a deliverable the client sees value in, and speeds your own scoping.</p><p class="field"><strong>First step</strong>run it against the messiest client codebase you currently have and see if the wiki output is usable as-is.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-22-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-business">Business</span>
+
+<h3>AI-Slop Redesign Rescue Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>An HN post cataloguing businesses with ugly AI-generated menu and website redesigns is trending, showing real backlash to careless AI-driven UX changes. Source: <a href="https://blog.fiddery.com/businesses-with-ugly-menu-redesigns/" rel="noopener">fiddery.com</a></p><p class="field"><strong>The idea</strong>a same-day fixed-price service auditing an SMB's recently AI-refreshed website, menu, or branding for the usability/taste failures customers are now mocking publicly, and shipping a fixed version fast.</p><p class="field"><strong>Why you</strong>combines the copywriting/marketing lane with Claude Code's same-day build speed; the backlash is the marketing hook you pitch with ("don't be the next screenshot").</p><p class="field"><strong>First step</strong>screenshot 3 examples from the HN thread, mock up a before/after fix for one, and use it as today's sales pitch asset.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-22-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Cross-Border AI Agent Compliance Checklist</h3>
+</div>
+<p class="field"><strong>Trigger</strong>China's Intelligent Agents Regulation became enforceable July 15, 2026, adding new transparency and accountability requirements for AI agents operating there. Source: <a href="https://aigovernance.com/news/ai-governance-weekly-july-16-2026" rel="noopener">AI Governance Weekly</a></p><p class="field"><strong>The idea</strong>a checklist app for US SaaS teams with AI-agent features, generating the disclosure/logging requirements they now need if any user traffic touches China, plus a go/no-go flag on serving that market at all.</p><p class="field"><strong>Why you</strong>the same checklist-app pattern you've shipped repeatedly for EU/state rules, applied to a jurisdiction most SMB-facing tools haven't scoped yet.</p><p class="field"><strong>First step</strong>pull the regulation's actual text and draft the first 10 checklist items today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-22-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>GPU Spend Right-Sizing Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Show HN "Computable" launched a marketplace to buy, sell, or redeem GPU compute for exact weeks, signaling fractional GPU rental is going mainstream. Source: <a href="https://www.getcomputable.com/" rel="noopener">getcomputable.com</a></p><p class="field"><strong>The idea</strong>a narrow agent that watches a small AI shop's GPU rental commitments across providers and flags when to buy, sell, or let a block expire before it goes idle.</p><p class="field"><strong>Why you</strong>fits the leverage lane directly; small teams renting occasional GPU time have zero tooling for this today, and it's a tight, well-scoped agent build.</p><p class="field"><strong>First step</strong>map out what rental/idle-spend tracking would look like for one real account you have access to, then scope version one.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-22-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Extend-the-Runway Ops Audit Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>the Series A revenue bar has risen to $1.5-2M ARR and 2 of 3 seed-stage companies now fail to raise, per H1 2026 data showing AI capturing 52% of funding growth while non-AI funding dropped 10%. Source: <a href="https://blog.mean.ceo/startup-funding-trends-july-2026/" rel="noopener">mean.ceo</a></p><p class="field"><strong>The idea</strong>a fixed-price Claude Code audit for seed-stage founders, finding tooling spend to cut and manual workflows to automate before their runway runs out ahead of a tougher next raise.</p><p class="field"><strong>Why you</strong>the same fixed-price audit sprint pattern you've run before, aimed at a founder audience under acute new pressure with money to spend on buying time.</p><p class="field"><strong>First step</strong>draft the audit checklist and pitch it to 3 founders in your network who are mid-raise.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-22-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-app">App</span>
+
+<h3>H-1B Sponsorship Readiness Checklist</h3>
+</div>
+<p class="field"><strong>Trigger</strong>H-1B visa policy was the top US Google Trends search on July 20, 2026, reflecting renewed uncertainty over work-visa sponsorship. Source: <a href="https://www.latestly.com/google-trends/20072026/" rel="noopener">latestly.com</a></p><p class="field"><strong>The idea</strong>a checklist app walking a small tech-adjacent employer through whether sponsoring an H-1B hire is still worth the cost and risk under the current policy climate, and generating the paperwork checklist if they proceed.</p><p class="field"><strong>Why you</strong>the same checklist-app pattern, aimed at SMB owners and hiring managers with no legal team who are Googling this exact question right now.</p><p class="field"><strong>First step</strong>research the current H-1B sponsorship requirements and draft the decision-tree logic today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-22-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Training-Data Provenance Clearinghouse</h3>
+</div>
+<p class="field"><strong>Trigger</strong>a judge approved Anthropic's $1.5B settlement for training on pirated books, the largest copyright resolution in AI history to date. Source: <a href="https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63" rel="noopener">AP News</a></p><p class="field"><strong>The idea</strong>a neutral licensing exchange where AI labs pay rights-holders per-use for training data, positioned as the compulsory-licensing infrastructure this settlement makes inevitable industry-wide.</p><p class="field"><strong>Scale</strong>every frontier lab now has a legal incentive to license instead of litigate; this becomes the rails for that entire market.</p>
+
+</article><article id="idea-2026-07-22-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Non-AI Startup Rescue Studio</h3>
+</div>
+<p class="field"><strong>Trigger</strong>AI startups captured 52% of H1 2026 funding growth while non-AI funding dropped 10%, and the Series A bar rose to $1.5-2M ARR. Source: <a href="https://news.crunchbase.com/venture/global-startup-exits-ipo-ma-soar-ai-q2-h1-2026/" rel="noopener">Crunchbase News</a></p><p class="field"><strong>The idea</strong>a venture studio acquiring struggling non-AI startups cheaply and retrofitting AI into their product fast enough to hit the new Series A bar before runway runs out.</p><p class="field"><strong>Scale</strong>arbitrages the entire capital-flight gap between AI and non-AI startups at portfolio scale.</p>
+
+</article><article id="idea-2026-07-22-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Foldable-Native AI Agent OS</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Samsung's Galaxy Z Fold 8 launch drove 5M+ searches on July 22, arriving as Meta Muse's computer-use API matures. Source: <a href="https://www.latestly.com/google-trends/20072026/" rel="noopener">latestly.com</a></p><p class="field"><strong>The idea</strong>an OS-level layer purpose-built for foldable and multi-screen phones where one pane runs the human's app and the other runs an autonomous agent working a task live, split-screen by default.</p><p class="field"><strong>Scale</strong>bets on foldables becoming the first hardware form factor designed around living alongside an agent, not just running one.</p>
+
+</article>
+</div></body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-29</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Wednesday, July 29, 2026</h1>
+<nav class="nav"><a href="./2026-07-28.html">&larr; Tue, Jul 28</a><a href="./2026-07-30.html">Thu, Jul 30 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Agent Instruction Compliance Tester</h2>
+<p>A new arXiv paper published today argues that long policy documents don't reliably govern AI agent behavior: agents drift from their own written rules under real conditions. Gio's entire setup (global and project CLAUDE.md files, dozens of skills, hooks) is exactly this kind of governance-by-document, so a skill that adversarially tests whether an agent actually obeys its own instructions is both immediately dogfoodable and sellable to every other solo Claude Code builder running a similar stack.</p>
+</div>
+<article id="idea-2026-07-29-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Agent Instruction Compliance Tester</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A new arXiv paper published today argues long policy documents (handbooks) don't reliably govern AI agent behavior, agents drift from written rules under real conditions. Source: <a href="https://arxiv.org/abs/2607.25398" rel="noopener">arXiv</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that adversarially red-teams an agent's own CLAUDE.md/skill instructions: it generates edge-case prompts designed to make the agent violate its own stated rules, then reports exactly which instructions get silently ignored under pressure.</p><p class="field"><strong>Why you</strong>Gio's own setup runs on a dense stack of global and project CLAUDE.md files plus dozens of skills; this is the first tool that tests whether that governance actually holds instead of assuming it does, built on infrastructure (subagents, skills) Gio already has.</p><p class="field"><strong>First step</strong>Run it today against this project's own CLAUDE.md and daily-run.md, feed it 5 adversarial prompts designed to break the "never repeat a ledger idea" and "no em dash" rules, and see what slips through.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-29-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>AI Document Injection Scanner</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A newly documented attack shows AI-generated documents can self-propagate malicious instructions through Microsoft Copilot for Word, a novel worm-style injection vector. Source: <a href="https://enklypesalt.com/posts/context-collapse-part3-ai-worming-through-word/" rel="noopener">enklypesalt.com</a></p><p class="field"><strong>The idea</strong>A narrow agent that scans any inbound document (Word, PDF, email attachment) for embedded prompt-injection payloads before it's handed to a client's AI copilot or agent workflow, quarantining anything suspicious.</p><p class="field"><strong>Why you</strong>Distinct from the MCP Traffic Leak Monitor on the ledger, which watches live tool-call traffic after the fact: this catches the malicious payload at the document layer before it ever reaches an agent, a fresh attack class most SMB AI-adoption clients have no defense against.</p><p class="field"><strong>First step</strong>Pull the attack pattern from the writeup today and build a detection rule against one sample poisoned document.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-29-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-business">Business</span>
+
+<h3>AI Vendor Failure Rescue Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A widely discussed piece on today's post-hype "AI crash" argues the market is now consolidating hard, with smaller AI vendors starting to fail outright rather than just raising prices. Source: <a href="https://potsandpansbyccg.com/2026/07/29/after-the-ai-crash/" rel="noopener">potsandpansbyccg.com</a></p><p class="field"><strong>The idea</strong>A fixed-price rescue sprint for SMBs whose smaller AI-tool vendor shuts down with little notice: export whatever data survives and rebuild the workflow on a stable alternative, in days, not weeks.</p><p class="field"><strong>Why you</strong>Distinct from the API Sunset Migration Sprint on the ledger (planned deprecations from major labs) and the AI Subscription Price-Hike Watchdog (ongoing price monitoring): this is emergency triage after a vendor actually disappears, a new failure mode the consolidation wave is about to make common.</p><p class="field"><strong>First step</strong>List 3 smaller AI SaaS tools you or contacts currently depend on and sketch what a same-day data-export-and-rebuild playbook would look like for each.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-29-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Compliance Rollback Savings Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The CFPB just narrowed Section 1071's small-business lending data rule, raising thresholds and cutting requirements after lenders had already started building for the stricter version. Source: <a href="https://www.gtlaw.com/en/insights/2026/5/cfpb-final-rule-narrows-small-business-lending-data-collection-requirements" rel="noopener">gtlaw.com</a></p><p class="field"><strong>The idea</strong>An app that reviews what an SMB already built or paid for to comply with a since-narrowed or repealed rule, and outputs exactly what can be safely descoped or cancelled to cut ongoing compliance spend.</p><p class="field"><strong>Why you</strong>Every prior compliance-kit idea on the ledger sells "build this to comply"; this is the mirror-image pitch, "stop paying for compliance you no longer need," a genuinely new angle in a lane Gio has already proven converts.</p><p class="field"><strong>First step</strong>Pull the exact Section 1071 threshold changes today and build the first descoping checklist against them.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-29-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-app">App</span>
+
+<h3>AI Training Data Disclosure Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>California's AB 2013 now requires any generative AI developer to publish a summary of training data sources and IP details, the first mandatory AI training-data transparency law at this scale in the US. Source: <a href="https://verifywise.ai/blog/state-of-ai-governance-regulations-united-states-2026" rel="noopener">verifywise.ai</a></p><p class="field"><strong>The idea</strong>A checklist app that walks a small AI product builder (not a frontier lab) through what AB 2013 requires, and generates the training-data summary disclosure document they now have to publish.</p><p class="field"><strong>Why you</strong>Fresh regulatory vertical nothing on the ledger has touched (training-data transparency, as opposed to content-ID or model-safety rules), and the buyer, a solo or small AI-product team, is exactly the kind of technical, self-serve customer who'd find this app on their own.</p><p class="field"><strong>First step</strong>Pull the AB 2013 text today and draft the required disclosure fields against one of your own AI-powered projects as the test case.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-29-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Multi-Agent Mission Template Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"/mission for Claude Code" launched on Product Hunt today, letting anyone spawn agent teams through mission-based task delegation, a new primitive most buyers won't yet know how to use well. Source: <a href="https://www.producthunt.com/products/spine-2" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Gumroad pack of pre-built mission templates (competitive research, codebase migration, content audit) that a buyer drops straight into their own /mission setup.</p><p class="field"><strong>Why you</strong>Same proven playbook as the Claude Cowork Template Pack on the ledger, be the fast, well-tested template layer on a brand-new agent-orchestration primitive, and Gio already runs multi-agent workflows daily so he can validate templates on his own work first.</p><p class="field"><strong>First step</strong>Sign up for /mission today, build and test 2 mission templates against a real task, and package the strongest one as a free lead magnet.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-29-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Agent Performance Drift Monitor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Prefactor, a real-time evaluation framework for monitoring AI agent performance in production, launched on Product Hunt today, part of a new wave of agent-observability tooling. Source: <a href="https://www.producthunt.com/products/prefactor" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that logs a deployed client agent's output quality, latency, and cost over time and flags silent degradation (a scheduling agent that starts double-booking, a scoring agent whose accuracy quietly slips) before the client notices.</p><p class="field"><strong>Why you</strong>Every agent Gio ships for a client (Field Voice-Log, Missed-Call Recovery, Lead Data Quality Gatekeeper, and more on the ledger) needs exactly this kind of ongoing proof it's still working; this productizes that as a standing add-on to every agent engagement instead of a one-off delivery.</p><p class="field"><strong>First step</strong>Wire basic quality/latency logging into one of your own already-deployed client agents today and see what a week of drift data actually looks like.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-29-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Post-Crash AI Consolidation Fund</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Market analysis published today argues the AI hype cycle is entering its "after the crash" phase, with real consolidation now underway. Source: <a href="https://potsandpansbyccg.com/2026/07/29/after-the-ai-crash/" rel="noopener">potsandpansbyccg.com</a></p><p class="field"><strong>Scale</strong>A fund/studio built to acquire failed or fire-sale AI startups' tech, customer base, and talent for pennies as the reset accelerates, the inverse trade of the Non-AI Startup Rescue Studio on the ledger, but it needs real capital and deal-sourcing infrastructure no solo build can shortcut.</p>
+
+</article><article id="idea-2026-07-29-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Worm Defense Infrastructure</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A newly documented self-propagating AI worm spreads malicious instructions through Microsoft Copilot for Word, the first real evidence of document-borne AI worms in the wild. Source: <a href="https://enklypesalt.com/posts/context-collapse-part3-ai-worming-through-word/" rel="noopener">enklypesalt.com</a></p><p class="field"><strong>Scale</strong>Internet-scale defense infrastructure, an "antivirus company for the AI-agent era," that plugs into every major office suite, email, and messaging platform to detect and quarantine self-propagating AI worms before they spread between organizations; needs deep platform partnerships and security-industry credibility, not a solo build.</p>
+
+</article><article id="idea-2026-07-29-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Prototype-to-Product Hardening Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Denovo, a tool converting rapid AI prototypes into revenue-generating customer solutions, launched on Product Hunt today, spotlighting how many vibe-coded prototypes never survive contact with real customers. Source: <a href="https://www.producthunt.com/products/denovo-business-manager" rel="noopener">Product Hunt</a></p><p class="field"><strong>Scale</strong>A platform that takes any AI-generated prototype and automatically hardens it into a production-grade, sellable product (auth, billing, compliance, support), industry infrastructure for the entire vibe-coding wave, not a single tool; needs deep platform engineering and trust-building across every stack it touches.</p>
+
+</article>
+</div></body>
+</html>

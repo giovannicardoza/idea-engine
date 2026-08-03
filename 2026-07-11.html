@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-11</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Saturday, July 11, 2026</h1>
+<nav class="nav"><a href="./2026-07-10.html">&larr; Fri, Jul 10</a><a href="./2026-07-12.html">Sun, Jul 12 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Sonnet 5 Price-Window Sprint</h2>
+<p>Claude Sonnet 5's introductory pricing ($2/$10 per MTok) holds only through Aug 31 — a hard, dated cost advantage for anyone building with Claude Code right now. That's a rare combo: real urgency, a real margin edge, and a build tool (you) that can actually convert the window into shipped client work before it closes.</p>
+</div>
+<article id="idea-2026-07-11-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-business">Business</span>
+
+<h3>Sonnet 5 Price-Window Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Claude Sonnet 5 introductory pricing ($2/$10 per MTok) runs through Aug 31, 2026 — <a href="https://releasebot.io/updates/anthropic/claude" rel="noopener">Claude release notes</a></p><p class="field"><strong>The idea</strong>A fixed-price "AI Agent Build Sprint" for SMBs, marketed with the pricing-window deadline as the reason to move now — the cost savings during the window is what makes the fixed price aggressive and still profitable.</p><p class="field"><strong>Why you</strong>Squarely your custom-software lane; Claude Code is the build tool, and the margin only gets better before Aug 31.</p><p class="field"><strong>First step</strong>Draft the sprint offer today with an explicit "before Aug 31" framing and send it to 3 SMB contacts who've asked about AI tooling.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-11-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>EU AI Act SMB Compliance Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>EU AI Act reaches full applicability Aug 2, 2026, with penalties up to €35M or 7% of turnover — <a href="https://www.legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks" rel="noopener">Legal Nodes</a></p><p class="field"><strong>The idea</strong>A small app that walks a US SMB selling into the EU through a checklist of their AI touchpoints and outputs pre-filled compliance documentation (risk classification, disclosure copy, audit log template).</p><p class="field"><strong>Why you</strong>Combines the copywriting lane (the disclosure/documentation copy) with a shippable-in-days mini-app; the deadline creates real urgency.</p><p class="field"><strong>First step</strong>Pull the EU AI Act's SMB-relevant obligations today and draft the checklist's question tree before writing any code.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-11-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI-SQL Safety Checker</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Sqlsure, a new tool for deterministic semantic checks on AI-generated SQL, launched on Show HN — <a href="https://github.com/sqlsure/sqlsure" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that dry-runs and semantically diffs any AI-generated SQL migration against the target schema before it touches a client's production database.</p><p class="field"><strong>Why you</strong>Protects your own custom-software delivery pipeline first (you run AI-generated migrations against client DBs constantly), and is packageable for other solo builders the same way the Cost Router skill was.</p><p class="field"><strong>First step</strong>Write the dry-run/diff check today against one of your own past client migrations to confirm it would have caught a real mistake.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-11-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Weak-Hardware LLM Playbook</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Getting GLM 5.2 running on my slow computer" hit 890 points on Show HN, the top-engagement launch of the day — <a href="https://github.com/JustVugg/colibri" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>A Gumroad guide + prompt/config pack teaching non-technical owners how to run a capable open model locally on modest hardware for a support bot or doc-search assistant, no subscription required.</p><p class="field"><strong>Why you</strong>Direct fit for the digital-product/Gumroad lane; rides today's single strongest demand signal.</p><p class="field"><strong>First step</strong>Reproduce the Colibri setup today on your own machine and note every step a non-technical buyer would get stuck on.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-11-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Instant Client Site Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Cloudflare Drop launched today — drag-and-drop folder deployment for instant hosting, #2 on Product Hunt — <a href="https://www.cloudflare.com" rel="noopener">Cloudflare</a></p><p class="field"><strong>The idea</strong>Pair Claude Code (generate a landing page from a client brief) with Cloudflare Drop (one-drag deploy) to sell SMBs a same-day "landing page by this afternoon" service.</p><p class="field"><strong>Why you</strong>Combines the custom-software and copywriting lanes; the new deploy tool is what makes "same afternoon" a credible promise to market.</p><p class="field"><strong>First step</strong>Build one demo landing page end-to-end today, brief to deployed, and time it for the pitch.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-11-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Bespoke Browser Extension Shop</h3>
+</div>
+<p class="field"><strong>Trigger</strong>PlugThis, a conversational-AI Chrome extension generator, landed top-10 on Product Hunt yesterday — <a href="https://www.producthunt.com/products" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A productized service building narrow, bespoke Chrome extensions for SMBs — scrape one vendor portal, auto-fill one specific form, monitor one competitor's price — too niche for a generic AI generator to nail well, but a days-long Claude Code build for you.</p><p class="field"><strong>Why you</strong>PlugThis's traction proves the market wants this; the gap it leaves is exactly the narrow, one-off builds a solo operator can do fast.</p><p class="field"><strong>First step</strong>List 5 SMB clients/contacts with a specific repetitive browser task and pitch one a bespoke extension today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-11-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Colorado AI Adverse-Outcome Logger</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Colorado SB 26-189 takes effect Jan 1, 2027, requiring 30-day adverse-outcome explanations and human-review logs for AI decision systems, with SMBs already being told to prep now — <a href="https://verifywise.ai/blog/state-of-ai-governance-regulations-united-states-2026" rel="noopener">state AI governance tracker</a></p><p class="field"><strong>The idea</strong>A lightweight logging/audit agent that bolts onto an SMB's existing AI-decision tools (hiring, credit, pricing) to start capturing the required audit trail well before enforcement begins.</p><p class="field"><strong>Why you</strong>Same shape as a regulation-created SMB gap you've already validated works for this list; 18-month runway means early movers can own the category.</p><p class="field"><strong>First step</strong>Spec the minimum log schema SB 26-189 requires today and sketch how it'd wrap one common AI tool (e.g., an ATS).</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-11-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Agent Workforce Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>ChatGPT Work, Sim, and Scarlett — three distinct "AI coworker that takes real actions" products — all launched in the same Product Hunt window — <a href="https://www.producthunt.com/leaderboard/daily/2026/7/11" rel="noopener">Product Hunt leaderboard</a></p><p class="field"><strong>The idea</strong>A vertical-specific AI "employee" platform (e.g., healthcare scheduling, logistics dispatch) with deep systems integrations and liability/compliance handling that generic agent platforms won't build.</p><p class="field"><strong>Scale</strong>Needs enterprise integrations, trust/liability infrastructure, and enterprise sales cycles — a funded, team-built play, but three independent launches converging on the same thesis in one day is a strong signal.</p>
+
+</article><article id="idea-2026-07-11-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>GPU Circular-Financing Arbitrage Brokerage</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Nvidia/CoreWeave/Nebius circular-financing structure was dissected as a top HN story, highlighting GPU capital concentration — <a href="https://io-fund.com/ai-stocks/nvidia-coreweave-nebius-circular-financing-gpu-boom" rel="noopener">io-fund analysis</a></p><p class="field"><strong>The idea</strong>A compute brokerage that aggregates GPU capacity outside the big circular-financing players' terms, giving mid-market AI companies a financing-neutral spot marketplace.</p><p class="field"><strong>Scale</strong>Requires serious capital and hardware/data-center relationships — not a solo build, but taps a durable structural distortion in AI infrastructure, not a one-week news cycle.</p>
+
+</article><article id="idea-2026-07-11-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Distributed Local-Inference Network</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Mesh LLM, a P2P distributed AI computing stack built on iroh, gained real traction the same day as the "run GLM 5.2 on my slow computer" post — <a href="https://www.iroh.computer/blog/mesh-llm" rel="noopener">iroh blog</a></p><p class="field"><strong>The idea</strong>A Folding@home-style network where people donate spare compute to run open models at scale, monetized by paying node operators and selling cheap inference to developers avoiding big cloud AI providers.</p><p class="field"><strong>Scale</strong>Needs protocol design, incentive engineering, and a critical mass of node operators to be viable — infrastructure-company territory, but today's two strongest local/distributed-inference signals point the same direction.</p>
+
+</article>
+</div></body>
+</html>

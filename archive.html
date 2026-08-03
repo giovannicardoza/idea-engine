@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Idea Engine archive</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Archive</p>
+<h1>25 days</h1>
+<nav class="nav"><a href="./index.html">Latest &rarr;</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<ul class="archive"><li><a href="./2026-08-03.html">
+<span>Monday, August 3, 2026<br><span class="when">Private On-Device AI Intake Assistant</span></span>
+<span class="when">2026-08-03</span></a></li><li><a href="./2026-08-02.html">
+<span>Sunday, August 2, 2026<br><span class="when">Multi-Jurisdiction AI Impact Assessment Kit</span></span>
+<span class="when">2026-08-02</span></a></li><li><a href="./2026-08-01.html">
+<span>Saturday, August 1, 2026<br><span class="when">Section 179 Expensing Advisory Kit</span></span>
+<span class="when">2026-08-01</span></a></li><li><a href="./2026-07-31.html">
+<span>Friday, July 31, 2026<br><span class="when">Brittle-Automation Escape Hatch</span></span>
+<span class="when">2026-07-31</span></a></li><li><a href="./2026-07-30.html">
+<span>Thursday, July 30, 2026<br><span class="when">Final-10%-Polish Sprint</span></span>
+<span class="when">2026-07-30</span></a></li><li><a href="./2026-07-29.html">
+<span>Wednesday, July 29, 2026<br><span class="when">Agent Instruction Compliance Tester</span></span>
+<span class="when">2026-07-29</span></a></li><li><a href="./2026-07-28.html">
+<span>Tuesday, July 28, 2026<br><span class="when">T-Mobile Outage Connectivity Failover Sprint</span></span>
+<span class="when">2026-07-28</span></a></li><li><a href="./2026-07-27.html">
+<span>Monday, July 27, 2026<br><span class="when">AI Tone-Matched Reply Drafting Skill</span></span>
+<span class="when">2026-07-27</span></a></li><li><a href="./2026-07-26.html">
+<span>Sunday, July 26, 2026<br><span class="when">EU AI Act Content-ID Rush Sprint</span></span>
+<span class="when">2026-07-26</span></a></li><li><a href="./2026-07-25.html">
+<span>Saturday, July 25, 2026<br><span class="when">Real Estate Showing Follow-Up Agent</span></span>
+<span class="when">2026-07-25</span></a></li><li><a href="./2026-07-24.html">
+<span>Friday, July 24, 2026<br><span class="when">MCP Traffic Leak Monitor</span></span>
+<span class="when">2026-07-24</span></a></li><li><a href="./2026-07-23.html">
+<span>Thursday, July 23, 2026<br><span class="when">AI Confidence Flagging Skill</span></span>
+<span class="when">2026-07-23</span></a></li><li><a href="./2026-07-22.html">
+<span>Wednesday, July 22, 2026<br><span class="when">AI-Slop Redesign Rescue Sprint</span></span>
+<span class="when">2026-07-22</span></a></li><li><a href="./2026-07-21.html">
+<span>Tuesday, July 21, 2026<br><span class="when">Offline-First App Scaffolding Skill</span></span>
+<span class="when">2026-07-21</span></a></li><li><a href="./2026-07-20.html">
+<span>Monday, July 20, 2026<br><span class="when">WordPress AI Vulnerability Pre-Scan Service</span></span>
+<span class="when">2026-07-20</span></a></li><li><a href="./2026-07-19.html">
+<span>Sunday, July 19, 2026<br><span class="when">Claude Rate-Limit Budget Tracker</span></span>
+<span class="when">2026-07-19</span></a></li><li><a href="./2026-07-18.html">
+<span>Saturday, July 18, 2026<br><span class="when">Freelancer Client Portal Starter Kit</span></span>
+<span class="when">2026-07-18</span></a></li><li><a href="./2026-07-17.html">
+<span>Friday, July 17, 2026<br><span class="when">Claude-in-Slack Rollout Playbook</span></span>
+<span class="when">2026-07-17</span></a></li><li><a href="./2026-07-16.html">
+<span>Thursday, July 16, 2026<br><span class="when">Google Play Compliance Sprint</span></span>
+<span class="when">2026-07-16</span></a></li><li><a href="./2026-07-15.html">
+<span>Wednesday, July 15, 2026<br><span class="when">Section 1071 Small-Lender Compliance Kit</span></span>
+<span class="when">2026-07-15</span></a></li><li><a href="./2026-07-14.html">
+<span>Tuesday, July 14, 2026<br><span class="when">World Cup Final Weekend Marketing Sprint</span></span>
+<span class="when">2026-07-14</span></a></li><li><a href="./2026-07-13.html">
+<span>Monday, July 13, 2026<br><span class="when">EU E-Invoicing Compliance Kit</span></span>
+<span class="when">2026-07-13</span></a></li><li><a href="./2026-07-12.html">
+<span>Sunday, July 12, 2026<br><span class="when">MCP Spec Compliance Auditor</span></span>
+<span class="when">2026-07-12</span></a></li><li><a href="./2026-07-11.html">
+<span>Saturday, July 11, 2026<br><span class="when">Sonnet 5 Price-Window Sprint</span></span>
+<span class="when">2026-07-11</span></a></li><li><a href="./2026-07-10.html">
+<span>Friday, July 10, 2026<br><span class="when">API Sunset Migration Sprint</span></span>
+<span class="when">2026-07-10</span></a></li></ul></div></body>
+</html>

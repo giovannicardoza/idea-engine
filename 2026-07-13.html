@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-13</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Monday, July 13, 2026</h1>
+<nav class="nav"><a href="./2026-07-12.html">&larr; Sun, Jul 12</a><a href="./2026-07-14.html">Tue, Jul 14 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>EU E-Invoicing Compliance Kit</h2>
+<p>Over 10 million EU-facing SMBs have to convert their legacy invoice formats to the UBL/Peppol e-invoicing standard by end of 2026, and today's scan shows the compliance tooling for it is either missing or priced for enterprises. That's the exact shape that's worked all week — a hard deadline plus a huge, underserved SMB population with real budget — and a Claude Code-built checklist-and-converter app is fast enough to catch the wave before it gets crowded.</p>
+</div>
+<article id="idea-2026-07-13-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-app">App</span>
+
+<h3>EU E-Invoicing Compliance Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>10M+ EU-facing SMBs must convert legacy invoice formats to UBL/Peppol standards by end of 2026, with compliance tools missing or too expensive — <a href="https://ideaproof.io/guides/unique-business-ideas" rel="noopener">ideaproof.io</a></p><p class="field"><strong>The idea</strong>A small app that ingests an SMB's existing invoice template/export and outputs a UBL/Peppol-compliant version, plus a plain-English readiness checklist for the parts that need manual fixing.</p><p class="field"><strong>Why you</strong>Shippable-in-days mini-app in the custom-software lane; distinct regulation from the EU AI Act pack already on the ledger — this is invoicing infrastructure, not AI governance.</p><p class="field"><strong>First step</strong>Pull the official UBL/Peppol field spec today and map it against 2 real SMB invoice templates to scope the converter.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-13-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-business">Business</span>
+
+<h3>Copilot Cost-Cutter Migration Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Microsoft raised Copilot Business per-seat pricing 17% ($18 → $21/user/month) on July 1, forcing mid-fiscal-year budget reforecasts — <a href="https://www.stmicro.net/blog/microsoft-365-copilot-business-july-2026/" rel="noopener">stmicro.net</a></p><p class="field"><strong>The idea</strong>A fixed-price audit of an SMB's Copilot seat usage that flags unused/low-value seats and prices out swapping the rest to a cheaper Claude-based setup.</p><p class="field"><strong>Why you</strong>Custom-software lane plus your own Claude expertise; distinct from the Claude-for-SMB Concierge already on the ledger — that's a greenfield setup service, this is a cost-optimization audit of an existing, suddenly-more-expensive tool.</p><p class="field"><strong>First step</strong>Tally Copilot seat costs at the new $21 rate for a hypothetical 20-seat SMB today and draft the audit questionnaire.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-13-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>MCP Monetization Wrapper</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Loomal, a monetization layer for MCP servers, launched on Product Hunt as a first-mover in an underserved infra gap — <a href="https://producthunt.com/products/loomal" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that wraps an existing MCP server with metering and a paywall so solo builders can charge per call without hand-rolling billing.</p><p class="field"><strong>Why you</strong>Extends your own skill-building lane and sells to the same solo-Claude-Code-builder audience the Cost Router skill already validated; distinct from the MCP Spec Compliance Auditor on the ledger — that's about spec conformance, this is about getting paid.</p><p class="field"><strong>First step</strong>Read Loomal's product listing today and sketch the metering/paywall wrapper's API surface against one MCP server you already run.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-13-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Legacy Trades Ops Starter Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>HVAC and service-trade contractors doing $2M–$5M in revenue are still running on 2005-era Excel and paper invoices, with no vertical SaaS built for them — <a href="https://ideaproof.io/guides/unique-business-ideas" rel="noopener">ideaproof.io</a></p><p class="field"><strong>The idea</strong>A fixed-price starter package (customer database, scheduling, invoicing) built fast with Claude Code for one trade vertical, proven on a couple of real contractors before templating it.</p><p class="field"><strong>Why you</strong>Squarely the boring-SMB custom-software lane, in a genuinely virgin vertical, shippable in weeks not months.</p><p class="field"><strong>First step</strong>Message 2 local HVAC/trades contractors today to confirm they're still on Excel/paper and gauge interest.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-13-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI Regression Test Harness for Vibe-Coded Apps</h3>
+</div>
+<p class="field"><strong>Trigger</strong>92% of developers use AI coding tools daily but regression testing for what AI ships remains entirely unsolved, and separate coverage shows AI-built prototypes ship with security/edge-case gaps exposed — <a href="https://blog.devgenius.io/the-agentic-coding-stack-7-tools-5-layers-and-the-missing-link-nobody-has-built-yet-de264b260db3" rel="noopener">devgenius.io</a>, <a href="https://www.chopdawg.com/why-vibe-coded-projects-fail-the-gap-between-a-prototype-and-a-product-nobody-talks-about/" rel="noopener">chopdawg.com</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that, after any AI-generated change, auto-generates regression tests and flags likely prototype-to-product gaps (missing auth, error handling, edge cases) before calling a feature "done."</p><p class="field"><strong>Why you</strong>Protects your own delivery pipeline across every client build, not just SQL; distinct from the AI-SQL Safety Checker on the ledger, which only covers database migrations — this covers general behavioral regressions and production-readiness gaps.</p><p class="field"><strong>First step</strong>Take one of your own recent commits today and hand-write the tests/gap-audit the skill should have auto-generated, to validate the idea before building it.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-13-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Client Report Auto-Generator</h3>
+</div>
+<p class="field"><strong>Trigger</strong>DOM-docx, a Show HN launch converting HTML straight into native Word docs, showed real interest in bridging AI output to polished documents — <a href="https://github.com/floodtide/dom-docx" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>A skill that takes any audit/checklist output you've already built for a client (tariff calculator, compliance checklist, etc.) and auto-formats it into a branded, client-ready Word report.</p><p class="field"><strong>Why you</strong>Raises the perceived value and price of every audit-style deliverable you already ship, and composes directly with your existing docx skill.</p><p class="field"><strong>First step</strong>Take one existing checklist output today and hand-convert it into a polished Word doc using the docx skill, to prototype the wrapper.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-13-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Vendor Payment Fraud Watchdog</h3>
+</div>
+<p class="field"><strong>Trigger</strong>B2B vendor-takeover payment fraud costs businesses an estimated $50B/year, and marketplace/SMB founders report no accessible tooling to catch it — <a href="https://ideaproof.io/guides/unique-business-ideas" rel="noopener">ideaproof.io</a></p><p class="field"><strong>The idea</strong>A lightweight agent that watches an SMB's accounts-payable workflow for classic vendor-takeover red flags (bank-detail change requests, urgent wire asks, brand-new vendors with no history) and flags them before payment goes out.</p><p class="field"><strong>Why you</strong>Agent-building lane with a clean, narrow scope a solo operator can ship fast, against a real and large fraud number.</p><p class="field"><strong>First step</strong>Draft the 10 most common vendor-fraud red flags today as the watchdog's first rule set.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-13-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal AI Model Router Exchange</h3>
+</div>
+<p class="field"><strong>Trigger</strong>GPT-5.6 (Sol/Terra/Luna), Grok 4.5, and Claude Sonnet 5 all launched within days of each other, fragmenting the model market on price and capability — <a href="https://thursdai.news/releases/2026-07" rel="noopener">ThursdAI</a></p><p class="field"><strong>The idea</strong>A neutral, cross-vendor routing exchange that sends every API call to whichever frontier model is currently cheapest/best for that specific task, in real time, across all major labs.</p><p class="field"><strong>Scale</strong>Three separate frontier-lab launches converging the same week is a strong signal, but a truly neutral, always-current router needs deep vendor relationships and constant benchmarking at a scale no solo tool can sustain — infrastructure-company territory.</p>
+
+</article><article id="idea-2026-07-13-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Agent Security &amp; Bug-Bounty Exchange</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Playground, a bug-bounty platform built specifically for AI agents, launched on Product Hunt as agent security emerges as its own category — <a href="https://producthunt.com/products/nyx-4" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A dedicated marketplace matching security researchers to agentic systems that now take real actions (payments, code execution, data access), the way HackerOne matches researchers to web apps.</p><p class="field"><strong>Scale</strong>Agent-specific vulnerabilities are becoming a systemic liability as agentic commerce scales, but building trust and researcher supply for a category-defining platform needs deep security credibility and enterprise sales, not a solo build.</p>
+
+</article><article id="idea-2026-07-13-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Global Payroll Compliance Infrastructure</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Companies running 50+ country payrolls face fragmented, fast-changing tax and deduction rules, while the CFPB's new small-business lending data threshold resets compliance timelines again — <a href="https://www.gtlaw.com/en/insights/2026/5/cfpb-final-rule-narrows-small-business-lending-data-collection-requirements" rel="noopener">GT Law</a></p><p class="field"><strong>The idea</strong>A continuously-updated compliance agent that unifies payroll tax, deduction, and disclosure rules across dozens of jurisdictions for companies with distributed global teams.</p><p class="field"><strong>Scale</strong>Global remote hiring is colliding with tightening compliance regimes everywhere at once, but unifying dozens of jurisdictions' tax law is an enterprise infrastructure business needing deep legal/tax data partnerships, not a solo build.</p>
+
+</article>
+</div></body>
+</html>

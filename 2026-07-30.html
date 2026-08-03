@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-30</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Thursday, July 30, 2026</h1>
+<nav class="nav"><a href="./2026-07-29.html">&larr; Wed, Jul 29</a><a href="./2026-07-31.html">Fri, Jul 31 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Final-10%-Polish Sprint</h2>
+<p>A fixed-price sprint where Gio ships someone else's 90%-done vibe-coded app: bug sweep, edge cases, deploy, launch checklist. An analysis of 968 r/SideProject launches found 80% of side projects fail not at the building stage but at the last-mile polish, and that exact audience is already posting "stuck" threads today. It slots directly into Gio's existing sprint-service lane with almost no new tooling needed.</p>
+</div>
+<article id="idea-2026-07-30-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Payment Processor ToS Watchdog</h3>
+</div>
+<p class="field"><strong>Trigger</strong>PayPal quietly updated its User Agreement on July 14, 2026, the kind of policy drift merchants never notice until a payout gets frozen. Source: <a href="https://conductatlas.com/change/2026-07-14-paypal-paypal-user-agreement-3669/" rel="noopener">Conduct Atlas</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that diffs a merchant's payment processor ToS/policy pages on a schedule and flags fee, hold, and dispute-rule changes in plain English.</p><p class="field"><strong>Why you</strong>Same shape as your compliance-kit lane, ships as a skill in a day, sellable to any client running Stripe, PayPal, or Square.</p><p class="field"><strong>First step</strong>Pull the current vs. prior PayPal User Agreement text and prototype the diff-and-summarize prompt today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>SMB Subscription Audit &amp; Cancellation Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>r/smallbusiness owners report averaging 17 wasted hours a month on operational workarounds, with subscription auditing and cancellation named as an unsolved pain point. Source: <a href="https://medium.com/startup-insider-edge/9-reddit-small-business-pain-points-with-no-solutions-5d194d4d9a36" rel="noopener">Reddit pain-points roundup</a></p><p class="field"><strong>The idea</strong>An agent that scans a business's card or bank statements for recurring charges, flags unused or duplicate subscriptions, and drafts the cancellation emails.</p><p class="field"><strong>Why you</strong>Narrow, high-clarity agent build that fits your fixed-price sprint model; distinct from the AI-tool-only price watchdog already in the ledger.</p><p class="field"><strong>First step</strong>Prototype against a sample CSV of transactions and see how cleanly it clusters recurring charges.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Voice-to-Spec Intake Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Two voice-first tools launched on Product Hunt today, SKI for voice coding with Claude Code and Wispr Flow claiming a 4x speed boost, signaling voice is becoming the default input for building. Source: <a href="https://www.producthunt.com/products/ski" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A skill that turns a rambling voice memo about a client's problem straight into a structured build spec or CLAUDE.md, feeding your existing business-problem-to-blueprint pipeline.</p><p class="field"><strong>Why you</strong>Speeds up your own discovery-to-spec step, and it is a resellable skill for other solo builders.</p><p class="field"><strong>First step</strong>Record a real client-intake voice memo and run it through a draft extraction prompt.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Beneficial Ownership Registry Lite</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Federal BOI reporting enforcement is paused with no clarity on when or if it resumes, leaving small businesses guessing whether to stay compliant. Source: <a href="https://bittyadvance.com/blog/smb-regulations-2026/" rel="noopener">SMB Regulations 2026</a></p><p class="field"><strong>The idea</strong>A dead-simple app where an SMB owner logs beneficial-owner details once, and the app keeps the record audit-ready regardless of which way enforcement swings.</p><p class="field"><strong>Why you</strong>Same checklist-app pattern you've shipped repeatedly this month, trivial to build with Claude Code.</p><p class="field"><strong>First step</strong>Draft the minimal data schema for a beneficial-owner record and a one-page intake form.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI Commit Provenance Tracker</h3>
+</div>
+<p class="field"><strong>Trigger</strong>42% of commits in active repos are now AI-assisted, and no standard exists for tracking which model generated what or its license provenance. Source: <a href="https://evilmartians.com/chronicles/six-things-developer-tools-must-have-to-earn-trust-and-adoption" rel="noopener">Evil Martians</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that tags every commit with which model or session generated it and keeps a provenance log a client can hand to auditors or acquirers.</p><p class="field"><strong>Why you</strong>Directly useful on your own client engagements, and a sellable add-on for other AI-assisted dev shops.</p><p class="field"><strong>First step</strong>Add a commit-trailer convention to one active project and script the log extraction.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Final-10%-Polish Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>An analysis of 968 r/SideProject launches found 80% of side projects fail, not at the building stage but at the final push: shipping, edge-case bugs, and last-mile UX polish. Source: <a href="https://news.ycombinator.com/item?id=39816766" rel="noopener">HN discussion</a></p><p class="field"><strong>The idea</strong>A fixed-price, few-day sprint where Gio takes someone's 90%-done vibe-coded app and ships it: bug sweep, edge cases, deploy, launch checklist.</p><p class="field"><strong>Why you</strong>Squarely in your existing sprint-service lane, and the target customer, a solo builder stuck at the finish line, is exactly who's posting in r/SideProject and r/ClaudeAI.</p><p class="field"><strong>First step</strong>Write the sprint's fixed scope and pricing, then post it as an offer in a live r/SideProject "stuck" thread.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-app">App</span>
+
+<h3>2026 Payroll Limit Compliance Checker</h3>
+</div>
+<p class="field"><strong>Trigger</strong>2026 payroll thresholds shifted (SSA wage base to $184,500, FSA cap to $4,400, 401k limit to $24,500) while labor cost and compliance complexity rank among small employers' top concerns. Source: <a href="https://www.adp.com/spark/articles/2026/03/the-2026-hr-trends-small-businesses-cant-ignore.aspx" rel="noopener">ADP Spark</a></p><p class="field"><strong>The idea</strong>A tiny lookup and checklist app telling an SMB owner which 2026 payroll limits changed and whether their current setup is still compliant.</p><p class="field"><strong>Why you</strong>Same low-effort checklist-app pattern you've shipped before, quick to build, easy to sell as a one-time or seasonal product.</p><p class="field"><strong>First step</strong>Compile the full list of 2026 threshold changes into a structured checklist.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal 2GB-RAM Frontier Inference Layer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>An open-source engine now runs a 26B-parameter model (Gemma 4) in 2GB of RAM on an M-series Mac, collapsing what used to require a data-center GPU. Source: <a href="https://github.com/drumih/turbo-fieldfare" rel="noopener">GitHub</a></p><p class="field"><strong>The idea</strong>A company building the distribution and tooling layer that lets any consumer device run frontier-class open models locally, breaking cloud inference's cost moat.</p><p class="field"><strong>Scale</strong>If local inference keeps compressing like this, it undercuts the entire rented-GPU inference industry within a few model generations.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>WASM Agent Sandbox Infrastructure Standard</h3>
+</div>
+<p class="field"><strong>Trigger</strong>agentOS launched a WebAssembly sandbox for AI agents claiming 254x cheaper execution than container-based sandboxing. Source: <a href="https://www.producthunt.com/products/agentos-3" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>Push WASM sandboxing to become the default neutral runtime every agent vendor executes untrusted agent code in, the way Cloudflare Workers became the default edge runtime.</p><p class="field"><strong>Scale</strong>Every AI agent platform needs a sandbox; owning the standard here is Cloudflare-Workers-for-agents scale infrastructure.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-30-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Code-Provenance Governance Standard Body</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Developer-tooling research shows 42% of commits are AI-assisted with no governance standard, the same week the GCC open-source steering committee announced its own AI policy. Source: <a href="https://lwn.net/Articles/1086041/" rel="noopener">LWN</a></p><p class="field"><strong>The idea</strong>An independent standards body, enforced by autonomous auditing agents, certifying the provenance and license safety of AI-generated code across the industry: an SPDX-for-AI-code.</p><p class="field"><strong>Scale</strong>Every enterprise adopting AI coding at scale will eventually need this certification to pass due diligence, acquisition, or insurance review.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>

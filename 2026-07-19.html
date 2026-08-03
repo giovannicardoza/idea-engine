@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-19</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Sunday, July 19, 2026</h1>
+<nav class="nav"><a href="./2026-07-18.html">&larr; Sat, Jul 18</a><a href="./2026-07-20.html">Mon, Jul 20 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Claude Rate-Limit Budget Tracker</h2>
+<p>Two r/ClaudeAI megathreads blew up today: "20x max usage gone in 19 minutes" (330+ comments) and "Claude Code Limits Were Silently Reduced" (360+ comments), both over Anthropic quietly tightening Pro/Max plan limits. That's a live, angry, already-paying audience actively looking for a fix right now, and it's a skill Gio can build and dogfood on his own Claude Code sessions today.</p>
+</div>
+<article id="idea-2026-07-19-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Claude Rate-Limit Budget Tracker</h3>
+</div>
+<p class="field"><strong>Trigger</strong>r/ClaudeAI megathreads over silently-reduced Pro/Max plan limits: "20x max usage gone in 19 minutes" and "Claude Code Limits Were Silently Reduced" both broke 300+ comments today. Source: <a href="https://www.clauder-navi.com/en/claude-2026-reddit" rel="noopener">clauder-navi.com</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that tracks token/message consumption against a user's actual plan limits in real time, warns before a session hits the wall, and suggests a model-tier downshift to stretch the budget.</p><p class="field"><strong>Why you</strong>Direct extension of the model-router skill lane already on the ledger (Claude Cost Router, 07-10) but solves a different problem: that one routes for cost, this one prevents getting cut off mid-session, and it sells to the exact audience venting about this today.</p><p class="field"><strong>First step</strong>Instrument a simple usage log against your own Claude Code sessions today and see how close you actually run to plan limits.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-19-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>NYC AI Real Estate Image Disclosure Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>NYC's new mandate (via Mayor Mamdani) bars landlords from secretly using AI-altered images to advertise properties, today's #1 HN-adjacent story at 513 points. Source: <a href="https://petapixel.com/2026/07/16/mayor-mamdani-says-landlords-cant-secretly-use-ai-images-to-advertise-properties/" rel="noopener">PetaPixel</a></p><p class="field"><strong>The idea</strong>A small app that scans a listing's photos for AI-generation/alteration markers and auto-generates the compliant disclosure copy landlords/agents now have to attach.</p><p class="field"><strong>Why you</strong>Same shippable-in-days compliance-checklist shape that's converted repeatedly this week, applied to a genuinely fresh vertical (real estate listings) nothing on the ledger has touched, and pairs the app build with your copywriting lane for the disclosure text itself.</p><p class="field"><strong>First step</strong>Pull the mandate's exact disclosure requirements today and test the checklist against 3 real NYC listing photos.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-19-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Freelancer Payment Collection Auto-Nudger</h3>
+</div>
+<p class="field"><strong>Trigger</strong>r/freelance chatter shows invoicing tools make sending easy but payment collection stays manual: freelancers default to Wave/FreshBooks/direct Stripe links rather than switching platforms. Source: <a href="https://seojuice.com/blog/best-invoicing-billing-tools-freelancers-2026" rel="noopener">seojuice.com</a></p><p class="field"><strong>The idea</strong>A narrow agent that watches unpaid invoices across whatever tool a freelancer already uses and auto-drafts an escalating, polite reminder sequence, no platform migration required.</p><p class="field"><strong>Why you</strong>Distinct from the Freelancer Client Portal Starter Kit on the ledger (07-18), which replaces the whole intake/status stack: this is a thin bolt-on that respects the Reddit finding that freelancers don't want to switch tools, just get paid faster.</p><p class="field"><strong>First step</strong>Draft the 3-email escalation sequence today and test it against one of your own overdue invoices.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-19-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Multi-State Consumer Privacy Law Compliance Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Seven states (CA, DE, IN, KY, MO, OK, TN) add new consumer data-protection laws in 2026, stacking compliance complexity for any SMB operating across state lines. Source: <a href="https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026" rel="noopener">BBSI</a></p><p class="field"><strong>The idea</strong>A checklist app that takes an SMB's list of operating states and generates the specific consumer-data obligations (disclosure, opt-out, deletion-request handling) it now has to meet in each one.</p><p class="field"><strong>Why you</strong>Same compliance-kit shape that's the highest-converting pattern on the ledger all week (EU AI Act, HIPAA, Reg S-P, Section 1071), but this is the first one covering US state consumer-privacy law specifically, a fresh regulatory vertical.</p><p class="field"><strong>First step</strong>Pull the specific new obligations for 2-3 of the 7 states today and build the first state's checklist before generalizing.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-19-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Instagram Raw-Content Strategy Rewrite</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Instagram's 2026 algorithm shift now favors "raw," unpolished content over produced posts, forcing brand accounts to retool their content strategy. Source: <a href="https://doncreativegroup.com/trends-and-news/instagrams-raw-content-revolution-major-platform-updates/" rel="noopener">Don Creative Group</a></p><p class="field"><strong>The idea</strong>A content-strategy rewrite service for SMB/brand Instagram accounts: new shot lists, caption tone, and posting cadence built around what the new feed logic actually rewards.</p><p class="field"><strong>Why you</strong>Pure copywriting/marketing lane; distinct from the Meta Ads Trust-Messaging and Snapchat Ad Compliance rewrites already on the ledger, which are paid-ad and compliance fixes: this is organic content strategy for a platform-algorithm shift, not an ad or legal problem.</p><p class="field"><strong>First step</strong>Audit 3 real brand Instagram accounts today against the new raw-content signal and draft one sample retooled post.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-19-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>QR-Embedded AI Image Marketing Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Meta Muse Image now generates images with working QR codes embedded directly in the visual, a brand-new capability for product packaging and print marketing. Source: <a href="https://www.aiapps.com/blog/july-ai-mega-update-major-breakthroughs-launches/" rel="noopener">aiapps.com</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack teaching the prompt patterns that produce a functional, scannable QR code baked into an on-brand marketing image (packaging, flyers, table tents).</p><p class="field"><strong>Why you</strong>Direct fit for the digital-product/Gumroad lane, low build cost, rides a capability that's days old and not yet crowded.</p><p class="field"><strong>First step</strong>Generate 5 test images with Meta Muse today and confirm which prompt patterns actually produce a reliably scannable code.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-19-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>AI Subscription Price-Hike Watchdog</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit AI-tool chatter shows real frustration with silent pricing/feature changes: Cursor users calling it "nagware" after a pricing shift, alongside broader 2026 tool-fatigue threads. Source: <a href="https://dev.to/b1fe7066aefjbingbong/reddits-most-upvoted-ai-tools-of-2026-ranked-3hhl" rel="noopener">dev.to</a></p><p class="field"><strong>The idea</strong>An agent that periodically checks an SMB's actual subscribed AI-tool stack for pricing, quota, or feature-downgrade changes and flags when it's time to renegotiate or switch.</p><p class="field"><strong>Why you</strong>Distinct from the AI Tool Survivor Filter on the ledger (07-14), which is a one-time evaluation report: this is continuous monitoring of tools already in use, closer in shape to the Copilot Cost-Cutter Migration Audit (07-13) but automated and ongoing instead of a one-off audit.</p><p class="field"><strong>First step</strong>List the 5 AI tools you personally pay for today and sketch what a change-detection check would look like for each.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-19-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Live-Translation Communication Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Google's Gemini Omni Flash &amp; Live Translate launched real-time translation across 70+ languages this month. Source: <a href="https://www.aiapps.com/blog/top-ai-news-july-breakthroughs-launches-trends/" rel="noopener">aiapps.com</a></p><p class="field"><strong>The idea</strong>An enterprise/healthcare/government-grade communication platform built on real-time universal translation, replacing human interpreters for routine cross-language interactions at scale.</p><p class="field"><strong>Scale</strong>Real-time 70+ language translation just crossed a genuine capability threshold, but building the trust, liability coverage, and vertical integrations (healthcare, legal, government) needed to displace human interpreters is enterprise-sales and compliance territory, not a solo build.</p>
+
+</article><article id="idea-2026-07-19-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Decentralized Social Infrastructure Company</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Non.io, a decentralized/IndieWeb alternative to Reddit, hit 1,943 points on Show HN today, the same month Reddit killed the last free unauthenticated data-access workaround. Source: <a href="https://non.io" rel="noopener">non.io</a></p><p class="field"><strong>The idea</strong>An open protocol and data-portability layer for the growing wave of indie/decentralized social platforms, giving them shared identity, moderation tooling, and archival infrastructure none can afford to build alone.</p><p class="field"><strong>Scale</strong>Trust in centralized platforms (Reddit's data lockdown, ongoing API fights) is visibly eroding, but building neutral infrastructure multiple competing platforms would actually adopt needs protocol-design depth and a coalition of partners, not a solo build.</p>
+
+</article><article id="idea-2026-07-19-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Modular Open-Source Hardware Manufacturing Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A Show HN open-source laptop build hit 3,237 points today, alongside a widely-read piece arguing hardware manufacturing is more accessible to small teams than assumed. Source: <a href="https://www.byran.ee/posts/creation/" rel="noopener">byran.ee</a></p><p class="field"><strong>The idea</strong>An agent-assisted platform that walks solo builders/small teams through designing, sourcing, and low-volume manufacturing a custom hardware product, the Claude-Code-for-hardware equivalent.</p><p class="field"><strong>Scale</strong>Today's two strongest hardware signals both point at the same thesis, that hardware is de-mystifying for small teams, but stitching together supply-chain, manufacturing-partner, and compliance logistics into a real platform needs deep operational infrastructure no solo build can shortcut.</p>
+
+</article>
+</div></body>
+</html>

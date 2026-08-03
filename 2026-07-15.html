@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-07-15</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Wednesday, July 15, 2026</h1>
+<nav class="nav"><a href="./2026-07-14.html">&larr; Tue, Jul 14</a><a href="./2026-07-16.html">Thu, Jul 16 &rarr;</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Section 1071 Small-Lender Compliance Kit</h2>
+<p>CFPB's Section 1071 small-business lending data rule was finalized this year, and covered lenders need data-collection systems running well before the 2028-2029 enforcement window: a dated compliance gap with real institutional budget behind it, exactly the shape that's converted three times already this week. It's a shippable-in-days checklist app for a boring, underserved lending niche nobody on the ledger has touched yet.</p>
+</div>
+<article id="idea-2026-07-15-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-app">App</span>
+
+<h3>Section 1071 Small-Lender Compliance Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>CFPB's Section 1071 small-business lending data rule was finalized May 1, 2026, requiring covered lenders to collect/report demographic, pricing, and denial data on small-business credit applications. Source: <a href="https://riskexec.com/blogs/section-1071-compliance-deadline-2028-2026-cfpb-rule-guide/" rel="noopener">RiskExec</a></p><p class="field"><strong>The idea</strong>A small app that walks a community bank/CDFI/small lender through the required 1071 data fields, validates a loan file against them, and flags gaps before an exam.</p><p class="field"><strong>Why you</strong>Same shippable-in-days compliance-checklist shape that's worked three times already this week (EU e-invoicing, EU AI Act, tariff calculator); small lenders are exactly the boring, underserved niche your custom-software lane targets, and nothing on the ledger touches lending-data compliance.</p><p class="field"><strong>First step</strong>Pull the CFPB's official 1071 data-field list today and build the validation checklist against one sample loan file before writing the intake app.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-15-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Voice-Clone Fraud Screener</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Today's top HN story argues AI voice-cloning fraud is "outrunning every defense" being built against it. Source: <a href="https://news.ycombinator.com/item?id=48920432" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A narrow agent for one high-risk workflow (e.g. a title company or bookkeeper's "confirm wire change by phone" step) that screens an inbound call for synthetic-voice markers and forces callback-verification before any payment detail changes.</p><p class="field"><strong>Why you</strong>Distinct from the Vendor Payment Fraud Watchdog on the ledger (that flags red flags in AP data after the fact; this screens the live call before the fraud happens), agent-building lane, genuinely fresh trigger.</p><p class="field"><strong>First step</strong>Test 2-3 existing voice-deepfake-detection APIs today against a sample cloned-voice clip to see which is accurate and cheap enough to wrap in an agent.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-15-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-business">Business</span>
+
+<h3>AI-Readiness Data Audit Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>42% of SMBs abandon AI initiatives, with dirty data and undocumented processes as the top causes. Source: <a href="https://www.ai-crescent.com/blog/ai-automation-for-small-business" rel="noopener">AI Crescent</a></p><p class="field"><strong>The idea</strong>A fixed-price, few-day "AI-Readiness Audit": Claude Code scans an SMB's actual data exports and processes and hands back a punch list of exactly what to fix before they buy any AI tool.</p><p class="field"><strong>Why you</strong>Sits upstream of every AI-adoption service you already offer (Claude-for-SMB Concierge, Solopreneur Ops Kit on the ledger): this is the sprint you'd sell first, before either of those.</p><p class="field"><strong>First step</strong>Run the audit methodology against your own most recent client's data/process mess today as a dry run.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-15-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI Rollout Change-Comms Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>45% of workers worry AI adoption will hurt their company's reputation and 30% admit to faking enthusiasm about it. Source: <a href="https://www.ai-crescent.com/blog/ai-automation-for-small-business" rel="noopener">AI Crescent</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that generates the internal rollout communications (all-hands script, FAQ, role-specific reassurance emails) an SMB owner needs when introducing an AI tool to a skeptical staff.</p><p class="field"><strong>Why you</strong>Pure copywriting lane, packaged as a reusable skill instead of one-off consulting, a natural add-on to sell alongside the Audit Sprint above or the Claude-for-SMB Concierge on the ledger.</p><p class="field"><strong>First step</strong>Draft the all-hands script template today using the AI Crescent stats as the "here's why people are nervous" opener.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-15-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Agent Guardrail Wrapper</h3>
+</div>
+<p class="field"><strong>Trigger</strong>TrollBridge, a "smart proxy for coding agents," launched on Show HN today, positioning agent sandboxing/control as its own category. Source: <a href="https://trollbridge.dev" rel="noopener">TrollBridge</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that wraps any client-facing agent you deploy with a permission/sandbox layer: hard limits on which files, APIs, and spend an agent can touch, so clients trust letting your agents run against their real systems.</p><p class="field"><strong>Why you</strong>Protects your own delivery pipeline directly (every client agent you've built runs with real access) and is packageable for other solo Claude Code builders, the same audience the Cost Router and MCP skills on the ledger already validated.</p><p class="field"><strong>First step</strong>Wrap one of your own existing client agents with a basic file/API allowlist today and confirm it blocks an out-of-scope action.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-15-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Field Voice-Log Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Wispr Flow was today's #1 Product Hunt launch by a wide margin (538 upvotes, 2,684 comments), the strongest single engagement signal of the day. Source: <a href="https://www.producthunt.com/products/wisprflow" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A narrow agent that lets a field tech (HVAC, plumbing, inspection) speak a job note into their phone and get back a structured, client-ready service record: no typing on a truck dashboard.</p><p class="field"><strong>Why you</strong>Distinct from the Legacy Trades Ops Starter Kit on the ledger (that's the scheduling/invoicing backend): this is a voice-first input layer that could sell standalone or bolt onto it, riding today's clearest proof people want to stop typing.</p><p class="field"><strong>First step</strong>Record one real service-call voice note today and build the prompt that turns it into a structured job record.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-15-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Client Work Paper-Trail Search</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Two independent Show HN launches today, Backscroll and Colloquary, both build searchable local archives of ChatGPT/Claude/Gemini chat history, a rare same-day convergence signal. Source: <a href="https://backscroll.xyz" rel="noopener">Backscroll</a></p><p class="field"><strong>The idea</strong>A narrower version built for consultants/agencies: search your own AI chat history across every client engagement and pull a timestamped record of what was decided, billed, or delivered: positioned as billing/audit evidence, not general search.</p><p class="field"><strong>Why you</strong>You run client work through Claude Code daily and will eventually need exactly this record; two competitors validating general demand the same day means the gap is in a narrow, boring, professional-services angle neither is targeting.</p><p class="field"><strong>First step</strong>Export today's own session logs and sketch the search index schema before building anything general-purpose.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-07-15-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Agentic Commerce Spend-Trust Network</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Agentcard for Companies ("give your agent a debit card") launched on Product Hunt today, one of several products now letting AI agents spend real money autonomously. Source: <a href="https://www.producthunt.com/products" rel="noopener">Product Hunt</a></p><p class="field"><strong>Scale</strong>As agents start paying vendors and each other directly, someone has to be the neutral fraud/policy layer across every agent framework and card network: a Stripe-Radar-for-agent-spend business, but it needs deep banking/card-network relationships and regulatory work no solo build can shortcut.</p>
+
+</article><article id="idea-2026-07-15-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Autonomous Enterprise Audit Swarm</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Meta Muse Spark 1.1 launched with 1M-token context and parallel subagent delegation across real desktop/browser/mobile computer control. Source: <a href="https://www.euronews.com/next/2026/07/08/openai-meta-and-spacexai-push-new-ai-models-in-a-week-of-major-releases" rel="noopener">Euronews</a></p><p class="field"><strong>Scale</strong>Enough parallel computer-use capacity to run continuous, simultaneous compliance/financial audits across thousands of an enterprise's real systems at once: a genuine Big-4-disruptor thesis, but it needs deep audit/assurance credibility and enterprise trust a solo operator can't build alone.</p>
+
+</article><article id="idea-2026-07-15-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Predictive Longevity Health Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Today's top HN story covers new research establishing sleep regularity as a stronger mortality predictor than sleep duration. Source: <a href="https://news.ycombinator.com/item?id=48919363" rel="noopener">Hacker News</a></p><p class="field"><strong>Scale</strong>A wearable-data platform turning sleep-regularity signal into real preventive-care interventions is a category-defining consumer-health business, but it needs clinical validation and healthcare-grade data partnerships, not a solo build.</p>
+
+</article>
+</div></body>
+</html>
