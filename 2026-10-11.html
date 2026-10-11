@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-11</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Sunday, October 11, 2026</h1>
+<nav class="nav"><a href="./2026-10-10.html">&larr; Sat, Oct 10</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Microsoft Store Policy 7.20 Compliance Sprint</h2>
+<p>Microsoft's Store Policy 7.20 takes effect October 22 and mandates cross-device save roaming, seven-language localization, and unified entitlements, which means any indie Windows or Xbox app that doesn't comply stops working for real users in eleven days. It's the same fixed-price audit-and-patch sprint Gio has already run against App Store, Google Play, and platform API sunsets, just pointed at a platform he hasn't served yet. The deadline is dated and real, so the sales conversation writes itself.</p>
+</div>
+<article id="idea-2026-10-11-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>CSP Margin Impact Calculator</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Microsoft added a 5 percent surcharge on Cloud Solution Provider monthly-billed annual subscriptions (SQL Server, Windows Server, CALs) effective October 1, 2026, squeezing the margins of small IT resellers who resell those licenses. Source: <a href="https://www.digitalapplied.com/blog/q4-2026-platform-deadline-calendar-marketers" rel="noopener">digitalapplied.com</a></p><p class="field"><strong>The idea</strong>A small calculator app where a reseller uploads their CSP billing export and gets back the exact dollar margin hit per client contract, plus a suggested pass-through price that keeps the account profitable.</p><p class="field"><strong>Why you</strong>Same calculator-app pattern Gio has shipped repeatedly, aimed at a fresh audience: the small IT resellers and MSPs serving SMBs, instead of the SMBs themselves.</p><p class="field"><strong>First step</strong>Pull one reseller contact's CSP invoice from before and after October 1 and hand-model the margin delta today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Fresh-Eyes Doc Friction Pre-Filter</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A widely discussed post today described paying real volunteers to follow a README cold and recording exactly where each one got stuck, surfacing broken links and unexplained jargon no insider could see. Source: <a href="https://shkspr.mobi/blog/2026/10/i-paid-people-to-try-and-follow-my-readme/" rel="noopener">shkspr.mobi</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that role-plays a context-free first-time reader working through a client's SOP, onboarding doc, or README step by step, flagging the exact line where a newcomer would likely stall, as a fast, free pass before paying real human testers for the deeper check the source article argues only people can do.</p><p class="field"><strong>Why you</strong>A cheap first pass that pairs naturally with Gio's existing onboarding and runbook work, and ships as a same-day add-on to any documentation deliverable.</p><p class="field"><strong>First step</strong>Run the skill against Gio's own Idea Engine README today and see where it predicts a cold reader would get stuck.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Edgee Mod Starter Kit for Claude Code</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Edgee Mod launched on Product Hunt today, adding multi-model support directly inside the Claude Code IDE. Source: <a href="https://www.producthunt.com/products/edgee" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Gumroad pack of pre-configured Edgee Mod routing rules, tiered by task type, so a solo Claude Code builder installs working model-routing in minutes instead of hand-configuring it from scratch.</p><p class="field"><strong>Why you</strong>Direct extension of Gio's existing model-router lane, this time packaged around a brand-new tool instead of a skill built from the ground up.</p><p class="field"><strong>First step</strong>Install Edgee Mod into Gio's own Idea Engine pipeline today and write the first routing rule set as the pack's base.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Perplexity Computer Automations Retrofit Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Perplexity shipped agent-based task automation inside its new "Perplexity Computer" product today. Source: <a href="https://www.producthunt.com/products/perplexity-ai" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A narrow agent that reproduces one client's recurring research or competitor-monitoring task inside Perplexity Computer's automation layer instead of hand-coding a scraper, cutting a multi-day build down to a config job.</p><p class="field"><strong>Why you</strong>Lets Gio deliver the same agent outcome faster by standing on a new platform's automation layer rather than building it from scratch, a build-speed lever for his existing agent lane.</p><p class="field"><strong>First step</strong>Pick one past agent build pattern and reproduce it inside Perplexity Computer today to time the real build difference.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Onepin Voiceover Precision Retrofit Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Onepin launched on Product Hunt this week promising precision AI voiceover that actually gets names, dates, and prices right, a correctness problem standard TTS tools routinely fumble. Source: <a href="https://www.producthunt.com/products/onepin" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scans a client's ad or video script for exactly the fragile tokens, prices, dates, proper nouns, most likely to get mispronounced, and routes just those segments through Onepin-style precision voiceover while the rest stays on the cheaper engine.</p><p class="field"><strong>Why you</strong>A quality-control layer Gio can bolt onto any video or ad deliverable in his copywriting/marketing lane, catching the specific mistake that makes a client wince.</p><p class="field"><strong>First step</strong>Run the skill against one of Gio's own past ad scripts today and flag every token it would have previously mispronounced.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI-CRM Crowded-Category Fit Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Two competing full-stack AI CRM tools, kōdlo and Clarify, launched on Product Hunt the same day today, adding to an already-saturated AI sales-workspace category. Source: <a href="https://www.producthunt.com/products/kodlo" rel="noopener">Product Hunt: kōdlo</a>, <a href="https://www.producthunt.com/products/clarify-6" rel="noopener">Product Hunt: Clarify</a></p><p class="field"><strong>The idea</strong>A narrow skill that takes a solo consultant's or small sales team's actual workflow and runs a head-to-head bake-off between competing AI CRM tools, starting with kōdlo and Clarify, returning a plain recommendation instead of the buyer sitting through five demos.</p><p class="field"><strong>Why you</strong>Same shape as Gio's existing fit-advisor skills for crowded AI categories, applied to the newly crowded AI-CRM space.</p><p class="field"><strong>First step</strong>Run both kōdlo and Clarify against one of Gio's own sales workflows today to draft the comparison rubric.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Computational Proof-Assistant Research Infrastructure</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Terence Tao argued in a "Math 2.0" lecture and post today that research math has shifted from proof scarcity to proof abundance, and that AI should be pointed at understanding and exposition through formal tooling rather than raw problem-solving. Source: <a href="https://terrytao.wordpress.com/2026/10/10/math-2-0/" rel="noopener">terrytao.wordpress.com</a></p><p class="field"><strong>The idea</strong>A category-defining research platform making AI-augmented formal proof assistants the default environment frontier mathematics actually gets done in, not a bolt-on verification step added after the fact.</p><p class="field"><strong>Why you</strong>n/a</p><p class="field"><strong>First step</strong>n/a</p><p class="field"><strong>Scale</strong>Needs buy-in from the research math community at Tao's level, deep integration with existing proof-assistant ecosystems, and years of tooling investment, a research-infrastructure bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Resilient Internet Infrastructure Mapping Authority</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Cloudflare's own traffic data showed bot traffic from a major network collapse almost overnight today after strikes on its datacenter infrastructure, exposing how little visibility ordinary businesses have into cascading geopolitical effects on their own web traffic. Source: <a href="https://news.ycombinator.com/item?id=50041619" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>An agent-driven monitoring network correlating geopolitical infrastructure events, strikes, outages, sanctions, against a business's own traffic and vendor exposure in real time, flagging cascading risk before it shows up as an unexplained traffic drop.</p><p class="field"><strong>Why you</strong>n/a</p><p class="field"><strong>First step</strong>n/a</p><p class="field"><strong>Scale</strong>Needs standing data access across network operators, intelligence sources, and enterprise traffic feeds worldwide, a systemic-infrastructure bet well past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-11-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Overlooked-Vertical AI Venture Studio</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Today's Product Hunt launches skew almost entirely toward AI/ML, dev tools, and productivity, with zero launches in healthcare, fintech, real estate, education, legal tech, supply chain, travel, or insurance, a visible gap across eight large regulated markets. Source: <a href="https://www.producthunt.com/" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A funded venture studio deliberately building AI-native products inside the exact verticals today's indie builders keep skipping, betting that regulatory complexity is a moat rather than a reason to avoid them.</p><p class="field"><strong>Why you</strong>n/a</p><p class="field"><strong>First step</strong>n/a</p><p class="field"><strong>Scale</strong>Needs a portfolio-style studio model spanning multiple regulated verticals simultaneously plus the capital and compliance expertise to operate in each, a multi-year bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
