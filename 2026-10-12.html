@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-12</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Monday, October 12, 2026</h1>
+<nav class="nav"><a href="./2026-10-11.html">&larr; Sun, Oct 11</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>SMB Unclaimed Funds Recovery Agent</h2>
+<p>Kudos 3.0, a browser extension that recovers consumers' unclaimed funds, launched on Product Hunt today, proving the model works and exposing a niche nobody has built for small businesses specifically. State unclaimed-property databases are public and structured, which makes this a narrow, fast build with a pricing model that writes itself: a cut of whatever gets recovered.</p>
+</div>
+<article id="idea-2026-10-12-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>SMB Unclaimed Funds Recovery Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Kudos 3.0, a consumer unclaimed-funds recovery browser extension, hit Product Hunt today. Source: <a href="https://www.producthunt.com/products/kudos-smart-wallet" rel="noopener">Kudos 3.0</a></p><p class="field"><strong>The idea</strong>A narrow agent that cross-references an SMB's past business names, addresses, and vendor relationships against state unclaimed-property databases, then drafts the claim paperwork for any matched escrow, utility deposits, or uncashed vendor checks.</p><p class="field"><strong>Why you</strong>Contingency or flat-fee pricing is obvious, the build is a few structured lookups plus document drafting, and the dated trigger is a funded consumer product proving the exact model works.</p><p class="field"><strong>First step</strong>Run one state's unclaimed-property search portal against a real SMB's business name today and see what surfaces.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Agent Skills Marketplace Packaging Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Skills Hub, a desktop app for managing AI agent skills, hit Show HN today. Source: <a href="https://github.com/qufei1993/skills-hub" rel="noopener">Skills Hub</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that packages any existing skill into a Skills-Hub-compatible manifest (metadata, triggers, version), turning a skill built for internal use into something listable and discoverable outside Claude Code itself.</p><p class="field"><strong>Why you</strong>You already build and sell skills. This multiplies their distribution surface with almost no new work on your end.</p><p class="field"><strong>First step</strong>Read Skills Hub's manifest schema from its repo and write a skill that auto-generates it from an existing SKILL.md.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Local Coding-Model Offload Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>JetBrains released Mellum2.1, a 12B open-weight coding model, on Oct 8, the first genuinely production-viable free model for IDE-integrated tasks. Source: <a href="https://www.nocode.mba/ai-release-tracker/2026/10" rel="noopener">JetBrains Mellum2.1 launch</a></p><p class="field"><strong>The idea</strong>An agent that benchmarks a client's recurring AI-coding tasks (autocomplete, simple refactors, test generation) against Mellum2.1 running locally, then routes the subset that doesn't need frontier quality there, cutting their paid seat spend.</p><p class="field"><strong>Why you</strong>Direct extension of the model-router pattern you've already built (Claude Cost Router, Hybrid Local/Cloud Inference Cost Router) onto a brand-new free-tier target.</p><p class="field"><strong>First step</strong>Pull Mellum2.1's weights and run it against 10 real snippets from a client repo to compare output quality against what they currently pay for.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Transcription Bill-Cutter Migration Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Microsoft released MAI-Transcribe-2-Streaming and MAI-Voice-2.1 on Oct 1, undercutting metered transcription vendors. Source: <a href="https://www.nocode.mba/ai-release-tracker/2026/10" rel="noopener">Microsoft AI Speech Suite</a></p><p class="field"><strong>The idea</strong>A fixed-price sprint auditing a client's transcription spend (Otter, Rev, AssemblyAI, Whisper API) and swapping the pipeline onto Microsoft's new streaming model where quality holds, pocketing part of the savings as the fee.</p><p class="field"><strong>Why you</strong>Same bill-cut sprint pattern you've run before (voice cleanup, Nova 2 Sonic consolidation), applied to a trigger barely two weeks old.</p><p class="field"><strong>First step</strong>Get API access to MAI-Transcribe-2-Streaming and run it against one client's real call recording to confirm quality parity.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Cross-Channel Marketing Data Unifier</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Manifold MCP, an MCP server unifying SEO/social/ads/lead data behind one agent-queryable interface, launched on Product Hunt today. Source: <a href="https://www.producthunt.com/products/manifold-mcp" rel="noopener">Manifold MCP</a></p><p class="field"><strong>The idea</strong>A Claude Code skill wrapping Manifold MCP so a marketing client's weekly report pulls from one unified feed instead of logging into four dashboards by hand, speeding up the Auto-Report Pipeline Skill you already built.</p><p class="field"><strong>Why you</strong>Upgrades an existing deliverable in your marketing-services lane instead of starting a new one from scratch.</p><p class="field"><strong>First step</strong>Connect Manifold MCP to one active client's ad and SEO accounts and diff its output against this month's hand-built report.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>ngrok Bill-Cutter Retrofit Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Expose, a self-hosted ngrok alternative written in Go, hit Show HN today. Source: <a href="https://github.com/kernelshard/expose" rel="noopener">Expose</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that retrofits a paid ngrok subscription with a self-hosted Expose tunnel for client demo links and webhook testing, same convenience at zero recurring cost.</p><p class="field"><strong>Why you</strong>Narrow and immediately useful for your own client-demo workflow, and resellable to other solo builders paying for ngrok out of habit.</p><p class="field"><strong>First step</strong>Stand up Expose on a cheap VPS and point one in-progress client demo link at it instead of ngrok.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Client AI-Expectation Calibration Script</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Karpathy's post today on the widening gap between what people assume frontier models can do and what they actually can do. Source: <a href="https://twitter.com/karpathy/status/2109361546505966046" rel="noopener">Karpathy on X</a></p><p class="field"><strong>The idea</strong>A skill that generates a short, concrete demo script tailored to a prospective client's industry, showing exactly what Claude Code can and can't reliably do before a project kicks off.</p><p class="field"><strong>Why you</strong>Slots directly into your existing sales and pricing flow, heading off the scope disputes that mismatched expectations cause on fixed-price sprints.</p><p class="field"><strong>First step</strong>Build the script for the next discovery call already on the calendar and see if it changes how the prospect scopes their ask.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Labs Valuation Fundamentals Audit Firm</h3>
+</div>
+<p class="field"><strong>Trigger</strong>An analyst called Anthropic's coming IPO "an unprecedented test of investor gullibility" today. Source: <a href="https://www.cnbc.com/2026/10/07/anthropic-will-be-most-ridiculous-ipo-of-year-analyst-says.html" rel="noopener">CNBC</a></p><p class="field"><strong>The idea</strong>An independent audit practice producing investor-grade fundamentals reports (real revenue quality, burn rate, compute-financing circularity, model moat durability) for institutional investors ahead of Anthropic's and peers' public listings.</p><p class="field"><strong>Scale</strong>Every frontier lab IPO this cycle needs this once institutional money stops trusting vendor-supplied numbers; a durable category, not a one-time report.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Resilient Decentralized CI/Forge Failover Network</h3>
+</div>
+<p class="field"><strong>Trigger</strong>GitHub Actions, Pull Requests, and Issues went down today, the kind of single-provider outage that stalls every dependent team at once. Source: <a href="https://www.githubstatus.com/incidents/93njd414rpbx" rel="noopener">GitHub Status</a></p><p class="field"><strong>The idea</strong>Infrastructure that automatically fails a team's git hosting and CI over to a second provider the moment one goes down, so no single vendor's incident can block shipping.</p><p class="field"><strong>Scale</strong>Every engineering org on a single git host is exposed to this exact failure mode; the fix is infrastructure-layer, not a one-off migration.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-12-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Lost-Platform Game Preservation Studio</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A PS2 game was statically recompiled to WebAssembly today, and a from-scratch modern rebuild of Total Annihilation is making the rounds, both riding the same retro-gaming nostalgia wave. Source: <a href="https://github.com/snuri00/ps2-web-recomp" rel="noopener">PS2 WASM recompilation</a></p><p class="field"><strong>The idea</strong>A well-funded studio systematically recompiling abandoned console-era game libraries to WebAssembly for legal, licensed re-release, industrializing a technique hobbyists are currently doing one game at a time.</p><p class="field"><strong>Scale</strong>A real technical novelty (static recompilation) meeting a proven nostalgia market and a huge back catalog of licensable, currently-unplayable IP.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
