@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-13</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Tuesday, October 13, 2026</h1>
+<nav class="nav"><a href="./2026-10-12.html">&larr; Mon, Oct 12</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Meta One Link-Tier ROI Advisor</h2>
+<p>Meta just rolled out a $49.99/month subscription, Meta One, that's now required to add clickable links to organic Instagram and Reels posts, a tactic that used to be free. Every SMB client already posting organically on Instagram needs someone to run the real math on whether that subscription earns back its cost versus routing links through a cheaper workaround, the exact same-day audit shape Gio has sold before on other forced-upgrade triggers. The dated rollout and the "previously free, now paywalled" framing make it an easy pitch before every agency normalizes paying for it without checking.</p>
+</div>
+<article id="idea-2026-10-13-1" class="idea">
+<div class="idea-head">
+<span class="num">01</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Meta One Link-Tier ROI Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Meta launched Meta One, a $49.99/month subscription required to add clickable links to organic Instagram/Reels posts. Source: <a href="https://socialbee.com/blog/meta-facebook-updates-news/" rel="noopener">SocialBee</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that pulls a client's organic Instagram reach and click-through history, models the real dollar return on the new $49.99/month Meta One tier, and gives a plain keep-or-skip call plus a cheaper link-in-bio workaround if it doesn't pencil out.</p><p class="field"><strong>Why you</strong>Same ROI-cut-audit shape as past billing-shock sprints (AI Billing Shock Audit, CSP Margin Impact Calculator), aimed squarely at the marketing/copywriting client base you already serve.</p><p class="field"><strong>First step</strong>Pull one active social client's last 90 days of organic Instagram click data today and hand-model what Meta One would actually net them.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>Connecticut Data Broker &amp; Surveillance-Pricing Compliance Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Connecticut's new consumer privacy and data broker law took effect Oct 1, 2026, adding data broker registration, a surveillance-pricing ban, and facial recognition restrictions. Source: <a href="https://commlawgroup.com/2026/connecticuts-sweeping-consumer-privacy-and-data-broker-law-effective-october-1-2026/" rel="noopener">CommLawGroup</a></p><p class="field"><strong>The idea</strong>A checklist app that walks a Connecticut-touching SMB or data vendor through the three new obligations (broker registration, surveillance-pricing audit, facial-recognition disclosure) and generates the specific filing or policy copy each one requires.</p><p class="field"><strong>Why you</strong>Same compliance-checklist-app pattern you've shipped a dozen times for other state laws, this one distinct from the earlier Connecticut AI Employment Act kit since it targets consumer data practices, not hiring AI.</p><p class="field"><strong>First step</strong>Pull the law's three obligations into a checklist skeleton today and test it against one client's current data-handling setup.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Instagram-to-Google SEO Caption Optimizer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Public Instagram posts are now appearing directly inside Google Search results, not just inside Instagram's own app. Source: <a href="https://socialbee.com/blog/meta-facebook-updates-news/" rel="noopener">SocialBee</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that rewrites a client's Instagram captions and alt text with real SEO keyword structure, since most brands still write captions assuming only Instagram's own algorithm will ever read them.</p><p class="field"><strong>Why you</strong>A cheap, fast skill that slots directly into your existing marketing/copywriting lane and upgrades every future caption you write for a client, not just a one-off deliverable.</p><p class="field"><strong>First step</strong>Run the optimizer against one client's last five captions today and Google-search the exact phrases to see what currently surfaces.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Suri Toothbrush Retail Trend-Jack Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Suri Toothbrush" search interest is up roughly 9,000% this week, a smart-dental-device breakout. Source: <a href="https://trends.google.com/trends/explore?q=Suri+toothbrush" rel="noopener">Google Trends</a></p><p class="field"><strong>The idea</strong>A same-day content and product-listing sprint for dental practices and oral-care boutiques, generating on-trend photos, captions, and a bundled display before the search spike cools.</p><p class="field"><strong>Why you</strong>Your proven trend-jack sprint pattern, just needs today's specific breakout product swapped in, deliverable same day.</p><p class="field"><strong>First step</strong>Find two local dental or oral-care retailers without a smart-toothbrush display yet and pitch the sprint today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Hurricane Isaías SMB Continuity Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Hurricane Isaías is actively unfolding as a weather emergency across the Atlantic region today. Source: <a href="https://trends.google.com/trends/explore?q=Hurricane+Isaia%CC%81s" rel="noopener">Google Trends</a></p><p class="field"><strong>The idea</strong>A fixed-price, same-day sprint for small businesses in the storm's projected path, standing up a generator-or-outage payment failover and a pre-drafted customer-comms sequence before landfall, not after.</p><p class="field"><strong>Why you</strong>Fits your fixed-price sprint lane with maximum urgency built in by the storm's own timeline, distinct from your existing general-purpose outage app since this one is reactive and dated to a real, live event.</p><p class="field"><strong>First step</strong>Identify one coastal client or prospect in the storm's path today and offer the continuity setup before the forecast window closes.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Idle-Mac Compute Arbitrage Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Apple shipped "Minions," a virtual GPU cloud built from idle Apple Silicon Macs, on its own ML research blog today. Source: <a href="https://machinelearning.apple.com/research/distributed-gpu-cloud" rel="noopener">Apple Machine Learning Research</a></p><p class="field"><strong>The idea</strong>A narrow agent that audits a small design or dev shop's existing Mac fleet, estimates how much idle compute it could sell into Apple's new network versus how much cheap compute it could pull from it for client AI workloads, and recommends the better side of the trade.</p><p class="field"><strong>Why you</strong>Direct extension of your model-router/cost lane onto a brand-new, genuinely novel compute source nobody has built a retrofit for yet.</p><p class="field"><strong>First step</strong>Run the idle-time audit against your own Mac fleet today to see which side of the arbitrage actually pays.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-app">App</span>
+
+<h3>SBA DSCR 1.25x Readiness Calculator</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New SBA loan rules raise the required debt service coverage ratio to 1.25x and bar green card holders from 7(a) loans, on top of the broader Oct 1 overhaul. Source: <a href="https://bradyware.com/sba-rule-changes-2026/" rel="noopener">BradyWare</a></p><p class="field"><strong>The idea</strong>A small calculator app where an SMB owner enters their current cash flow and debt load and gets back whether they'd actually clear the new 1.25x DSCR bar, plus the specific gap to close before applying.</p><p class="field"><strong>Why you</strong>Same calculator-app pattern you've shipped repeatedly for SBA changes, this one targeting the cash-flow math specifically, distinct from your existing citizenship and clawback-focused SBA calculators.</p><p class="field"><strong>First step</strong>Pull one client's last 12 months of cash flow today and run it through a first-draft version of the 1.25x DSCR formula.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Character.ai Companion Refugee Migration Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Character.ai filed for Chapter 11 bankruptcy today, putting millions of users' AI companion relationships and chat histories at risk of disappearing during wind-down. Source: <a href="https://character.ai" rel="noopener">Character.ai</a></p><p class="field"><strong>The idea</strong>A funded platform that lets Character.ai's displaced users export their companion personas and chat history and continue the relationship on a safety-redesigned successor, instead of losing it entirely when the service shuts down.</p><p class="field"><strong>Scale</strong>Millions of emotionally-attached users are about to be made homeless by one company's bankruptcy at once, a real, dated market gap no single builder could capture solo.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Edge-Decision Compute Mesh</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Liquid AI released open-weight 3B and 600M decision/reasoning models today, the same week Cloudflare's Clef and OpenAI's Decisions API are each racing to own the decision-routing layer. Source: <a href="https://www.nocode.mba/ai-release-tracker/2026/10" rel="noopener">AI Release Tracker</a></p><p class="field"><strong>The idea</strong>A funded infrastructure push putting these tiny open decision models directly onto consumer IoT and edge hardware at internet scale, making local decision-making the default instead of a cloud decision API from any vendor.</p><p class="field"><strong>Scale</strong>Needs hardware-partner reach across chipmakers and device makers plus a real distribution channel to get ahead of three well-funded cloud competitors simultaneously, a category-defining infrastructure bet.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-13-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Regulatory Integrity Disclosure Relay</h3>
+</div>
+<p class="field"><strong>Trigger</strong>CFTC staff were reportedly told to retract an analysis of suspicious oil trades today, raising fresh questions about agency independence under political pressure. Source: <a href="https://bloomberg.com" rel="noopener">Bloomberg</a></p><p class="field"><strong>The idea</strong>A neutral, agent-driven relay letting government analysts cryptographically timestamp and anonymously publish findings the moment they're produced, so a suppressed or retracted analysis still has a verifiable public record before political pressure can bury it.</p><p class="field"><strong>Scale</strong>Needs trust and legal cover across every federal regulatory agency simultaneously to matter, a civic-infrastructure bet well past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
