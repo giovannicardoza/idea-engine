@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-17</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Saturday, October 17, 2026</h1>
+<nav class="nav"><a href="./2026-10-16.html">&larr; Fri, Oct 16</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Meta Dual Auto-Enable Opt-Out Shield</h2>
+<p>Meta is flipping two defaults on at once in the same week: its new Commercial Terms let Meta train AI models on any business website tied to a Meta account starting October 30 with no opt-out, and existing ads get auto-enrolled into Product Browsing on October 28 unless a business actively opts out. Both land inside the same eight-day window and touch nearly every SMB running a Facebook or Instagram business page, which makes this the broadest, most urgent audit opportunity in today's scan.</p>
+</div>
+<article id="idea-2026-10-17-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-business">Business</span>
+
+<h3>Fictional-World Lore Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Fakeipedia, an LLM-generated encyclopedia for fictional worlds, launched on Hacker News today. Source: <a href="https://fakeipedia.org" rel="noopener">Fakeipedia</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack teaching indie novelists, game masters, and worldbuilders the exact prompt chain to generate a consistent, cross-referenced wiki for their own fictional universe instead of hand-writing lore pages one at a time.</p><p class="field"><strong>Why you</strong>Pure prompt packaging, ships in a day, same Gumroad digital-product lane as your past prompt packs.</p><p class="field"><strong>First step</strong>Run the full worldbuilding-to-wiki workflow once today on a throwaway setting and capture every prompt that held consistency across entries.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Agent Framework Bake-Off Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Four competing multi-agent orchestration tools, NitroStack, Craft Agents, Harness by Autonomous, and rStation, all launched or front-paged within the same week. Source: <a href="https://www.producthunt.com/products/nitrostack" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A skill that runs a client's actual agent workflow against this new crop of frameworks and returns one plain pick instead of the client sitting through four noisy launch pages themselves.</p><p class="field"><strong>Why you</strong>Same crowded-category fit-advisor shape you've already shipped for AI CRMs, now aimed at the exact agent-tooling market you personally work in daily.</p><p class="field"><strong>First step</strong>Run one of your own existing agent builds through NitroStack and Craft Agents today to draft the comparison rubric.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Energy &amp; Inflation Cost-Line Survival Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>NFIB's September survey put small-business recession anxiety at 73 percent with optimism below its 52-year average, and an October SBE Council survey shows energy and gas costs surging to owners' second-biggest worry at 29 percent. Source: <a href="https://www.nfib.com/news/press-release/new-nfib-survey-uncertainty-grows-and-optimism-fades-slightly-on-main-street-in-september-16/" rel="noopener">NFIB</a>, <a href="https://www.sbecouncil.org/2026/10/08/new-small-business-check-up-survey-main-business-are-powering-through-2026/" rel="noopener">SBE Council</a></p><p class="field"><strong>The idea</strong>A fixed-price, one-sitting audit pulling a client's utility and fuel line items specifically, modeling which contracts or usage patterns are driving this quarter's spike, and handing back the three cheapest fixes.</p><p class="field"><strong>Why you</strong>Same audit-sprint shape you run repeatedly, this time aimed at the exact cost line two independent surveys just named as the newest owner anxiety, distinct from your existing labor-cost and runway audits.</p><p class="field"><strong>First step</strong>Pull one client's last two utility or fuel bills today and hand-model the quarter-over-quarter cost delta.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-app">App</span>
+
+<h3>E-Bike Retailer Safety-Law Compliance Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Search interest in e-bike safety law is up 241 percent year over year as states including Ohio pass new electric-bicycle safety bills this month. Source: <a href="https://himiwaybike.com/blogs/news/ohio-electric-bicycle-safety-bill" rel="noopener">Himiwaybike</a></p><p class="field"><strong>The idea</strong>A checklist app generating the specific labeling, speed-class, and registration disclosures an e-bike retailer needs under their state's newly passed law.</p><p class="field"><strong>Why you</strong>Same compliance-checklist-app pattern you've shipped repeatedly for other state rules, this time for a retail niche riding its own real search spike.</p><p class="field"><strong>First step</strong>Pull Ohio's bill text today and draft the first state's checklist template.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Site-to-API Instant Integration Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Pomerado, a tool turning any website into a callable API without needing an official one, launched on Product Hunt today. Source: <a href="https://www.producthunt.com/products/pomerado" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>An agent that points Pomerado-style extraction at a client's vendor or partner site that has no API, and wires the resulting structured feed straight into the client's existing CRM or ordering tool.</p><p class="field"><strong>Why you</strong>Cuts a multi-day custom-scraper build down to a config job, a direct build-speed lever for your existing agent lane.</p><p class="field"><strong>First step</strong>Point the tool at one vendor site a current client manually re-keys data from today and time the real integration.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>Low-Rise Y2K Apparel Trend-Jack Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Low rise sweatpants" search interest is spiking hard this week as the Y2K fashion wave resurges. Source: <a href="https://www.risingtrends.co/trends/activities-hobbies-trends-2026" rel="noopener">Rising Trends</a></p><p class="field"><strong>The idea</strong>A same-day content and listing sprint producing Y2K-styled product photos, captions, and bundled listings for apparel boutiques riding the resurgence.</p><p class="field"><strong>Why you</strong>Your proven trend-jack format, just needs today's specific breakout swapped in.</p><p class="field"><strong>First step</strong>Find two local apparel boutiques without a Y2K or low-rise section yet and pitch the sprint today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Global Solar-Surplus Grid Arbitrage Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Solar power surpassed nuclear power in global generation for the first time this year. Source: <a href="https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/" rel="noopener">pv-magazine</a></p><p class="field"><strong>The idea</strong>A category-defining platform matching regions with surplus daytime solar to flexible industrial compute and storage demand in real time, monetizing the exact oversupply the milestone just proved exists at scale.</p><p class="field"><strong>Scale</strong>Needs grid-operator partnerships and real capital across multiple countries, a venture-scale infrastructure bet.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Agentic Context Operating Layer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Notion launched "Context for your agents" today, a major productivity platform pivoting its core product into an agent-context layer. Source: <a href="https://www.producthunt.com/products/notion" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A category-defining standard letting any app, not just Notion, plug into one portable, continuously-updated context layer that every agent across a user's tools reads from, instead of each platform building its own walled context silo.</p><p class="field"><strong>Scale</strong>Needs platform-partnership leverage across every major productivity tool at once, a category-defining infrastructure bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-17-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Long-Running Agent Foundation Model Lab</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Step 5 Preview shipped today as a 600-billion-parameter open-weight model purpose-built for long-running agent tasks, a rare foundational-model-scale open release. Source: <a href="https://www.producthunt.com/products/step-3-5-flash" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A well-funded research lab building on this open foundation to push genuinely multi-day autonomous agent runs, not just multi-hour ones, into real deployed production use.</p><p class="field"><strong>Scale</strong>Training and safely operating models at this scale for extended autonomy needs serious compute and safety infrastructure, a research-lab-scale bet.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
