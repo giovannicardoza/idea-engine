@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-19</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Monday, October 19, 2026</h1>
+<nav class="nav"><a href="./2026-10-17.html">&larr; Sat, Oct 17</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Narrow AI Coworker Sprint</h2>
+<p>Viktor.com launched on Product Hunt today pitching a broad AI coworker that handles real work tasks, and pulled the day's highest upvote count. That is the clearest demand signal yet for AI employees, but broad general-purpose platforms are hard to trust. A fixed-price sprint building one narrow, auditable AI coworker task is the sharper, sellable counter-offer, and it sits exactly in Gio's lane.</p>
+</div>
+<article id="idea-2026-10-19-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>AI Crawler Cost Forensics Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Reddit threads today in r/webdev describe Meta's crawler hitting one site 11 million times and Claudebot "hammering" another server, developers discovering AI-bot traffic as a surprise infrastructure cost with zero visibility into which bot is costing what. Source: <a href="https://www.reddit.com/r/webdev/comments/1qpqapj/metas_crawler_made_11_million_requests_to_my_site/" rel="noopener">Reddit r/webdev</a></p><p class="field"><strong>The idea</strong>Claude Code skill that parses a client's server/CDN logs, breaks down bandwidth and compute cost by AI-crawler vendor (GPTBot, ClaudeBot, Meta, etc.), and recommends a selective allow or block list, keeping bots that drive AI-answer-engine visibility while blocking pure cost drains.</p><p class="field"><strong>Why you</strong>Pure Claude Code plus log-parsing build, sellable as a one-time audit to any SMB on shared hosting, and distinct from a blanket Cloudflare-controls setup since it is cost-quantified and vendor-selective.</p><p class="field"><strong>First step</strong>Script parsing a sample Apache/Nginx log for known AI bot user-agents and summing request counts per vendor.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Manufacturing Layoff Task-Redistribution Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Fresh SMB industry data shows 79% of manufacturing firms have reported layoffs tied to tariff-driven supply chain costs, the sharpest-hit sector in this year's numbers. Source: <a href="https://www.gnapartners.com/resources/articles/smb-industry-trends-2026" rel="noopener">GNA Partners SMB industry trends</a></p><p class="field"><strong>The idea</strong>Claude Code skill that takes a manufacturer's post-layoff roster and the departed employees' task lists, then drafts which tasks AI tooling can absorb versus which need redistributing among remaining staff, producing a one-page transition plan.</p><p class="field"><strong>Why you</strong>Pure Claude Code skill build serving the SMB manufacturing clients hit hardest by today's data, sellable as a fast turnaround engagement.</p><p class="field"><strong>First step</strong>Sketch the task-triage framework (AI-absorbable, human-required, redistribute) against one sample departed role's task list.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Hospitality Supply-Cost Pass-Through Menu Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New industry data shows 86% of hospitality businesses have frozen expansion plans this year, citing labor shortages and rising food and supply costs as the binding constraint. Source: <a href="https://www.gnapartners.com/resources/articles/smb-industry-trends-2026" rel="noopener">GNA Partners SMB industry trends</a></p><p class="field"><strong>The idea</strong>Claude Code skill that takes a restaurant's current menu and recent supplier invoices, recalculates true food-cost percentage per dish, and drafts the smallest price adjustment plus customer-facing explanation copy needed to restore margin without an across-the-board hike.</p><p class="field"><strong>Why you</strong>Combines a cost-calculation skill with copy generation, both squarely in Gio's stack, and restaurants are an evergreen local-SMB client type.</p><p class="field"><strong>First step</strong>Build the food-cost-percentage formula against a sample menu and three recent supplier invoices.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>YouTube Shorts Monetization Gap Closer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>YouTube raised its Shorts revenue-sharing bar to 10 million qualified views in 90 days starting February 2027, a steep jump that will push many smaller creators below the monetization line. Source: <a href="https://www.advancedcreativemedia.co/post/whats-changed-on-social-media-in-2026" rel="noopener">Advanced Creative Media</a></p><p class="field"><strong>The idea</strong>Narrow agent that pulls a creator's recent Shorts view data, shows the exact gap to the new 10M/90-day threshold, and drafts a posting-cadence and format plan most likely to close it before the cutover.</p><p class="field"><strong>Why you</strong>Agent build with a clear before/after metric to sell against, and creators are a repeat client type in Gio's existing work.</p><p class="field"><strong>First step</strong>Sketch the gap-calculation formula (views needed per week to hit 10M/90 days from today) and test it against one sample channel's public stats.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Self-Hosted LLM Proxy Visibility Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A widely upvoted Hacker News post today argues that teams routing every AI call through a vendor's hosted endpoint have zero visibility into what their own agents are actually doing or spending, asking "if you don't run your own LLM proxy, how do you know what's going on?" Source: <a href="https://news.ycombinator.com/" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>Fixed-price sprint standing up a self-hosted LLM proxy in front of a client's existing AI tools, giving them one dashboard for cost, latency, and prompt/response logging across every vendor they use.</p><p class="field"><strong>Why you</strong>Directly extends Gio's own model-router instincts into a sellable SMB/solo-builder setup service, and "you can't see what your AI agents are doing" is a sharp, specific fear to sell against.</p><p class="field"><strong>First step</strong>Stand up a self-hosted LLM proxy locally in front of Gio's own Claude Code calls as a working reference demo.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>face2social Exposure Auditor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>face2social, a facial-recognition search tool, launched on Product Hunt today, letting anyone search the web for photos matching a face, a sharp new exposure risk for any client whose staff or storefront photos are public. Source: <a href="https://www.producthunt.com/" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>Agent that runs a client's public team and storefront photos against facial-search tools like face2social, flags what surfaces and where, and drafts the platform-specific opt-out or takedown requests.</p><p class="field"><strong>Why you</strong>Narrow, well-scoped privacy-audit agent, sellable as an add-on to any client site Gio already builds, riding a same-day launch few competitors will have noticed yet.</p><p class="field"><strong>First step</strong>Run one of Gio's own public photos through face2social to confirm what it actually surfaces before pitching this to a client.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Computational-Testing Regulatory Replacement Authority</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A major IEEE feature out today argues that AI-driven computational alternatives to animal testing are "finally taking off," with regulators beginning to accept in-silico models for drug and chemical safety data. Source: <a href="https://www.ieee.org/" rel="noopener">IEEE</a></p><p class="field"><strong>The idea</strong>An independent authority that certifies AI and computational testing models against regulatory-grade accuracy standards, becoming the trusted bridge that lets agencies like the FDA and EPA actually accept computational results in place of live-animal trials at scale.</p><p class="field"><strong>Scale</strong>Replacing a century-old regulatory testing regime with computational models touches every pharma, cosmetics, and chemical company on earth, a standards-body-scale undertaking needing regulatory and scientific credibility no solo builder could assemble alone.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Surveillance Credential Integrity Authority</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A story breaking today reveals a police officer gave her Flock surveillance-camera login credentials to her husband, an ICE agent, exposing how easily shared law-enforcement surveillance logins can be abused with no independent oversight. Source: <a href="https://news.ycombinator.com/" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>An independent, agent-driven authority that continuously audits credential-access logs across municipal surveillance systems (license-plate readers, camera networks) for cross-agency misuse, publishing real-time abuse disclosures.</p><p class="field"><strong>Scale</strong>A national oversight infrastructure spanning thousands of police departments and surveillance vendors, requiring legal standing, government relationships, and investigative capacity well beyond a solo build, but addressing a civil-liberties gap with real urgency today.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-19-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Time-Series Forecasting Utility</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Mistral released Timestral today, a dedicated time-series foundation model, a sign the forecasting model layer (demand, revenue, supply chains) is maturing into its own specialized category separate from general-purpose LLMs. Source: <a href="https://mistral.ai/news/timestral/" rel="noopener">Mistral AI</a></p><p class="field"><strong>The idea</strong>A category-defining platform embedding Timestral-class foundation models as the default forecasting layer inside every SaaS dashboard, replacing bespoke ML pipelines with one forecasting API any product can plug into.</p><p class="field"><strong>Scale</strong>Becoming the default forecasting substrate for the entire SaaS industry is an infrastructure play requiring deep partnerships with dozens of platforms and heavy ML-ops investment, a venture-scale bet rather than a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
