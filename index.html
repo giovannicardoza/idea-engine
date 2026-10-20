@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Ideas 2026-10-19</title>
+<title>Ideas 2026-10-20</title>
 <style>
 *,*::before,*::after{box-sizing:border-box}
 :root{
@@ -154,118 +154,118 @@ a{color:inherit}
 </head>
 <body><div class="wrap"><header>
 <p class="kicker">Idea Engine</p>
-<h1>Monday, October 19, 2026</h1>
-<nav class="nav"><a href="./2026-10-17.html">&larr; Sat, Oct 17</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+<h1>Tuesday, October 20, 2026</h1>
+<nav class="nav"><a href="./2026-10-19.html">&larr; Mon, Oct 19</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
 </header>
 <div class="toppick">
 <p class="kicker">⭐ Top Pick</p>
-<h2>Narrow AI Coworker Sprint</h2>
-<p>Viktor.com launched on Product Hunt today pitching a broad AI coworker that handles real work tasks, and pulled the day's highest upvote count. That is the clearest demand signal yet for AI employees, but broad general-purpose platforms are hard to trust. A fixed-price sprint building one narrow, auditable AI coworker task is the sharper, sellable counter-offer, and it sits exactly in Gio's lane.</p>
+<h2>AI Chatbot Hidden-Instruction Auditor</h2>
+<p>A Hacker News story broke today revealing that WhatsApp's own help pages hide LLM instructions telling its AI assistant not to recommend regulators, a disclosed, concrete example of a corporate system prompt steering customer-facing AI away from information users are entitled to. Any SMB now running a third-party AI chat widget has no way to know whether it carries a similar hidden instruction working against its own customers, which makes this a dated, broadly applicable compliance risk that turns into a fast, sellable audit.</p>
 </div>
-<article id="idea-2026-10-19-2" class="idea">
+<article id="idea-2026-10-20-2" class="idea">
 <div class="idea-head">
 <span class="num">02</span>
-<span class="badge type-skill">Skill</span>
-
-<h3>AI Crawler Cost Forensics Skill</h3>
-</div>
-<p class="field"><strong>Trigger</strong>Reddit threads today in r/webdev describe Meta's crawler hitting one site 11 million times and Claudebot "hammering" another server, developers discovering AI-bot traffic as a surprise infrastructure cost with zero visibility into which bot is costing what. Source: <a href="https://www.reddit.com/r/webdev/comments/1qpqapj/metas_crawler_made_11_million_requests_to_my_site/" rel="noopener">Reddit r/webdev</a></p><p class="field"><strong>The idea</strong>Claude Code skill that parses a client's server/CDN logs, breaks down bandwidth and compute cost by AI-crawler vendor (GPTBot, ClaudeBot, Meta, etc.), and recommends a selective allow or block list, keeping bots that drive AI-answer-engine visibility while blocking pure cost drains.</p><p class="field"><strong>Why you</strong>Pure Claude Code plus log-parsing build, sellable as a one-time audit to any SMB on shared hosting, and distinct from a blanket Cloudflare-controls setup since it is cost-quantified and vendor-selective.</p><p class="field"><strong>First step</strong>Script parsing a sample Apache/Nginx log for known AI bot user-agents and summing request counts per vendor.</p>
-<div class="meta-row">
-<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
-<span class="verdict verdict-unmarked">Unrated</span>
-</div>
-</article><article id="idea-2026-10-19-3" class="idea">
-<div class="idea-head">
-<span class="num">03</span>
-<span class="badge type-skill">Skill</span>
-
-<h3>Manufacturing Layoff Task-Redistribution Skill</h3>
-</div>
-<p class="field"><strong>Trigger</strong>Fresh SMB industry data shows 79% of manufacturing firms have reported layoffs tied to tariff-driven supply chain costs, the sharpest-hit sector in this year's numbers. Source: <a href="https://www.gnapartners.com/resources/articles/smb-industry-trends-2026" rel="noopener">GNA Partners SMB industry trends</a></p><p class="field"><strong>The idea</strong>Claude Code skill that takes a manufacturer's post-layoff roster and the departed employees' task lists, then drafts which tasks AI tooling can absorb versus which need redistributing among remaining staff, producing a one-page transition plan.</p><p class="field"><strong>Why you</strong>Pure Claude Code skill build serving the SMB manufacturing clients hit hardest by today's data, sellable as a fast turnaround engagement.</p><p class="field"><strong>First step</strong>Sketch the task-triage framework (AI-absorbable, human-required, redistribute) against one sample departed role's task list.</p>
-<div class="meta-row">
-<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
-<span class="verdict verdict-unmarked">Unrated</span>
-</div>
-</article><article id="idea-2026-10-19-4" class="idea">
-<div class="idea-head">
-<span class="num">04</span>
-<span class="badge type-skill">Skill</span>
-
-<h3>Hospitality Supply-Cost Pass-Through Menu Skill</h3>
-</div>
-<p class="field"><strong>Trigger</strong>New industry data shows 86% of hospitality businesses have frozen expansion plans this year, citing labor shortages and rising food and supply costs as the binding constraint. Source: <a href="https://www.gnapartners.com/resources/articles/smb-industry-trends-2026" rel="noopener">GNA Partners SMB industry trends</a></p><p class="field"><strong>The idea</strong>Claude Code skill that takes a restaurant's current menu and recent supplier invoices, recalculates true food-cost percentage per dish, and drafts the smallest price adjustment plus customer-facing explanation copy needed to restore margin without an across-the-board hike.</p><p class="field"><strong>Why you</strong>Combines a cost-calculation skill with copy generation, both squarely in Gio's stack, and restaurants are an evergreen local-SMB client type.</p><p class="field"><strong>First step</strong>Build the food-cost-percentage formula against a sample menu and three recent supplier invoices.</p>
-<div class="meta-row">
-<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
-<span class="verdict verdict-unmarked">Unrated</span>
-</div>
-</article><article id="idea-2026-10-19-5" class="idea">
-<div class="idea-head">
-<span class="num">05</span>
 <span class="badge type-agent">Agent</span>
 
-<h3>YouTube Shorts Monetization Gap Closer</h3>
+<h3>Brand Fact-Drift Monitor</h3>
 </div>
-<p class="field"><strong>Trigger</strong>YouTube raised its Shorts revenue-sharing bar to 10 million qualified views in 90 days starting February 2027, a steep jump that will push many smaller creators below the monetization line. Source: <a href="https://www.advancedcreativemedia.co/post/whats-changed-on-social-media-in-2026" rel="noopener">Advanced Creative Media</a></p><p class="field"><strong>The idea</strong>Narrow agent that pulls a creator's recent Shorts view data, shows the exact gap to the new 10M/90-day threshold, and drafts a posting-cadence and format plan most likely to close it before the cutover.</p><p class="field"><strong>Why you</strong>Agent build with a clear before/after metric to sell against, and creators are a repeat client type in Gio's existing work.</p><p class="field"><strong>First step</strong>Sketch the gap-calculation formula (views needed per week to hit 10M/90 days from today) and test it against one sample channel's public stats.</p>
-<div class="meta-row">
-<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
-<span class="verdict verdict-unmarked">Unrated</span>
-</div>
-</article><article id="idea-2026-10-19-6" class="idea">
-<div class="idea-head">
-<span class="num">06</span>
-<span class="badge type-business">Business</span>
-
-<h3>Self-Hosted LLM Proxy Visibility Sprint</h3>
-</div>
-<p class="field"><strong>Trigger</strong>A widely upvoted Hacker News post today argues that teams routing every AI call through a vendor's hosted endpoint have zero visibility into what their own agents are actually doing or spending, asking "if you don't run your own LLM proxy, how do you know what's going on?" Source: <a href="https://news.ycombinator.com/" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>Fixed-price sprint standing up a self-hosted LLM proxy in front of a client's existing AI tools, giving them one dashboard for cost, latency, and prompt/response logging across every vendor they use.</p><p class="field"><strong>Why you</strong>Directly extends Gio's own model-router instincts into a sellable SMB/solo-builder setup service, and "you can't see what your AI agents are doing" is a sharp, specific fear to sell against.</p><p class="field"><strong>First step</strong>Stand up a self-hosted LLM proxy locally in front of Gio's own Claude Code calls as a working reference demo.</p>
+<p class="field"><strong>Trigger</strong>A story on Hacker News today documents how fabricated statistics get cited and repeated across language models, with no clean mechanism for a brand to catch when an LLM states something false about it specifically. Source: <a href="https://news.ycombinator.com/item?id=50165801" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>An agent that periodically queries major AI chat tools with questions about a client's business (pricing, reviews, claims, history) and flags any hallucinated or outdated fact it finds stated as true, with a drafted correction request for the vendor.</p><p class="field"><strong>Why you</strong>Narrow, repeatable agent build distinct from your existing AI Search Visibility Audit, which checks whether a client gets cited at all, not whether what gets said about them is actually true.</p><p class="field"><strong>First step</strong>Run the same five brand-fact questions against three major AI chat tools for one client today and log any factual drift.</p>
 <div class="meta-row">
 <span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
 <span class="verdict verdict-unmarked">Unrated</span>
 </div>
-</article><article id="idea-2026-10-19-7" class="idea">
+</article><article id="idea-2026-10-20-3" class="idea">
 <div class="idea-head">
-<span class="num">07</span>
-<span class="badge type-agent">Agent</span>
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
 
-<h3>face2social Exposure Auditor</h3>
+<h3>Solo Builder Continuity Kit</h3>
 </div>
-<p class="field"><strong>Trigger</strong>face2social, a facial-recognition search tool, launched on Product Hunt today, letting anyone search the web for photos matching a face, a sharp new exposure risk for any client whose staff or storefront photos are public. Source: <a href="https://www.producthunt.com/" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>Agent that runs a client's public team and storefront photos against facial-search tools like face2social, flags what surfaces and where, and drafts the platform-specific opt-out or takedown requests.</p><p class="field"><strong>Why you</strong>Narrow, well-scoped privacy-audit agent, sellable as an add-on to any client site Gio already builds, riding a same-day launch few competitors will have noticed yet.</p><p class="field"><strong>First step</strong>Run one of Gio's own public photos through face2social to confirm what it actually surfaces before pitching this to a client.</p>
+<p class="field"><strong>Trigger</strong>Death Plan Switch, a self-hosted dead man's switch for solo developers, launched on Show HN today. Source: <a href="https://news.ycombinator.com/item?id=50161408" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scaffolds a solo consultant's client-handoff protocol, credentials, active project state, and a trigger condition that releases access instructions to a designated contact if the operator goes dark, packaged as a sellable kit for other solo Claude Code builders.</p><p class="field"><strong>Why you</strong>Fits your own risk profile as a solo operator directly, and the sell-it-to-other-solo-builders angle matches your proven Gumroad/skill-resale lane.</p><p class="field"><strong>First step</strong>Scaffold your own continuity doc and dead man's switch trigger today using Death Plan Switch's pattern as the reference.</p>
 <div class="meta-row">
 <span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
 <span class="verdict verdict-unmarked">Unrated</span>
 </div>
-</article><article id="idea-2026-10-19-8" class="idea swing">
+</article><article id="idea-2026-10-20-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Site-Selection County Score Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Analisa, a county-level quality-of-life scoring tool, launched on Show HN today. Source: <a href="https://news.ycombinator.com/item?id=50163743" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A small app that lets a small-business owner comparing candidate counties for a new location pull Analisa-style quality-of-life, cost, and growth scores side by side, turning a gut-feel relocation decision into a one-page comparison.</p><p class="field"><strong>Why you</strong>A clean, narrow data app for the exact small-business owner you already serve, with a concrete before-and-after: spreadsheet guesswork versus a scored comparison.</p><p class="field"><strong>First step</strong>Pull Analisa's scoring methodology today and build the three-county comparison view against one real expansion decision a contact is weighing.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>AI Vendor Safety-Claims Liability Screener</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Eight state attorneys general filed coordinated lawsuits against OpenAI this week alleging false safety claims and children's data misuse. Source: <a href="https://www.originbrief.app/en/reports/ai-regulation-policy/2026-10-19/weekly" rel="noopener">originbrief.app</a></p><p class="field"><strong>The idea</strong>An agent that cross-checks a client's embedded AI vendor's public safety and privacy claims against the vendor's actual documented practices, flagging gaps that could expose the client to liability by association if that vendor gets sued.</p><p class="field"><strong>Why you</strong>Distinct from your existing training-opt-out and minor-access watchdog agents, this one screens for the specific false-claims exposure the lawsuit wave just made real and dated.</p><p class="field"><strong>First step</strong>Run the screener against one client's main embedded AI vendor's public safety page today and note any claim that doesn't match the vendor's actual terms.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Instagram AI-Content Reach Recovery Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Instagram began restricting the reach and recommendation of AI-generated content this month, penalizing accounts that lean on it. Source: <a href="https://blog.gainapp.com/social-media-updates/" rel="noopener">Gain</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scans a client's recent Instagram posts for the specific AI-generated patterns the platform now suppresses, then rewrites the flagged ones with enough genuine specificity and voice to clear the filter without losing the production speed of AI drafting.</p><p class="field"><strong>Why you</strong>Squarely in your copywriting/marketing lane, and distinct from your YouTube satisfaction-score auditor since this targets a different platform's brand-new suppression trigger.</p><p class="field"><strong>First step</strong>Run one client's last 10 Instagram posts through the check today and rewrite the two most AI-flavored ones as a before-and-after sample.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>Mandelic Acid Face Wash Trend-Jack Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Mandelic Acid Face Wash" search interest is up roughly 7,700 percent this week, a skincare-ingredient breakout. Source: <a href="https://explodingtopics.com/blog/trending-topics" rel="noopener">Exploding Topics</a></p><p class="field"><strong>The idea</strong>A same-day content and listing sprint producing on-trend photos, captions, and a bundled display for skincare boutiques and estheticians riding the breakout before it cools.</p><p class="field"><strong>Why you</strong>Your proven trend-jack sprint pattern, just needs today's specific breakout ingredient swapped in, deliverable same day.</p><p class="field"><strong>First step</strong>Find two local skincare retailers or estheticians without a mandelic acid product featured yet and pitch the sprint today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-8" class="idea swing">
 <div class="idea-head">
 <span class="num">08</span>
 <span class="badge type-business">Business</span>
 <span class="badge swing-tag">🚀 Big Swing</span>
-<h3>Computational-Testing Regulatory Replacement Authority</h3>
+<h3>Open Inference Engine Sovereignty Alliance</h3>
 </div>
-<p class="field"><strong>Trigger</strong>A major IEEE feature out today argues that AI-driven computational alternatives to animal testing are "finally taking off," with regulators beginning to accept in-silico models for drug and chemical safety data. Source: <a href="https://www.ieee.org/" rel="noopener">IEEE</a></p><p class="field"><strong>The idea</strong>An independent authority that certifies AI and computational testing models against regulatory-grade accuracy standards, becoming the trusted bridge that lets agencies like the FDA and EPA actually accept computational results in place of live-animal trials at scale.</p><p class="field"><strong>Scale</strong>Replacing a century-old regulatory testing regime with computational models touches every pharma, cosmetics, and chemical company on earth, a standards-body-scale undertaking needing regulatory and scientific credibility no solo builder could assemble alone.</p>
+<p class="field"><strong>Trigger</strong>DeepSeek open-sourced its inference engine today, giving away the serving-stack layer that previously locked AI shops into proprietary or vendor-hosted infrastructure. Source: <a href="https://news.ycombinator.com/item?id=50163277" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A funded alliance standardizing production deployments on this newly open serving stack, building the shared tooling, benchmarks, and support layer that lets mid-size AI shops run frontier-scale inference without renting a closed vendor's stack.</p><p class="field"><strong>Scale</strong>Owning the open alternative to proprietary serving infrastructure is a race every AI shop running real traffic has a stake in, a category-defining infrastructure bet past a solo build.</p>
 <div class="meta-row">
 
 <span class="verdict verdict-unmarked">Unrated</span>
 </div>
-</article><article id="idea-2026-10-19-9" class="idea swing">
+</article><article id="idea-2026-10-20-9" class="idea swing">
 <div class="idea-head">
 <span class="num">09</span>
 <span class="badge type-agent">Agent</span>
 <span class="badge swing-tag">🚀 Big Swing</span>
-<h3>Surveillance Credential Integrity Authority</h3>
+<h3>Independent AI Safety-Claims Verification Authority</h3>
 </div>
-<p class="field"><strong>Trigger</strong>A story breaking today reveals a police officer gave her Flock surveillance-camera login credentials to her husband, an ICE agent, exposing how easily shared law-enforcement surveillance logins can be abused with no independent oversight. Source: <a href="https://news.ycombinator.com/" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>An independent, agent-driven authority that continuously audits credential-access logs across municipal surveillance systems (license-plate readers, camera networks) for cross-agency misuse, publishing real-time abuse disclosures.</p><p class="field"><strong>Scale</strong>A national oversight infrastructure spanning thousands of police departments and surveillance vendors, requiring legal standing, government relationships, and investigative capacity well beyond a solo build, but addressing a civil-liberties gap with real urgency today.</p>
+<p class="field"><strong>Trigger</strong>Eight state attorneys general sued OpenAI this week in coordinated litigation alleging the company's public safety claims were false. Source: <a href="https://www.originbrief.app/en/reports/ai-regulation-policy/2026-10-19/weekly" rel="noopener">originbrief.app</a></p><p class="field"><strong>The idea</strong>An independent, agent-driven authority that continuously tests frontier labs' public safety and capability claims against real model behavior, publishing the evidentiary record regulators and plaintiffs' attorneys currently have to build from scratch case by case.</p><p class="field"><strong>Scale</strong>Becoming the standing, trusted reference every future AI safety-claims lawsuit cites needs legal and scientific credibility at an institutional level, well past a solo build.</p>
 <div class="meta-row">
 
 <span class="verdict verdict-unmarked">Unrated</span>
 </div>
-</article><article id="idea-2026-10-19-10" class="idea swing">
+</article><article id="idea-2026-10-20-10" class="idea swing">
 <div class="idea-head">
 <span class="num">10</span>
 <span class="badge type-app">App</span>
 <span class="badge swing-tag">🚀 Big Swing</span>
-<h3>Universal Time-Series Forecasting Utility</h3>
+<h3>Sovereign Mobile OS Distribution Platform</h3>
 </div>
-<p class="field"><strong>Trigger</strong>Mistral released Timestral today, a dedicated time-series foundation model, a sign the forecasting model layer (demand, revenue, supply chains) is maturing into its own specialized category separate from general-purpose LLMs. Source: <a href="https://mistral.ai/news/timestral/" rel="noopener">Mistral AI</a></p><p class="field"><strong>The idea</strong>A category-defining platform embedding Timestral-class foundation models as the default forecasting layer inside every SaaS dashboard, replacing bespoke ML pipelines with one forecasting API any product can plug into.</p><p class="field"><strong>Scale</strong>Becoming the default forecasting substrate for the entire SaaS industry is an infrastructure play requiring deep partnerships with dozens of platforms and heavy ML-ops investment, a venture-scale bet rather than a solo build.</p>
+<p class="field"><strong>Trigger</strong>MicroG, a free and open reimplementation of Google's Android user space, gained fresh traction on Hacker News today as privacy-conscious users look for a de-Googled alternative. Source: <a href="https://news.ycombinator.com/item?id=50162177" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A category-defining distribution platform making MicroG-based, de-Googled Android devices mainstream-ready for ordinary consumers, not just privacy enthusiasts, bundling app compatibility and support that today's DIY approach lacks.</p><p class="field"><strong>Scale</strong>Competing with Google's app-store and services lock-in at consumer scale needs device partnerships and a real support organization, a venture-scale bet.</p>
 <div class="meta-row">
 
 <span class="verdict verdict-unmarked">Unrated</span>

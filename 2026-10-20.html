@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-20</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Tuesday, October 20, 2026</h1>
+<nav class="nav"><a href="./2026-10-19.html">&larr; Mon, Oct 19</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>AI Chatbot Hidden-Instruction Auditor</h2>
+<p>A Hacker News story broke today revealing that WhatsApp's own help pages hide LLM instructions telling its AI assistant not to recommend regulators, a disclosed, concrete example of a corporate system prompt steering customer-facing AI away from information users are entitled to. Any SMB now running a third-party AI chat widget has no way to know whether it carries a similar hidden instruction working against its own customers, which makes this a dated, broadly applicable compliance risk that turns into a fast, sellable audit.</p>
+</div>
+<article id="idea-2026-10-20-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Brand Fact-Drift Monitor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A story on Hacker News today documents how fabricated statistics get cited and repeated across language models, with no clean mechanism for a brand to catch when an LLM states something false about it specifically. Source: <a href="https://news.ycombinator.com/item?id=50165801" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>An agent that periodically queries major AI chat tools with questions about a client's business (pricing, reviews, claims, history) and flags any hallucinated or outdated fact it finds stated as true, with a drafted correction request for the vendor.</p><p class="field"><strong>Why you</strong>Narrow, repeatable agent build distinct from your existing AI Search Visibility Audit, which checks whether a client gets cited at all, not whether what gets said about them is actually true.</p><p class="field"><strong>First step</strong>Run the same five brand-fact questions against three major AI chat tools for one client today and log any factual drift.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Solo Builder Continuity Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Death Plan Switch, a self-hosted dead man's switch for solo developers, launched on Show HN today. Source: <a href="https://news.ycombinator.com/item?id=50161408" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scaffolds a solo consultant's client-handoff protocol, credentials, active project state, and a trigger condition that releases access instructions to a designated contact if the operator goes dark, packaged as a sellable kit for other solo Claude Code builders.</p><p class="field"><strong>Why you</strong>Fits your own risk profile as a solo operator directly, and the sell-it-to-other-solo-builders angle matches your proven Gumroad/skill-resale lane.</p><p class="field"><strong>First step</strong>Scaffold your own continuity doc and dead man's switch trigger today using Death Plan Switch's pattern as the reference.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Site-Selection County Score Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Analisa, a county-level quality-of-life scoring tool, launched on Show HN today. Source: <a href="https://news.ycombinator.com/item?id=50163743" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A small app that lets a small-business owner comparing candidate counties for a new location pull Analisa-style quality-of-life, cost, and growth scores side by side, turning a gut-feel relocation decision into a one-page comparison.</p><p class="field"><strong>Why you</strong>A clean, narrow data app for the exact small-business owner you already serve, with a concrete before-and-after: spreadsheet guesswork versus a scored comparison.</p><p class="field"><strong>First step</strong>Pull Analisa's scoring methodology today and build the three-county comparison view against one real expansion decision a contact is weighing.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>AI Vendor Safety-Claims Liability Screener</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Eight state attorneys general filed coordinated lawsuits against OpenAI this week alleging false safety claims and children's data misuse. Source: <a href="https://www.originbrief.app/en/reports/ai-regulation-policy/2026-10-19/weekly" rel="noopener">originbrief.app</a></p><p class="field"><strong>The idea</strong>An agent that cross-checks a client's embedded AI vendor's public safety and privacy claims against the vendor's actual documented practices, flagging gaps that could expose the client to liability by association if that vendor gets sued.</p><p class="field"><strong>Why you</strong>Distinct from your existing training-opt-out and minor-access watchdog agents, this one screens for the specific false-claims exposure the lawsuit wave just made real and dated.</p><p class="field"><strong>First step</strong>Run the screener against one client's main embedded AI vendor's public safety page today and note any claim that doesn't match the vendor's actual terms.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Instagram AI-Content Reach Recovery Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Instagram began restricting the reach and recommendation of AI-generated content this month, penalizing accounts that lean on it. Source: <a href="https://blog.gainapp.com/social-media-updates/" rel="noopener">Gain</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that scans a client's recent Instagram posts for the specific AI-generated patterns the platform now suppresses, then rewrites the flagged ones with enough genuine specificity and voice to clear the filter without losing the production speed of AI drafting.</p><p class="field"><strong>Why you</strong>Squarely in your copywriting/marketing lane, and distinct from your YouTube satisfaction-score auditor since this targets a different platform's brand-new suppression trigger.</p><p class="field"><strong>First step</strong>Run one client's last 10 Instagram posts through the check today and rewrite the two most AI-flavored ones as a before-and-after sample.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>Mandelic Acid Face Wash Trend-Jack Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Mandelic Acid Face Wash" search interest is up roughly 7,700 percent this week, a skincare-ingredient breakout. Source: <a href="https://explodingtopics.com/blog/trending-topics" rel="noopener">Exploding Topics</a></p><p class="field"><strong>The idea</strong>A same-day content and listing sprint producing on-trend photos, captions, and a bundled display for skincare boutiques and estheticians riding the breakout before it cools.</p><p class="field"><strong>Why you</strong>Your proven trend-jack sprint pattern, just needs today's specific breakout ingredient swapped in, deliverable same day.</p><p class="field"><strong>First step</strong>Find two local skincare retailers or estheticians without a mandelic acid product featured yet and pitch the sprint today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Open Inference Engine Sovereignty Alliance</h3>
+</div>
+<p class="field"><strong>Trigger</strong>DeepSeek open-sourced its inference engine today, giving away the serving-stack layer that previously locked AI shops into proprietary or vendor-hosted infrastructure. Source: <a href="https://news.ycombinator.com/item?id=50163277" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A funded alliance standardizing production deployments on this newly open serving stack, building the shared tooling, benchmarks, and support layer that lets mid-size AI shops run frontier-scale inference without renting a closed vendor's stack.</p><p class="field"><strong>Scale</strong>Owning the open alternative to proprietary serving infrastructure is a race every AI shop running real traffic has a stake in, a category-defining infrastructure bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Independent AI Safety-Claims Verification Authority</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Eight state attorneys general sued OpenAI this week in coordinated litigation alleging the company's public safety claims were false. Source: <a href="https://www.originbrief.app/en/reports/ai-regulation-policy/2026-10-19/weekly" rel="noopener">originbrief.app</a></p><p class="field"><strong>The idea</strong>An independent, agent-driven authority that continuously tests frontier labs' public safety and capability claims against real model behavior, publishing the evidentiary record regulators and plaintiffs' attorneys currently have to build from scratch case by case.</p><p class="field"><strong>Scale</strong>Becoming the standing, trusted reference every future AI safety-claims lawsuit cites needs legal and scientific credibility at an institutional level, well past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-20-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Sovereign Mobile OS Distribution Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>MicroG, a free and open reimplementation of Google's Android user space, gained fresh traction on Hacker News today as privacy-conscious users look for a de-Googled alternative. Source: <a href="https://news.ycombinator.com/item?id=50162177" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A category-defining distribution platform making MicroG-based, de-Googled Android devices mainstream-ready for ordinary consumers, not just privacy enthusiasts, bundling app compatibility and support that today's DIY approach lacks.</p><p class="field"><strong>Scale</strong>Competing with Google's app-store and services lock-in at consumer scale needs device partnerships and a real support organization, a venture-scale bet.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
