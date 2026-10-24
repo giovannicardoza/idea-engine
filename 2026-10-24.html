@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-24</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Saturday, October 24, 2026</h1>
+<nav class="nav"><a href="./2026-10-23.html">&larr; Fri, Oct 23</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Local Listing AEO Audit Skill</h2>
+<p>Answer Engine Optimization just became a formally named, fast-growing discipline today, up 99x in search interest, the same week Change Agents' Beacon launched a dedicated tool auditing business listings for agentic AI local search. That is a concrete, dated convergence of a naming trend and a purpose-built tool, and it extends the AI-citation audit work you already shipped in July into the specific local-listing layer that feeds it.</p>
+</div>
+<article id="idea-2026-10-24-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>zCAD Quick-Quote Agent for Fab Shops</h3>
+</div>
+<p class="field"><strong>Trigger</strong>zCAD AI launched today as an AI 3D CAD tool generating real manufacturable parts instead of just renders. Source: <a href="https://producthunt.com/products/zcad-ai" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A narrow agent that takes a small machine shop or fabricator's hand-sketched part request, runs it through zCAD-style AI CAD to produce a manufacturable file, and returns an instant rough quote estimate before the shop owner touches a CAD program themselves.</p><p class="field"><strong>Why you</strong>A clean wrap-a-new-tool-for-one-SMB-task build, same shape as your other narrow agent work, aimed at a boring local niche (small fab shops) that rarely gets modern tooling pointed at it.</p><p class="field"><strong>First step</strong>Feed zCAD one real hand-sketched part description today and time how long it takes to get a usable manufacturable file back.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Baselane Landlord Banking Migration Advisor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Search interest in "Baselane," a landlord-focused banking and bookkeeping platform, is up 7,300 percent this week. Source: <a href="https://explodingtopics.com/blog/trending-topics" rel="noopener">Exploding Topics</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that pulls a small landlord's current bank statements and expense-tracking setup, models what actually improves by switching to Baselane-style landlord banking, and drafts the migration checklist, distinct from your existing Small Landlord Ops SaaS since that one is a tracker you build and own, not an advisory pass on a third-party platform's breakout.</p><p class="field"><strong>Why you</strong>Landlords under 10 units are already a niche you serve, and this rides a real search spike without requiring you to build or maintain the banking product yourself.</p><p class="field"><strong>First step</strong>Pull one landlord contact's last three months of bank statements today and hand-model what Baselane's fee structure would actually save or cost them.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-business">Business</span>
+
+<h3>Ideogram Vector Brand Asset Prompt Pack</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Ideogram Vector 1.0 shipped October 22, generating editable SVG files directly from text prompts instead of flat images. Source: <a href="https://futuretools.io/news" rel="noopener">Future Tools</a></p><p class="field"><strong>The idea</strong>A Gumroad prompt pack teaching small-business owners the exact prompt chain to generate their own editable logo, icon, and signage vector assets with Ideogram Vector, skipping a freelance designer for simple brand-asset needs.</p><p class="field"><strong>Why you</strong>Pure prompt packaging in your existing Gumroad digital-product lane, and editable-vector output is new enough that no competing pack has caught up yet.</p><p class="field"><strong>First step</strong>Generate one full small-business brand kit (logo, icon set, signage graphic) with Ideogram Vector today and capture every prompt that held up cleanly as an SVG.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>GrapheneOS Banking Compatibility Concierge</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Around a dozen banking apps began supporting GrapheneOS this week, a privacy-hardened mobile OS that previously locked out most financial apps. Source: <a href="https://grapheneos.social/@GrapheneOS/117492375462459244" rel="noopener">GrapheneOS</a></p><p class="field"><strong>The idea</strong>A narrow agent that checks whether a privacy-conscious small-business owner's specific required banking, payroll, and payment apps now run on GrapheneOS, and drafts the exact migration steps for the ones that still need a workaround.</p><p class="field"><strong>Why you</strong>Distinct from your existing Privacy-Hardware Payment Checkout App, which reroutes a checkout widget around a processor block, this one screens the owner's own daily-use apps before they commit to switching phones.</p><p class="field"><strong>First step</strong>Check one privacy-conscious client's actual banking and payroll app list against today's GrapheneOS compatibility announcement.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-app">App</span>
+
+<h3>SMB Combined-Borrowing Cap Eligibility Calculator</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New federal rules under the Equal Credit Opportunity Act's Regulation B doubled the small-business combined-borrowing cap to $10 million starting October 1, while adding stricter disclosure requirements. Source: <a href="https://www.federalregister.gov/documents/2026/05/01/2026-08494/small-business-lending-under-the-equal-credit-opportunity-act-regulation-b" rel="noopener">Federal Register</a></p><p class="field"><strong>The idea</strong>A calculator app where an SMB owner enters their current and pending loan balances and gets back whether they clear the new $10 million combined cap, plus the specific new disclosure paperwork the stricter rule now requires.</p><p class="field"><strong>Why you</strong>Same calculator-app pattern you've shipped repeatedly for other lending-rule changes, this time for a cap most owners have not noticed just doubled.</p><p class="field"><strong>First step</strong>Pull one client's current loan balances today and run them through a first draft of the combined-cap formula.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-app">App</span>
+
+<h3>Hyper-Local Business Discovery Mini-Site Builder</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Local Wikipedia, a Hacker News launch showing only Wikipedia content within a 30-minute walk of the reader, hit 1,439 points today. Source: <a href="https://edjefferson.com/localwiki/" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A small app generating a radius-scoped mini-page for a local business, the kind of walk-up-distance local content Local Wikipedia proved people want, giving a small retailer or restaurant a cheap, genuinely local discovery asset distinct from a generic business listing.</p><p class="field"><strong>Why you</strong>A clean, narrow data app serving the same local-SMB client base you already target, riding a concept that just proved real demand with zero existing competitor pointed at the business side of it.</p><p class="field"><strong>First step</strong>Build the radius-scoped page for one real local business today and check how it reads next to their existing Google listing.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Agent-Native Terminal Operating Layer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Corgi, a terminal multiplexer with integrated AI agent capabilities, hit Hacker News today. Source: <a href="https://corgi.computer/" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A category-defining terminal environment built from the ground up for agent-and-human collaboration as the default developer interface, not a plugin bolted onto an existing shell.</p><p class="field"><strong>Scale</strong>Replacing the terminal as the default dev surface needs adoption from every major editor and shell ecosystem at once, a platform bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Consumer Device Security Research Collective</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A widely upvoted Hacker News post today detailed a grassroots team's successful hack of the iPhone itself, a from-scratch security research effort against flagship consumer hardware. Source: <a href="https://blog.calif.io/p/iphone" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A funded collective continuously red-teaming flagship consumer devices for undisclosed vulnerabilities and publishing responsible-disclosure reports, proving today's grassroots approach can run at standing, institutional scale.</p><p class="field"><strong>Scale</strong>Matching what device vendors themselves invest in security research, across every major phone and laptop line at once, needs real funding and legal cover past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-24-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Passwordless Identity Layer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Passwordless Authentication" search interest broke into the mainstream cybersecurity trend list this week. Source: <a href="https://explodingtopics.com/blog/trending-topics" rel="noopener">Exploding Topics</a></p><p class="field"><strong>The idea</strong>A category-defining cross-platform identity standard letting a person set up passwordless login once and carry it across every site and app they use, instead of each platform shipping its own disconnected passkey rollout.</p><p class="field"><strong>Scale</strong>Becoming the default identity layer under the entire web needs buy-in from every major platform and browser vendor at once, a standards-body bet, not a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
