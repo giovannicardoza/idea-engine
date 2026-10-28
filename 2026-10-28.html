@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-10-28</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Wednesday, October 28, 2026</h1>
+<nav class="nav"><a href="./2026-10-24.html">&larr; Sat, Oct 24</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Meta Political/Social Ad Blackout Compliance Sprint</h2>
+<p>Meta is running an active political and social-issue ad content blackout from October 27 through November 3, right as its Marketing API v24.0 sunset forces last-minute ad-strategy scrambles. That is a live, dated deadline hitting right now, not a future one, which makes it the sharpest, most urgent cold-outreach hook on today's board: audit a client's active campaigns before their creative gets misclassified and a page gets restricted.</p>
+</div>
+<article id="idea-2026-10-28-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Website Agent-Compatibility Audit Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Dedica launched today as Product Hunt's top-ranked product, a tool testing whether AI agents can actually browse and complete tasks on a website and surfacing the specific failures that block them. Source: <a href="https://getdedica.com" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that runs a client's site through an agent-compatibility pass, checking for the structured-data, markup, and flow gaps that block AI shopping or browsing agents, distinct from your existing WebMCP retrofit work since this diagnoses whether a site is agent-readable before any WebMCP endpoint gets built.</p><p class="field"><strong>Why you</strong>Extends your AEO and agent-visibility audit muscle into the raw technical layer underneath it, sellable as an add-on to any client site you've already shipped.</p><p class="field"><strong>First step</strong>Run one client site through the agent-compatibility check today and log every failure point it surfaces.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Salesforce Integration Freeze Risk Monitor</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Salesforce granted itself unilateral authority on October 16 to freeze third-party integrations on security grounds, a new operational risk for any business whose workflow depends on a connected app staying live. Source: <a href="https://salesforcetrails.com/blog/salesforce-platform-security-updates-october-2026" rel="noopener">Salesforce Trails</a></p><p class="field"><strong>The idea</strong>A narrow agent that audits a client's Salesforce-connected integrations against the new freeze criteria, flags which ones are most exposed, and drafts the fallback plan before Salesforce pulls the plug on one without warning.</p><p class="field"><strong>Why you</strong>Matches your existing platform-risk agent pattern (Etsy Seller Account Health Checker, App Store Rank Drop Watchdog), aimed at a brand-new, dated authority grant.</p><p class="field"><strong>First step</strong>Pull one client's Salesforce integration list today and score each against the new freeze criteria.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Domestic PCB Sourcing Calculator</h3>
+</div>
+<p class="field"><strong>Trigger</strong>CircuitHub announced domestic PCB manufacturing now running twice as fast as before, a concrete reshoring win for hardware startups tired of overseas fab delays. Source: <a href="https://circuithub.com" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A small calculator app where a hardware startup enters board specs and order volume and gets back a real cost and lead-time comparison between an overseas fab and CircuitHub-style domestic manufacturing.</p><p class="field"><strong>Why you</strong>A clean, narrow data app serving the hardware-adjacent small businesses in your orbit, riding a concrete, dated reshoring claim nobody has turned into a client-facing tool yet.</p><p class="field"><strong>First step</strong>Pull CircuitHub's published pricing and lead-time numbers today and build the comparison formula against one real board spec.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Trigger.dev Agent-Glue Migration Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Trigger.dev launched today on Product Hunt as a TypeScript platform for building and deploying AI agents, with 50+ service integrations already wired in. Source: <a href="https://trigger.dev" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that audits a client's hand-rolled agent glue code (custom webhook handlers, retry logic, integration plumbing) and drafts the migration plan onto Trigger.dev's managed layer, cutting ongoing maintenance load.</p><p class="field"><strong>Why you</strong>Direct extension of your agent-building lane onto a brand-new managed-infra layer, the same build-speed lever you used with Perplexity Computer Automations Retrofit.</p><p class="field"><strong>First step</strong>Pick one of your own simpler agent builds and migrate its glue code onto Trigger.dev today to time the real effort saved.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-business">Business</span>
+
+<h3>Mistral Le Chonk Open-Weight Bill-Cutter Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Mistral released "Le Chonk," a 1-trillion-parameter open-weight model reaching parity with closed frontier models, the latest open release racing token costs toward zero. Source: <a href="https://thursdai.news/releases/2026-10" rel="noopener">ThursdAI</a></p><p class="field"><strong>The idea</strong>A fixed-price sprint auditing a client's current paid API spend and migrating the calls that don't need a closed vendor's edge onto a self-hosted or cheaply-rented Le Chonk deployment.</p><p class="field"><strong>Why you</strong>Same bill-cut sprint shape you've run for DeepSeek and GPT-6 Astra migrations, applied to today's specific open-weight release.</p><p class="field"><strong>First step</strong>Stand up Le Chonk against one of your own recurring client tasks today and compare output quality against the paid API it would replace.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>Barrel Leg Pants Trend-Jack Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Barrel leg pants" search interest is up roughly 8,500 percent this week, an apparel-silhouette breakout. Source: <a href="https://explodingtopics.com/product-topics" rel="noopener">Exploding Topics</a></p><p class="field"><strong>The idea</strong>A same-day content and listing sprint producing on-trend photos, captions, and a bundled display for apparel boutiques riding the barrel-leg breakout before it cools.</p><p class="field"><strong>Why you</strong>Your proven trend-jack sprint pattern, just needs today's specific breakout silhouette swapped in, deliverable same day.</p><p class="field"><strong>First step</strong>Find two local apparel boutiques without a barrel-leg section yet and pitch the sprint today.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Frontier World-Simulation Training Platform</h3>
+</div>
+<p class="field"><strong>Trigger</strong>DeepMind shipped Genie 4 today, a generative world-simulation model creating persistent, interactive 3D environments from a single prompt or image, topping Hacker News with 960 points. Source: <a href="https://deepmind.google" rel="noopener">DeepMind</a></p><p class="field"><strong>The idea</strong>A category-defining platform building on Genie-class world models to generate unlimited simulated training environments for robotics and autonomous-agent developers, replacing hand-built simulators entirely.</p><p class="field"><strong>Scale</strong>Competing with established robotics-simulation incumbents and matching DeepMind's own compute scale needs serious funding and research talent, a lab-scale bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Legislative Change Transparency Ledger</h3>
+</div>
+<p class="field"><strong>Trigger</strong>"Git for the US Code" launched on Hacker News today, applying version control to legislative text so every change to federal law becomes a diffable, timestamped commit. Source: <a href="https://lexifina.com" rel="noopener">Hacker News</a></p><p class="field"><strong>The idea</strong>A funded, agent-driven platform extending this version-control pattern to every US federal and state legislative body at once, auto-diffing bill amendments in real time and cross-referencing each change against the lobbying disclosures and donors tied to the sponsoring office.</p><p class="field"><strong>Scale</strong>Needs standing legal and data infrastructure across every statehouse and Congress simultaneously, plus serious credibility to be trusted as the canonical record, a civic-infrastructure bet well past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-10-28-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Open-Source Legal-AI Standard-Bearer</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Harvey raised $500M for its proprietary legal-AI platform the same day an open-source alternative to it launched on GitHub, the latest instance of venture-funded AI features getting undercut by a free community version almost immediately. Source: <a href="https://github.com/thomasunise" rel="noopener">GitHub / Hacker News</a></p><p class="field"><strong>The idea</strong>A funded nonprofit or consortium that hardens and maintains the open-source legal-AI alternative into something actual law firms can trust and deploy, becoming the credible non-proprietary option while venture-backed platforms race to lock in enterprise clients.</p><p class="field"><strong>Scale</strong>Needs real legal-industry credibility, security auditing, and ongoing maintenance funding to compete with a $500M-backed incumbent, a standards-body-scale bet, not a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
