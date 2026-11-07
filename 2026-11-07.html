@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-11-07</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Saturday, November 7, 2026</h1>
+<nav class="nav"><a href="./2026-11-05.html">&larr; Thu, Nov 5</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Power Platform Managed-Environment Migration Sprint</h2>
+<p>Microsoft cuts off the ability to create unmanaged Power Platform/Dataverse-for-Teams environments on Nov 15, just 8 days out, which means every informal citizen-developer app built by an SMB or small agency either gets migrated or quietly stops working. It's a hard deadline, a narrow audit-and-fix scope, and a type of sprint Gio has already proven works repeatedly, with zero prior entry on this specific vendor.</p>
+</div>
+<article id="idea-2026-11-07-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Claude Personal Finance Fraud-Liability Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Claude's new Personal Finance beta lets Pro/Max/Ultra users link real bank and investment accounts for the first time, creating a brand-new financial-data-aggregation and fraud-liability surface. Source: <a href="https://support.claude.com/en/articles/12138966-release-notes" rel="noopener">Claude release notes</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that audits a client's Claude Personal Finance connection (scopes granted, data retention, revocation path) and drafts the plain-English liability disclosure they should give customers or employees before enabling it.</p><p class="field"><strong>Why you</strong>Direct extension of the AI-adoption-risk-audit niche Gio has already built a dozen variants of, riding his own daily tool's newest feature.</p><p class="field"><strong>First step</strong>Enable Claude Personal Finance in a sandbox account today, document every permission screen, and turn that into the skill's first checklist pass.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-app">App</span>
+
+<h3>Airbnb House-Rules Compliance Rewrite Kit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Airbnb's new House Rules policy, effective Nov 20, requires every host rule to be pre-listed and "reasonable," and bans personal-data collection or steering guests to off-platform reviews. Source: <a href="https://touchstay.com/blog/airbnb-changes-november-2026" rel="noopener">Touchstay</a></p><p class="field"><strong>The idea</strong>A small app that scans a host's current listing rules and check-in instructions, flags the ones that now violate policy, and generates compliant replacement copy.</p><p class="field"><strong>Why you</strong>Narrow, fast-build app with a hard deadline and a huge addressable host base, fitting the "same-day fix sprint for a platform policy change" pattern.</p><p class="field"><strong>First step</strong>Pull 10 real Airbnb listing rule pages today and hand-flag which clauses the new policy would reject, to calibrate the scan rules before writing any code.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Executive Impersonation Verification Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Three men were just charged for a $129M AI voice/video executive-impersonation fraud scheme that ran from 2024 to Feb 2026, confirming deepfake CEO fraud has scaled past novelty. Source: <a href="https://www.trustinfinitech.com/cybersecurity-ai-roundup-november-6-2026/" rel="noopener">TrustInfiniTech</a></p><p class="field"><strong>The idea</strong>A narrow agent that inserts a live callback-and-challenge-phrase verification step into a client's wire/vendor-payment approval workflow whenever the request arrives by voice or video, before money moves.</p><p class="field"><strong>Why you</strong>Concrete, dollar-sized trigger that fits the vendor-fraud-watchdog pattern Gio's shipped before; compliance and insurance buyers pay for a provable control, not just a warning.</p><p class="field"><strong>First step</strong>Map one client's actual payment-approval chain (who approves, over what channel) and design the single challenge step that would have stopped this specific scheme.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Exa Monitors Bill-Cutter Retrofit Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Exa Monitors v2 launched on Product Hunt today, offering scheduled web-search agent monitoring at $2 per 1,000 runs, undercutting most hand-rolled or SaaS scraping/monitoring setups. Source: <a href="https://www.producthunt.com/posts/exa-monitors-v2" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A fixed-price sprint auditing what a client currently pays for competitor/price/mention monitoring and migrating the workflow onto Exa Monitors where the math favors it.</p><p class="field"><strong>Why you</strong>The bill-cutter-migration pattern Gio has run successfully many times before, this time against a brand-new, cheap, Claude-Code-scriptable target.</p><p class="field"><strong>First step</strong>Price out one existing client's current monitoring spend against Exa Monitors' per-run rate to build the pitch deck's headline savings number.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-app">App</span>
+
+<h3>Algorithmic Pricing Compliance Self-Audit App</h3>
+</div>
+<p class="field"><strong>Trigger</strong>RealPage just settled its algorithmic rent-pricing antitrust case for nearly $360M, confirming regulators now treat algorithmic price-coordination as real, provable liability, not a theoretical risk. Source: <a href="https://www.multifamilydive.com/news/realpage-rent-pricing-case-360m-renters/873553/" rel="noopener">Multifamily Dive</a></p><p class="field"><strong>The idea</strong>A self-serve app that scans a landlord or retailer's dynamic-pricing software setup for the specific data-sharing and coordination patterns the RealPage case turned on, and drafts a defensible pricing policy.</p><p class="field"><strong>Why you</strong>Small, well-scoped checklist app, the same shape as the compliance-kit cards already working for Gio, aimed at a fresh, named precedent rather than a repeat trigger.</p><p class="field"><strong>First step</strong>Read the RealPage settlement's actual findings list and turn each named practice into one yes/no audit question.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Agent Escalation-on-Uncertainty Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A Hacker News post today shows a cheap model that can "ask Opus for help" matches Opus's own accuracy at 4x lower cost, by escalating only when its own confidence is low, not by routing every call upfront. Source: <a href="https://hightouch.com/blog/llm-judges-identity-resolution" rel="noopener">Hightouch</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that wraps any agent with a self-confidence check and auto-escalates only the uncertain calls to a stronger model, instead of a flat per-task routing rule.</p><p class="field"><strong>Why you</strong>A direct upgrade to Gio's own model-router skill and Claude Cost Router business already on the ledger, same cost-saving thesis with a sharper mechanism, sellable to the same solo-builder audience.</p><p class="field"><strong>First step</strong>Instrument one existing client skill with a simple self-rated confidence score and log how often it would have escalated, to size the savings before building the full wrapper.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Legacy Critical-Infrastructure Dependency Elimination Authority</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The FAA just confirmed it won't finish phasing floppy disks out of air traffic control until 2028, a vivid proof point that 1980s-era dependencies are still load-bearing across critical US infrastructure. Source: <a href="https://www.reuters.com/world/us/us-faa-says-it-will-phase-out-floppy-disks-air-traffic-control-by-2028-2026-11-05/" rel="noopener">Reuters</a></p><p class="field"><strong>The idea</strong>A funded authority that systematically inventories and retires decades-old hardware/software dependencies across power, air traffic, and water systems before they become unmaintainable or exploitable.</p><p class="field"><strong>Scale</strong>Needs federal-agency-level access, cross-sector engineering teams, and years of coordinated procurement: a mission for a funded institution, not a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Data-Center Debt Risk-Rating Agency</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The Nasdaq dropped 5.5% on Nov 5 over AI infrastructure ROI doubts, the same week Google committed another $17B to AI data centers, exposing a widening gap between capex conviction and capital-markets skepticism. Source: <a href="https://techstartups.com/2026/11/05/top-tech-news-roundup-for-today-november-5-2026-googles-17b-ai-data-center-nvidia-ziplines-1-5b-funding-and-nasdaqs-5-5-plunge/" rel="noopener">TechStartups</a></p><p class="field"><strong>The idea</strong>An independent rating agency scoring the debt instruments backing hyperscaler AI data-center buildouts, giving bond markets a credit signal that doesn't exist yet.</p><p class="field"><strong>Scale</strong>Requires financial-market credibility, regulatory recognition, and deep capital-markets expertise far beyond a solo build: closer to a new Moody's for one asset class.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-07-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Quantum-Resistant Live-Identity Verification Standard</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The same week a $129M AI-impersonation fraud scheme came to light, federal cybersecurity officials restated the Q-Day warning that today's encryption, including the signatures underlying identity verification, breaks once practical quantum computing arrives. Source: <a href="https://federalnewsnetwork.com/innovation-in-government/2026/11/3-challenges-agencies-need-to-overcome-ahead-of-q-day/" rel="noopener">Federal News Network</a></p><p class="field"><strong>The idea</strong>A cross-platform, quantum-resistant live-identity standard that replaces voice/video trust entirely, so deepfake impersonation and the coming crypto break both get solved by the same infrastructure.</p><p class="field"><strong>Scale</strong>Needs standards-body buy-in across banks, platforms, and governments simultaneously: a civilizational-infrastructure play, not a single company's product.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
