@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-11-15</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Sunday, November 15, 2026</h1>
+<nav class="nav"><a href="./2026-11-14.html">&larr; Sat, Nov 14</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Lovable-Class AI-Builder Security Leak Auditor</h2>
+<p>A Hacker News story broke today showing apps built on Lovable, a popular AI app-builder, exposed passport details and 200,000 private messages through the same class of vibe-coded security gap: unsecured storage and auth bypasses nobody checked before shipping. Any client who used an AI app-builder (Lovable, Bolt, v0, Replit Agent) before hiring Gio is carrying the same risk right now, which turns a scary, dated headline into a same-day, high-stakes audit.</p>
+</div>
+<article id="idea-2026-11-15-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Gemini 4 Hydrogen Agent Upgrade Scout</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Google released Gemini 4 Hydrogen today, a faster model purpose-built for multi-step agentic work in research, coding, and data analysis. Source: <a href="https://riorundown.substack.com/p/ai-news-nov-15-2026-ai-infrastructure" rel="noopener">Rio Rundown</a></p><p class="field"><strong>The idea</strong>A narrow agent that runs one of a client's existing agent workflows against Gemini 4 Hydrogen on the same tasks and returns a plain speed/cost/quality delta versus staying put.</p><p class="field"><strong>Why you</strong>Direct extension of your model-router instincts, timed to the exact day the model shipped, before competitors even know it exists.</p><p class="field"><strong>First step</strong>Run one of your own recurring agent tasks through Gemini 4 Hydrogen today and log the real delta against your current model.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Agent Framework Lock-In Exit Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>LangChain raised $300M at a $3B valuation this week, the latest sign that capital and adoption are consolidating around a handful of commercial agent frameworks. Source: <a href="https://riorundown.substack.com/p/ai-news-nov-15-2026-ai-infrastructure" rel="noopener">Rio Rundown</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that audits a client's agent build for hard dependencies on one commercial framework and drafts a leaner, framework-light alternative in plain code, distinct from your existing agent bake-off advisor since this targets exit cost, not which framework to pick next.</p><p class="field"><strong>Why you</strong>Matches your own preference for lean, owned builds over vendor lock-in, sellable to any agent client worried about betting on the wrong platform.</p><p class="field"><strong>First step</strong>Audit your own most framework-dependent build today and note the real swap cost to plain code.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-app">App</span>
+
+<h3>Meta EU Data-Practice Exposure Checker</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Italy's data regulator fined Meta €805M this week for unauthorized data access, the clearest sign yet that EU enforcement against platform data practices has moved from guidance to real penalties. Source: <a href="https://riorundown.substack.com/p/ai-news-nov-15-2026-ai-infrastructure" rel="noopener">Rio Rundown</a></p><p class="field"><strong>The idea</strong>A small checklist app scanning a client's Meta Pixel and Business tools setup for the specific data-sharing pattern the Italian fine targeted, flagging what to disable before a smaller-scale copycat enforcement action lands.</p><p class="field"><strong>Why you</strong>Same compliance-checklist-app pattern you've shipped repeatedly for Meta policy changes, this one aimed at an enforcement precedent instead of a feature rollout.</p><p class="field"><strong>First step</strong>Pull one client's Meta Business and Pixel settings today and check them against the practices named in the fine.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-business">Business</span>
+
+<h3>Mobile-Service Vertical SaaS Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Today's Product Hunt launch mix is dominated by AI productivity and dev tools, with vertical, boring-service SaaS (today's lone example, TwoBucket, for mobile detailing) conspicuously rare. Source: <a href="https://www.producthunt.com/products/twobucket" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A fixed-price sprint building a TwoBucket-style scheduling, invoicing, and photo-log micro-app for one underserved local mobile-service niche, mobile pet grooming, mobile window cleaning, or mobile detailing itself, that nobody's built dedicated software for.</p><p class="field"><strong>Why you</strong>Your custom-software SMB lane, pointed at a gap today's own launch mix proved exists rather than a crowded category.</p><p class="field"><strong>First step</strong>Pick one local mobile-service niche today and sketch the three core screens TwoBucket shipped as the sprint's scope.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Post-Hire Retention Nudge Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Product Hunt's hiring-automation wave, led by yesterday's top launch HiringNow, covers getting someone hired, but HR tooling thins out sharply past the hire itself. Source: <a href="https://www.producthunt.com/products/hiringnow" rel="noopener">Product Hunt</a></p><p class="field"><strong>The idea</strong>A Claude Code skill drafting a 30/60/90-day retention check-in sequence, manager prompts, pulse questions, early flight-risk flags, for SMBs that just used an automated hiring tool and have nothing lined up for after.</p><p class="field"><strong>Why you</strong>A narrow, fast skill build serving the same SMB HR-adjacent client base, filling the exact gap today's launch mix left open.</p><p class="field"><strong>First step</strong>Draft the 30/60/90 check-in sequence today against one real recent hire you know of.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Freight-Tender Carrier Grading Retrofit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Wakeo launched an AI tool this month that grades carriers on delivery record before freight tenders go out. Source: <a href="https://www.marketscale.com/industries/transportation/wakeos-new-ai-tool-grades-carriers-on-delivery-record-before-freight-tenders" rel="noopener">MarketScale</a></p><p class="field"><strong>The idea</strong>A narrow agent that pulls a small shipper's or broker's own carrier history and generates the same kind of pre-tender grading report, without a Wakeo platform subscription.</p><p class="field"><strong>Why you</strong>A build-the-feature-not-buy-the-platform play, the same shape as your past bill-cutter retrofits, aimed at a logistics SMB niche you haven't served yet.</p><p class="field"><strong>First step</strong>Pull one shipper contact's last 10 carrier shipments today and hand-build the grading rubric.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Agentic-Era Dev Platform Security Standard</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The Lovable breach, passport details and 200,000 private messages exposed, shows AI app-builder platforms ship with systemic, repeatable security gaps across thousands of apps at once, not isolated bugs. Source: <a href="https://www.crissyfield.de/research/lovable-en/" rel="noopener">crissyfield.de</a></p><p class="field"><strong>The idea</strong>A category-defining security certification standard and automated scanner that any AI app-builder platform (Lovable, Bolt, Replit, v0) must pass before its output goes to production, becoming the SOC 2 of vibe-coded apps.</p><p class="field"><strong>Scale</strong>Needs buy-in from every major AI-app-builder platform plus real cybersecurity credibility to be trusted as an industry gate, a standards-body bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Infra Financing Confidence Arbitrage Fund</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Nvidia cut its financing guarantee behind OpenAI's data-center buildout from $250B to $105B this week, a hard signal that AI infrastructure capex conviction is cracking even among the most bullish backers. Source: <a href="https://404kresearch.substack.com/p/456x-morning-brief-november-15-2026" rel="noopener">404K Research</a></p><p class="field"><strong>The idea</strong>A funded trading and advisory vehicle that hedges against over-levered AI data-center buildouts while advising which committed projects are actually credit-worthy.</p><p class="field"><strong>Scale</strong>Needs real capital-markets infrastructure and credit expertise across hyperscaler balance sheets, a hedge-fund-scale bet, not a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-15-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Universal Agent-Capability Benchmark Exchange</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Google's Gemini 4 Hydrogen agentic launch landed the same week LangChain closed its $3B valuation round, proof the agent-model and agent-framework layers are both racing with no neutral way to compare them head-to-head. Source: <a href="https://riorundown.substack.com/p/ai-news-nov-15-2026-ai-infrastructure" rel="noopener">Rio Rundown</a></p><p class="field"><strong>The idea</strong>An independent, continuously-updated benchmark exchange running real enterprise agent tasks across every frontier model and framework combination, becoming the default "which agent stack actually works" reference.</p><p class="field"><strong>Scale</strong>Needs sustained compute investment and neutral-party credibility trusted across competing vendors at once, a category-defining infrastructure bet.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
