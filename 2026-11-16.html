@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ideas 2026-11-16</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#fbf9f6; --panel:#ffffff; --ink:#1a1610; --muted:#7a7266;
+  --line:#e9e3d9; --hair:rgba(0,0,0,.05);
+  --gold:#b8860b; --gold-bg:#fdf6e3; --gold-line:#e8d9a8;
+  --skill:#3b82f6; --agent:#a855f7; --app:#10b981; --business:#f97316;
+  --build:#15803d; --build-bg:#eafaf0;
+  --maybe:#b45309; --maybe-bg:#fdf3e2;
+  --no:#9f2d2d; --no-bg:#fbebeb;
+  --unmarked:#8f8878; --unmarked-bg:#f2efe8;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14120e; --panel:#1c1914; --ink:#f0ece2; --muted:#a39a89;
+    --line:#332e24; --hair:rgba(255,255,255,.06);
+    --gold:#e2b53c; --gold-bg:#2a230f; --gold-line:#4a3c1a;
+    --skill:#60a5fa; --agent:#c084fc; --app:#34d399; --business:#fb923c;
+    --build:#4ade80; --build-bg:#132a1c;
+    --maybe:#facc15; --maybe-bg:#2b230f;
+    --no:#f87171; --no-bg:#2b1414;
+    --unmarked:#8f8878; --unmarked-bg:#241f17;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wrap.wide{max-width:1040px}
+header{padding:40px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 10px
+}
+h1{margin:0;font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:650}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.nav a{
+  font-size:13px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--panel);transition:color .15s,border-color .15s
+}
+.nav a:hover{color:var(--ink);border-color:var(--muted)}
+
+.toppick{
+  background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);
+  border:1px solid var(--gold-line);border-radius:16px;
+  padding:24px 26px;margin-bottom:28px;position:relative
+}
+.toppick .kicker{color:var(--gold);display:flex;align-items:center;gap:6px}
+.toppick h2{margin:0 0 10px;font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.toppick p{margin:0;color:var(--ink);font-size:15px;line-height:1.6}
+
+.idea{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px
+}
+.idea.swing{
+  border-style:dashed;border-color:var(--gold-line);
+  background:linear-gradient(180deg,var(--gold-bg) 0%,var(--panel) 40%)
+}
+.idea-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.num{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.badge{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:3px 10px;line-height:1.5;white-space:nowrap
+}
+.badge.type-skill{color:var(--skill);background:color-mix(in srgb, var(--skill) 14%, transparent)}
+.badge.type-agent{color:var(--agent);background:color-mix(in srgb, var(--agent) 14%, transparent)}
+.badge.type-app{color:var(--app);background:color-mix(in srgb, var(--app) 14%, transparent)}
+.badge.type-business{color:var(--business);background:color-mix(in srgb, var(--business) 14%, transparent)}
+.badge.swing-tag{color:var(--gold);background:color-mix(in srgb, var(--gold) 16%, transparent)}
+.idea h3{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;flex:1 0 100%}
+.idea .field{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.idea .field:last-of-type{margin-bottom:0}
+.idea .field strong{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:3px
+}
+.meta-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair)}
+.meter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.dots{display:inline-flex;gap:3px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--hair)}
+.dot.on{background:var(--ink)}
+.verdict{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:999px;padding:4px 12px;margin-left:auto
+}
+.verdict-build{color:var(--build);background:var(--build-bg)}
+.verdict-maybe{color:var(--maybe);background:var(--maybe-bg)}
+.verdict-no{color:var(--no);background:var(--no-bg)}
+.verdict-unmarked{color:var(--unmarked);background:var(--unmarked-bg)}
+
+.scroll-hint{display:none;color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);position:relative}
+.na{color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel)}
+thead th{
+  position:sticky;top:0;background:var(--panel);text-align:left;
+  padding:12px 14px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--line);cursor:pointer;
+  white-space:nowrap;user-select:none
+}
+thead th:hover{color:var(--ink)}
+thead th::after{content:"";display:inline-block;width:9px}
+thead th[aria-sort="ascending"]::after{content:"▲";font-size:9px;margin-left:2px}
+thead th[aria-sort="descending"]::after{content:"▼";font-size:9px;margin-left:2px}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--hair);vertical-align:middle;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hair)}
+td.name{white-space:normal;min-width:220px}
+td.name a{color:var(--ink);text-decoration:none;font-weight:600}
+td.name a:hover{text-decoration:underline}
+td.num-cell{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px
+}
+.archive{list-style:none;padding:0;margin:0}
+.archive li{border-top:1px solid var(--line)}
+.archive li:first-child{border-top:0}
+.archive a{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:15px 4px;text-decoration:none;color:var(--ink)
+}
+.archive a:hover{color:var(--muted)}
+.archive .when{color:var(--muted);font-size:13px;white-space:nowrap}
+code{
+  font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:var(--hair);border-radius:4px;padding:1px 5px
+}
+a{color:inherit}
+@media(max-width:520px){
+  body{padding:0 14px 56px}
+  header{padding:28px 0 22px;margin-bottom:24px}
+  h1{font-size:24px}
+  .toppick,.idea{padding:18px 18px;border-radius:12px}
+  .verdict{margin-left:0}
+  .meta-row{gap:12px}
+  .scroll-hint{display:block}
+  thead th,tbody td{padding:9px 10px;font-size:12.5px}
+}
+</style>
+</head>
+<body><div class="wrap"><header>
+<p class="kicker">Idea Engine</p>
+<h1>Monday, November 16, 2026</h1>
+<nav class="nav"><a href="./2026-11-15.html">&larr; Sun, Nov 15</a><a href="./archive.html">All days</a><a href="./all-ideas.html">All ideas</a></nav>
+</header>
+<div class="toppick">
+<p class="kicker">⭐ Top Pick</p>
+<h2>Anthropic Nov 12 Usage-Policy Compliance Audit</h2>
+<p>Anthropic tightened its usage policy on November 12, now actively enforcing stricter rules against deceptive campaigns and high-risk uses, four days live as of today. This lands directly on the platform Gio builds on every day, so he can prove the audit on his own products before selling the same pass to every client running a Claude-based tool, making it the sharpest, most self-verifiable pick on today's board.</p>
+</div>
+<article id="idea-2026-11-16-2" class="idea">
+<div class="idea-head">
+<span class="num">02</span>
+<span class="badge type-app">App</span>
+
+<h3>Self-Hosted Git Forge Cost-Cutter</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Rbit, a lightweight self-hosted git forge written in Rust, surfaced on Hacker News today as a real alternative to paid GitHub/GitLab seats. Source: <a href="https://rbit.sh/" rel="noopener">rbit.sh</a></p><p class="field"><strong>The idea</strong>A small app where an agency or small dev shop enters its current GitHub/GitLab seat count and usage and gets back the real monthly savings plus a one-click migration checklist for self-hosting on Rbit instead.</p><p class="field"><strong>Why you</strong>A narrow, numbers-driven calculator app you can build in a day, sellable to the small agencies and solo-builder peers already in your orbit.</p><p class="field"><strong>First step</strong>Stand up Rbit yourself today and migrate one of your own smaller repos to time the real setup effort.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-3" class="idea">
+<div class="idea-head">
+<span class="num">03</span>
+<span class="badge type-business">Business</span>
+
+<h3>M365 Outage Continuity Retainer Sprint</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A global Microsoft 365 outage on Nov 12-13 took down Teams, Outlook, Copilot, and SharePoint at once, leaving businesses with no fallback for core work. Source: <a href="https://news.northeastern.edu/2026/11/13/global-microsoft-outage-cause" rel="noopener">news.northeastern.edu</a></p><p class="field"><strong>The idea</strong>A fixed-price sprint identifying a client's single most outage-exposed M365-dependent task (scheduling, invoicing, client comms) and standing up one cheap, non-Microsoft fallback path for it, so a repeat outage doesn't stop the business cold.</p><p class="field"><strong>Why you</strong>Same audit-and-build sprint shape you've run for carrier and platform outages before, this time for the cloud-office stack nearly every SMB client already runs.</p><p class="field"><strong>First step</strong>Ask one client today which single task would hurt most if M365 went dark for a day, and sketch its fallback.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-4" class="idea">
+<div class="idea-head">
+<span class="num">04</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Claude Fable Fit-Check Skill</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Anthropic shipped Claude Fable 5.2 this week alongside Google's Gemini 4 Carbon and Hydrogen, the latest entries in the frontier-hard tier your own model-router thesis targets. Source: <a href="https://www.promptzone.com/ai-model-releases" rel="noopener">promptzone.com</a></p><p class="field"><strong>The idea</strong>A Claude Code skill that benchmarks a client's (or your own) recurring task against Fable-tier cost and output quality versus Sonnet/Opus, extending your existing model-router pattern to the newest frontier-hard model the moment it ships.</p><p class="field"><strong>Why you</strong>Direct extension of your own daily model-routing discipline into a sellable skill for other solo Claude Code builders, proven out on your own workload first.</p><p class="field"><strong>First step</strong>Run one of your own recurring hard-reasoning tasks through Fable 5.2 today and log the real cost/quality delta against your current default.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-5" class="idea">
+<div class="idea-head">
+<span class="num">05</span>
+<span class="badge type-skill">Skill</span>
+
+<h3>Self-Hosted Map-Tile Bill-Cutter Retrofit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Protomaps posted today that self-hosting map tiles has gotten cheap and easy, undercutting metered Google Maps/Mapbox API billing for any site that just needs a display map. Source: <a href="https://bruceroettgers.eu/blog/protomaps/" rel="noopener">bruceroettgers.eu</a></p><p class="field"><strong>The idea</strong>A Claude Code skill auditing a client's current Google Maps/Mapbox API spend, then migrating any display-only map usage onto a self-hosted Protomaps tile server to cut the recurring bill.</p><p class="field"><strong>Why you</strong>Same bill-cutter migration shape you've run against DeepSeek, ngrok, and transcription APIs, aimed at a cost line almost every local-service client carries without noticing it.</p><p class="field"><strong>First step</strong>Stand up one Protomaps tile server locally today and swap it in front of one of your own site's maps to confirm the quality holds.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-6" class="idea">
+<div class="idea-head">
+<span class="num">06</span>
+<span class="badge type-agent">Agent</span>
+
+<h3>Self-Generated Tool Guardrail Agent</h3>
+</div>
+<p class="field"><strong>Trigger</strong>Coral launched today as an open-source gateway letting autonomous agents write and manage their own tools on the fly, a new class of risk distinct from a fixed, pre-approved toolset. Source: <a href="https://github.com/withcoral/coral" rel="noopener">github.com/withcoral/coral</a></p><p class="field"><strong>The idea</strong>An agent that wraps a client's Coral-style self-tooling agent build with a review gate, holding every newly self-generated tool for a permission check before it gets execution rights. Distinct from your existing Agent Guardrail Wrapper since that one governs a fixed toolset decided at build time, not tools an agent invents for itself at runtime.</p><p class="field"><strong>Why you</strong>Direct extension of your agent-security lane onto the exact new failure mode this launch creates, and you can prototype the review gate against your own agent builds first.</p><p class="field"><strong>First step</strong>Point Coral at one of your own simple agent tasks today and watch what tool it generates, then sketch the one permission check that would have caught a bad one.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-7" class="idea">
+<div class="idea-head">
+<span class="num">07</span>
+<span class="badge type-business">Business</span>
+
+<h3>Browser-Extension Element-Picker Vulnerability Rush Audit</h3>
+</div>
+<p class="field"><strong>Trigger</strong>A disclosed universal XSS vulnerability in uBlock Origin, triggered by a website-driven element picker, shows a new attack surface any browser extension with page-interaction permissions can carry. Source: <a href="https://iter.ca/post/ubo-uxss/" rel="noopener">iter.ca</a></p><p class="field"><strong>The idea</strong>A fixed-price rush audit checking any bespoke browser extension you've already built for a client against this exact vulnerability class before it gets weaponized more broadly, and patching the permission scope that allows it.</p><p class="field"><strong>Why you</strong>A direct follow-up service for your existing Bespoke Browser Extension Shop lane, turning a scary disclosed bug into a same-day billable fix for every extension client you already have.</p><p class="field"><strong>First step</strong>Run the disclosed exploit pattern against one of your own built extensions today to confirm whether it is exposed.</p>
+<div class="meta-row">
+<span class="meter">Effort <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></span><span class="meter">Money <span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></span>
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-8" class="idea swing">
+<div class="idea-head">
+<span class="num">08</span>
+<span class="badge type-business">Business</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>AI Memory Source-Retraction Governance Standard</h3>
+</div>
+<p class="field"><strong>Trigger</strong>CheeseDB launched today as agent memory where deleting a source actually deletes everything it taught the agent, concrete proof that memory systems can honor retraction instead of just storing or tracing it. Source: <a href="https://github.com/govinargo-labs/cheesedb" rel="noopener">github.com/govinargo-labs/cheesedb</a></p><p class="field"><strong>The idea</strong>A category-defining governance standard and certification mark guaranteeing that any AI system's memory genuinely forgets what a retracted source taught it, the missing compliance layer underneath today's storage and tracing-focused memory tools.</p><p class="field"><strong>Scale</strong>Becoming the trusted standard every regulator and enterprise buyer checks for needs legal credibility and buy-in from every major agent-memory vendor at once, a standards-body bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-9" class="idea swing">
+<div class="idea-head">
+<span class="num">09</span>
+<span class="badge type-agent">Agent</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Censorship-Resistant Infrastructure Defense Collective</h3>
+</div>
+<p class="field"><strong>Trigger</strong>The Tor Project shipped a rapid-response DoS-defense fix today while under a sustained distributed denial-of-service attack, a live demonstration of state-level pressure on open anonymity infrastructure. Source: <a href="https://forum.torproject.org/t/security-release-0-4-9-17/22454" rel="noopener">forum.torproject.org</a></p><p class="field"><strong>The idea</strong>A funded, agent-driven collective continuously hardening and patching open censorship-resistant network infrastructure against sustained attacks, giving projects like Tor a standing defense team instead of a volunteer scramble each time one hits.</p><p class="field"><strong>Scale</strong>Needs deep network-security research talent and funding able to outlast a nation-state-grade adversary, a specialist-institution bet, not a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article><article id="idea-2026-11-16-10" class="idea swing">
+<div class="idea-head">
+<span class="num">10</span>
+<span class="badge type-app">App</span>
+<span class="badge swing-tag">🚀 Big Swing</span>
+<h3>Autonomous Narrow-Vertical AI Factory</h3>
+</div>
+<p class="field"><strong>Trigger</strong>New funding data shows AI now pulls 40 percent of all VC dollars, with narrow vertical problems in legal, logistics, and healthcare winning faster than broad horizontal tools. Source: <a href="https://blog.mean.ceo/startup-funding-trends-november-2026/" rel="noopener">blog.mean.ceo</a></p><p class="field"><strong>The idea</strong>A category-defining platform that takes a plain-English description of one narrow vertical problem and auto-assembles a working, deployable vertical AI product end to end, industrializing the exact pattern VCs are now betting on.</p><p class="field"><strong>Scale</strong>Matching what a funded vertical-AI startup can build bespoke, at platform scale across every industry at once, needs serious capital and trust-building, a venture-scale bet past a solo build.</p>
+<div class="meta-row">
+
+<span class="verdict verdict-unmarked">Unrated</span>
+</div>
+</article>
+</div></body>
+</html>
